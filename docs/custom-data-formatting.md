@@ -5,19 +5,22 @@
 - [2. Setup](#2-setup)
     - [2.1 Kaitai Setup](#21-kaitai-setup)
     - [2.2 Construct Setup](#22-construct-setup)
-- [3 Introduction: What is a filetype?](#3-introduction-what-is-a-filetype)
-    - [3.1 Opening a file wrong](#31-opening-a-file-wrong)
-- [4 Exploring the Structure in Kaitai](#4-exploring-the-structure-in-kaitai)
-      - [4.1 meta and seq](#41-meta-and-seq)
-      - [4.2 Types](#42-types)
+- [3. Introduction: What is a filetype?](#3-introduction-what-is-a-filetype)
+    - [3.1 Computer language and number systems](#31-computer-language-and-number-systems)
+      - [3.1.1 Counting in binary and hexadecimals](#311-counting-in-binary-and-hexadecimals)
+    - [3.2 Opening a file wrong](#32-opening-a-file-wrong)
+- [4. Exploring the Structure in Kaitai](#4-exploring-the-structure-in-kaitai)
+    - [4.1 meta and seq](#41-meta-and-seq)
+    - [4.2 Types](#42-types)
+
 # 1. Summary
 It's common in the scientific community to record data in a custom format which might be unreadable to existing programming languages. This means that in the processes of data analysis, it can be necessary to create and describe a new filetype. This lesson will be exploring how Kaitai and Construct can be used to translate one's custom binary data in a way that makes it easier to work with. Construct is designed specifically for use with the Python programming language, while Kaitai can be used to work in Python, CSharp, Java, Javascript, Perl, PHP, or Ruby. 
 # 2. Setup
 Installation isn't strictly necessary for working with Kaitai, but is required for working with Construct.
 ## 2.1 Kaitai Setup
-For Kaitai, the [Web IDE](https://ide.kaitai.io/) is the simplest way to get started. You can jump straight in to describing your data set, ideally after reading through some of the [documentation](https://doc.kaitai.io/user_guide.html) of which these instructions are referencing. You can directly upload a file that you wish to parse and create a new `.ksy` file to describe the data format. 
+For Kaitai, the [Web IDE](https://ide.kaitai.io/) is the simplest way to get started. You can jump straight in to describing your data set, ideally after reading through some of the [documentation](https://doc.kaitai.io/user_guide.html) of which these instructions are referencing. You can directly upload a file that you wish to parse and create a new `.ksy` file to describe it. 
 
-If for any reason you would prefer to avoid the in browser version, you could instead install the desktop/console version, although this isn't necessary or recommended for this lesson. The different OS downloads are available [here](https://kaitai.io/#download).
+If for any reason you would prefer to avoid the in browser version, you could instead install the desktop/console version. The desktop and console versions can also be used when you're done using the Web IDE to compile the file for other programming languages. The different OS downloads are available [here](https://kaitai.io/#download).
 
 After installation, you should have:
 * `ksc` (`kaitai-struct-compiler`) - a command line Kaitai Struct Compiler which translates `.ksy` files into parsing libraries for a chosen target language.
@@ -29,15 +32,31 @@ Construct is installable from Pypi, using the standard command-line. There aren'
 # 3 Introduction: What is a filetype?
 While it's easy to say that a `.jpg` "is a picture", a `.gif` "is an animation", or a `.txt` "is a text document" let's back up and think about how data is stored on a computer and translated into something that we can read and understand. 
 
-While humans have pretty familiar systems in place now for interacting with computers, it's important to remember that we interact with computers through several layers of culturally specific translations, abstractations, and conveniences that exist as barriers between our world of symbols and the laws of electromagnetism. Humans have spent much of the last century learning to shape metals and electricity into processing units and graphics cards which can deliver us images of "cats" and graphs of "the economy". *Every* filetype is a custom filetype that someone, somewhere, had to teach a computer to interpret. 
+While humans have pretty familiar systems in place now for interacting with computers, it's important to remember that we interact with computers through several layers of culturally specific translations, abstractations, and conveniences that exist as barriers between our world of symbols and the laws of electromagnetism. Humans have spent much of the last century learning to shape metals and electricity into these incredibly complex devices which we call things like "processing units" and "graphics cards". These tools can then deliver us images of "cats" and graphs of "the economy" when they're combined with a monitor of some kind. The point being that *every* filetype is a custom filetype which someone, somewhere, had to teach a computer to interpret. As file types become more niche and specific to a project, it then becomes someone else's job to create a description that will allow a computer to be able to read a string of `1`s and `0`s and return something that humans can understand again. 
 
-Let's say you want to take some data using an existing filetype, such as `.txt`. When you type a character on your keyboard, the mechanical action presses conductive material into place against a complex printed circuit laying underneath the key, allowing for a current to flow through a distinct path. The current will then enter the microcontroller, the "brain" of the keyboard, where the resulting signal is converted into a binary representation of `1`s and `0`s. However, this familiar numerical representation is an abstraction used to explain the physical system comprised of transistors and capacitors which exist inside of memory cells. 
+## 3.1 Computer language and number systems
 
-The circuit completed by the key press allows for electricity to charge a series of capacitors in your computer's memory cells. When a capacitor is charged, we call it a `1`, and when it is discharged, we call it a `0`. This series of charged and uncharged cells is then held and written from a specific location inside of the RAM chip until the file is saved, at which point it is written onto the computer's hard drive. Even if you save something on the cloud, it is still a string of information stored physically by some computer server somewhere.
+That string of `1`s and `0`s mentioned earlier - where do they come from, anyway? What do people mean when they say that our computers "think" or "read" in binary?
 
-It's in this way that `a` becomes `01100001`. Each character you can type is represented by a `byte` 8 digits long. This also means that one byte can represent any value between `00000000` and `11111111` (or 0-256 in decimal representation). Still, `01100001` is essentially just a number: `97` when represented in decimal form. It's only through UTF-8 encoding that when you open your `.txt` file in Notepad, it knows to represent `01100001` as `a`. But Notepad doesn't have the instructions to open every filetype, and will give some illustrative results if you use it to try and open non-text files.
+Let's say you want to take some data using an existing filetype, such as writing your results down in a `.txt` document. When you type a character on your keyboard, the mechanical action presses conductive material into place against a complex printed circuit laying underneath the key, allowing for a current to flow through a distinct path. The current will then enter the keyboard's microcontroller, its "brain", where the resulting signal is converted into a binary representation of `1`s and `0`s. However, even this familiar numerical representation is a convenient abstraction used to explain the physical system comprised of transistors and capacitors which exist inside of a computer's memory cells.
 
-## 3.1 Opening a file wrong
+The circuit completed by pressing a key on a keyboard allows for electricity to flow from a power source and throughout different systems in your computer, eventually charging a series of capacitors in its memory cells. When a capacitor is charged, we call it a `1`, and when it's discharged, we call it a `0`, representing the binary states available to it of charged and uncharged. The series of charged/uncharged cells is then held and written from a specific location inside of the computer's RAM chip until the file is saved, at which point it is moved onto the computer's hard drive. Even if you save something on what has become known as "the cloud", it still must stored physically on a set of capacitors by some computer server somewhere. Normally, if you're paying for a "cloud" service, the servers are owned and operated by the company which you are paying, hopefully with layers of encryption and security to protect your data.
+
+It's in this way that the typed character `a` gets translated into the binary representation `01100001`. Each character's binary representation can also be said to represent where in your computer's systems a current was and wasn't allowed to pass through specific paths. Each character one can type is thus represented by a `byte`, a number 8 digits long as represented in the binary numerical system. As binary is a base 2 counting system, this means that one byte can represent any value between `00000000` and `11111111`, or 0-256 in decimal representation.
+
+Ok, but what is a "base 2" counting system?
+
+# 3.1.1 Counting in binary and hexadecimals
+
+To understand counting systems, remember that the number system humans are used to is derived almost solely from the fact that our species happens to have 10 fingers. As a result, in our number system the number "3125" could be interpreted as there being a 3 in the "thousands" or $10^3$ place, a 1 in the "hundreds" or $10^2$ place, a 2 in the "tens" or $10^1$ place and a 5 in the "ones" or $10^0$ place, so: $$3125 = (3 \cdot 10^3) + (1 \cdot 10^2) + (2 \cdot 10^1) + (5 \cdot 10^0)$$
+
+The same is true for a binary counting system, only instead of the places being determined by powers of 10, they're instead determined by powers of 2. Binary is pretty simplistic as such, as any 1 or 0 simply means that there is or isn't a number in that place. So `01100001` becomes: $$(0 \cdot 2^7) + (1 \cdot 2^6) + (1 \cdot 2^5) + (0 \cdot 2^4) + (0 \cdot 2^3) + (0 \cdot 2^2) + (0 \cdot 2^1) + (1 \cdot 2^0)$$
+
+Which when represented in decimal (base 10) becomes 97. As every byte is 8 digits long, this means that any byte can represent a value between `00000000` and `11111111`, or 0-256 in decimal representation. However, another common numerical system that one should be familiar with when working with raw binary data is hexadecimals. While binary shortens the number of allowed digits to 2, 0 & 1, hexadecimals is a base 16 counting system, extending our usual 1st digit options from 0-9 to include A-F, where A = 10, B = 11, ..., F = 15.
+
+It's only through UTF-8 encoding that when you open your `.txt` file in Notepad, it knows to represent `01100001` as `a`. But Notepad doesn't have the instructions to open every filetype, and will give some illustrative results if you use it to try and open non-text files.
+
+## 3.2 Opening a file wrong
 
 Let's see what happens when we try to open a filetype that Notepad wasn't written for: `.gif`. This one is taken from Wikipedia's article on the subject of GIFs:
 
