@@ -1,84 +1,122 @@
 # Custom Data Formatting Lesson
 **Created by Adrian Fisher**
+
 # Table of Contents:
-- [1. Summary](#1-summary)
+
+- [Table of Contents](table-of-contents)
+- [1. Introduction](#1-introduction)
 - [2. Setup](#2-setup)
-    - [2.1 Kaitai Setup](#21-kaitai-setup)
-    - [2.2 Construct Setup](#22-construct-setup)
-- [3. Introduction: What is a filetype?](#3-introduction-what-is-a-filetype)
+    - [2.1 Kaitai IDE](#21-kaitai-ide)
+    - [2.2 Python Setup](#22-python-setup)
+    - [2.3 Construct Setup](#23-construct-setup)
+- [3. Introduction: What is a file type?](#3-introduction-what-is-a-file type)
     - [3.1 Computer language and number systems](#31-computer-language-and-number-systems)
       - [3.1.1 Counting in binary and hexadecimals](#311-counting-in-binary-and-hexadecimals)
     - [3.2 Opening a file](#32-opening-a-file)
-- [4. Defining the Structure in Kaitai](#4-exploring-the-structure-in-kaitai)
+- [4. Defining the Structure in Kaitai](#4-defining-the-structure-in-kaitai)
     - [4.1 Anatomy of the Web IDE](#41-anatomy-of-the-web-ide)
     - [4.2 meta and seq](#41-meta-and-seq)
-    - [4.3 Types](#42-types)
-- [5. Defining the Structure in Construct](#5-exploring-the-structure-in-construct)
-  - [5.1 Structs](#51-structs-and-sequences)
+    - [4.3 Types](#43-types)
+- [5. Defining the Structure in Construct](#5-defining-the-structure-in-construct)
+  - [5.1 Structs](#51-structs)
+- [i. Advanced](#i-advanced)
+  - [Advanced Kaitai Users](#advanced-kaitai-users)
+  - [Advanced Construct Users](#advanced-construct-users)
 
-# 1. Summary
-It's common in the scientific community to record data in a custom format which might be unreadable to existing applications or programming languages. This means that in the processes of data analysis for a project, it can sometimes be necessary to create and describe a new filetype. This lesson will be exploring how Kaitai and Construct can be used to translate one's custom binary data in a way that makes it easier to work with. Construct is designed specifically for use with the Python programming language, while Kaitai can be used to work in Python, CSharp, Java, Javascript, Perl, PHP, or Ruby. 
+# 1. Introduction
+
+It's common in the scientific community to record data in a custom format which might be unreadable to existing applications or programming languages. This means that in the processes of data analysis for a project, it can sometimes be necessary to create and describe a new file type. This lesson will be exploring first how to setup your computer to use Kaitai and Construct before explaing how they can be used to translate one's custom binary data to make it easier to use. Construct is designed specifically for use with the Python programming language, while Kaitai can be used to work in Python, CSharp, Java, Javascript, Perl, PHP, or Ruby. 
 
 # 2. Setup
 
-Installation isn't strictly necessary for working with Kaitai, but is required for working with Construct.
+Installation isn't strictly necessary for working with Kaitai, but is required for working with Construct. 
 
-## 2.1 Kaitai Setup
+## 2.1 Kaitai IDE
 
-For Kaitai, the [Web IDE](https://ide.kaitai.io/) is the simplest way to get started. You can jump straight in to describing your data set, ideally after reading through some of the [documentation](https://doc.kaitai.io/user_guide.html) which these instructions are referencing. You can directly upload a file that you wish to parse and create a new `.ksy` file to describe it. 
+For Kaitai, the [Web IDE](https://ide.kaitai.io/) (Integrated Development Environment) is the simplest way to get started, and is all that is necessary for this lesson. If you're already familiar with the language you can use the Web IDE to jump straight in to describing your data format. If you're not familiar, it's recommended to read through the existing [documentation](https://doc.kaitai.io/user_guide.html). The instructions in section [4. Defining the Structure in Kaitai](#4-defining-the-structure-in-kaitai) reference the documentation enough to describe one file type, but the actual documentation provides a much more complete description of Kaitai's syntax and its available commands. Advanced users may wish to install `ksc`, the `kaitai-struct-compiler`, or `ksv`, the `kaitai-struct-visualizer` directly onto their own machine. Instructions to do so are included in the [Advanced Kaitai Users](#advanced-kaitai-users) section.
 
-If for any reason you would prefer to avoid the in browser version, you could instead install the desktop/console version. The desktop and console versions can also be used when you're done using the Web IDE to compile the file for other programming languages. The different OS downloads are available [here](https://kaitai.io/#download).
+## 2.2 Python Setup
 
-After installation, you should have:
-* `ksc` (`kaitai-struct-compiler`) - a command line Kaitai Struct Compiler which translates `.ksy` files into parsing libraries for a chosen target language.
-* `ksv` (`kaitai-struct-visualizer`, optional) a console visualizer
-## 2.2 Construct Setup
-Construct is installable from Pypi, using the standard command-line. There aren't hard dependencies, but all supported modules can be installed as well. You can either run:
-* `pip install construct` for the basic installation, or
-* `pip install construct[extras]` to install all supported modules.
-# 3 Introduction: What is a filetype?
+In order to use Construct, it is necessary to have Python installed on your machine. If that is already the case for you and you are already familiar with an IDE of your choice, this section can be skipped.
+
+There are numerous IDEs with which one can use for programming in Python: Spyder, Anaconda, Visual Studio Code, and Pycharm are popular choices, just to name a few. For this lesson, it is recommended to install and familiarize yourself with the Spyder environment, which can be downloaded and installed from [here](https://www.spyder-ide.org/). Spyder is an open-source program which was built in Python, for Python, specifically for use in data science. 
+
+By following the link, you should have the option to download the IDE for your operating system, at which point you can follow the guided installation. The IDE should open after the installation is complete, at which point it is recommended to follow along with the tour for a quick overview of the IDE.
+
+## 2.3 Construct Setup
+
+After installing the Python IDE of your choice, open or navigate to the console. In Spyder, the console is found as the window on the bottom right (by default), and should resemble the below image.
+
+![Spyder console](image-2.png)
+
+If you're having trouble finding the console, or have removed the window by accident (or on purpose and are unsure how to return it), it should be possible to turn it back on by navigating to `View` > `Panes` > and checking the box next to `IPython Console`. Alternatively on Windows, you can also type `CTRL+SHIFT+I` to open or close the console window.
+
+Construct doesn't have any hard dependencies, but all supported modules can be installed as well with a single command. The basic version of Construct is enough for this lesson. To install it, you should only need to type or copy the following into the console and hit enter:
+
+```
+pip install construct
+``` 
+
+Advanced users can refer to the section [Advanced Construct Users](#advanced-construct-users) for further instructions.
+
+# 3 Introduction: What is a file type?
 While it's easy to say that a `.jpg` "is a picture", a `.gif` "is an animation", or a `.txt` "is a text document" let's back up and think about how data is stored on a computer and translated into something that we can read and understand. 
 
-While humans have pretty familiar systems in place now for interacting with computers, it's important to remember that we interact with computers through several layers of culturally specific translations, abstractations, and conveniences that exist as barriers between our world of symbols and the laws of electromagnetism. Humans have spent much of the last century learning to shape metals and electricity into these incredibly complex devices which we call things like "processing units" and "graphics cards". These tools can then deliver us images of "cats" and graphs of "the economy" when they're combined with a monitor of some kind. The point being that *every* filetype is a custom filetype which someone, somewhere, had to teach a computer to interpret. As file types become more niche and specific to a project, it then becomes someone else's job to create a description that will allow a computer to be able to read a string of `1`s and `0`s and return something that humans can understand. 
+Humans have invented what are now pretty familiar systems for interacting with computers, but it's important to remember that we interact with computers through several layers of culturally specific translations, abstractions, and conveniences that exist as barriers between our world of symbols and the laws of electromagnetism. We have spent much of the last century learning to shape metals and electricity into incredibly complex devices which we call things like "processing units" or "graphics cards". These tools can then deliver us images of things that we call "cats" and graphs to represent something called "the economy" when combined with a monitor of some kind. The point being that *every* file type is a custom set of instructions used to load a file format which someone, somewhere, had to teach a computer to interpret. 
+
+A file `type` describes the extension used at the end of a file's name, such as `.jpg`, `.gif`, or `.txt`. The extension suggests to a program which `format` to use to read a given file. It is possible for different file types to share file formats, such as `.jpg` and `.jpeg`. It is also possible for different file formats to share a file type, such as `.bin`, which enough versatility to describe executable binary files, game ROMs, or even CD/DVD data. File formats and file types both exist as a type of convenient convention rather than as strict rules, however if you try to open an executable binary file as a game ROM, the program is likely to produce errors or fail entirely to correctly interpret the data, unless the program is prepared for both possibilities.
+
+As file types and formats become more niche and specific to a project, it is up to developers to define their new file formats and create the software necessary to read a string of `1`s and `0`s and return something that humans can understand. 
 
 ## 3.1 Computer language and number systems
 
-In the simplest language, a filetype is a set of instructions for opening and/or saving a file. Given a collection of bytes, a program will perform a set of computations to determine how to represent those bytes in a human-readable format. When considering the string of `1`s and `0`s mentioned earlier, we can ask one of the fundamental questions of computer science: How are `1`s and `0`s generated in the first place?
+In some sense, a file format is a set of instructions that a program needs in order to be able to successfully open and/or save a file. Given a collection of bytes, a program will perform a set of computations to determine how to convert those bytes into a human-readable format. When considering the string of `1`s and `0`s mentioned earlier, we can ask one of the fundamental questions of computer science: How are `1`s and `0`s generated in the first place?
 
-Let's say you want to take some data using an existing filetype, such as writing your results down in a `.txt` document. When you type a character on your keyboard, the mechanical action presses conductive material into place against a complex printed circuit laying underneath the key, allowing for a current to flow through a distinct path. 
+Let's say you want to take some data under an existing file type, such as writing your results down in a `.txt` document. When you type a character on your keyboard, the mechanical action presses conductive material into place against a complex printed circuit laying underneath the key, allowing for a current to flow through a distinct path. 
 
 ![keyboard circuit](computer-keyboard-disassemble2.jpg)
-```
+
+`
 Woodford, Chris, (2022). Computer Keyboards
+`
+
+`
 https://www.explainthatstuff.com/computerkeyboards.html#keys
-```
+`
 
-The current will then enter the keyboard's microcontroller, its "brain", where the resulting signal is converted into a binary representation of `1`s and `0`s. However, even this familiar numerical representation is a convenient abstraction used to explain the physical system comprised of transistors and capacitors which exist inside of a computer's memory cells.
+The current will then enter the keyboard's microcontroller, its "brain", where the resulting signal is converted into a binary representation of `1`s and `0`s. However, even this familiar numerical representation is a convenient abstraction used to explain a physical system comprised of transistors and capacitors which exist inside of a computer's memory cells.
 
-The circuit completed by pressing a key on a keyboard allows for a current to flow from a power source to different systems in the computer, eventually charging a series of capacitors in its memory cells. When a capacitor is charged, we call it a `1`, and when it's discharged, we call it a `0`, representing the binary states available to it of charged and uncharged. The series of charged/uncharged cells is then held and written from a specific location inside of the computer's RAM chip until the file is saved, at which point it can be moved onto the computer's hard drive. Even if you save something on what has become known as "the cloud", it still must be stored physically on a set of capacitors by some computer server somewhere. Normally, if you're paying for a "cloud" service, the servers are owned and operated by the company which you are paying, hopefully with layers of encryption and security to protect your information.
+The circuit which was completed by the key press allows for a current to flow from a power source to different systems in the computer, eventually charging a series of capacitors in its memory cells. When a capacitor is charged, we call it a `1`, and when it's discharged, we call it a `0`, representing the **binary** states available of charged or uncharged (this is completely thrown out of the window however for quantum computing systems, but they are very much outside of the scope of this lesson). The series of charged/uncharged cells is then held and written from a specific location inside of the computer's Random Access Memory (RAM) chip until the file is saved, at which point it can be moved onto the computer's hard drive. This is true even if you save something using what has become known as "the cloud", a series of decentralized computers. Even on these, in order to save a file, some physical set of capacitors and transistors must be manipulated on a computer server. Normally, if you're paying for a "cloud" service, the servers are owned and operated by the company which you are paying, ideally with layers of encryption and security to protect your data.
 
-It's in this way that the typed character `a` gets translated into the binary representation `01100001`. Each character's binary representation can also be said to represent where in your computer's circuitry a current was and wasn't allowed to pass through specific paths. Each character one can type is thus represented by a `byte`, which is a number 8 digits long, represented in the binary (base-two) numerical system. Binary is a base two counting system, meaning that one byte can represent any value between `00000000` and `11111111`, or 0-255 in decimal representation.
+It's in this way that the typed character `a` gets translated into the binary representation `01100001`. Each character's binary representation can also be said to represent where in your computer's circuitry a current was and wasn't allowed to pass through specific paths. Each character one can type is thus represented by a `byte`, which is a number 8 digits long, represented in the binary counting system. Binary is a **base two** counting system, meaning that one byte can represent any value between `00000000` and `11111111`, or any number between 0 and 255 when written in the familiar decimal representation.
 
-Ok, but what is a "base 2" counting system?
+Ok, but what is a "base two" counting system?
 
 ### 3.1.1 Counting in binary and hexadecimals
 
-To understand counting systems, remember that the number system humans are used to is derived almost entirely from the fact that our species happens to have 10 fingers. As a result, we have what we call a "base 10" counting system. If we happened to have 8 fingers, we would instead most likely use a "base 8" counting system. In base 10, the number "3125" could be interpreted as there being a 3 in the "thousands" or $10^3$ place, a 1 in the "hundreds" or $10^2$ place, a 2 in the "tens" or $10^1$ place and a 5 in the "ones" or $10^0$ place, so: 
+To understand counting systems, remember that the number system humans are used to were derived almost entirely from the fact that our species happens to have 10 fingers. As a result, we use what is called a "base 10" counting system. If we happened to have 8 fingers, we would instead likely use a "base 8" counting system. 
+
+In base 10, the number "3125" could be interpreted as there being a 3 in the "thousand" or $10^3$ place, a 1 in the "hundred" or $10^2$ place, a 2 in the "ten" or $10^1$ place and a 5 in the "ones" or $10^0$ place, so: 
+
 $$3125 = (3 \cdot 10^3) + (1 \cdot 10^2) + (2 \cdot 10^1) + (5 \cdot 10^0)$$
-Each new digit represents an additional $10^n$, where $n$ is how many digits are to the right, starting from 0.
 
-The same is true for a binary counting system, only instead of the places being determined by powers of 10, they're instead determined by powers of 2. Binary is pretty simplistic as such, as any 1 or 0 simply means that there is or isn't a number in that place. So `01100001` becomes: $$(0 \cdot 2^7) + (1 \cdot 2^6) + (1 \cdot 2^5) + (0 \cdot 2^4) + (0 \cdot 2^3) + (0 \cdot 2^2) + (0 \cdot 2^1) + (1 \cdot 2^0)$$
+Each new digit represents an additional $10^n$, where $n$ is the digit's place from the right, starting from 0. This can be continued for digits representing numbers between 0 and 1 as well, or where $n < 0$. Here, $0.1$ can be equivalently represented as $(1 \cdot 10^{-1})$, $0.01$ as $(1 \cdot 10^{-2})$ and so on.
 
-Which when represented in decimal form (base 10) becomes 97. 
+The same is true for a binary counting system, only instead of the places being determined by powers of 10, they're determined by powers of 2. Binary is pretty simplistic as such, as any 1 or 0 simply means that there is or isn't a number in that place. So `01100001` becomes: 
+
+$$(0 \cdot 2^7) + (1 \cdot 2^6) + (1 \cdot 2^5) + (0 \cdot 2^4) + (0 \cdot 2^3) + (0 \cdot 2^2) + (0 \cdot 2^1) + (1 \cdot 2^0)$$
+
+Which when represented in decimal (base 10) form becomes 97. 
 
 Another common numerical system that one should be familiar with when working with raw data is hexadecimals. While binary shortens the number of allowed numbers to 2: 0 & 1, hexadecimals is a base 16 counting system, extending our counting options per digit from 0-9 up to 15. To represent numbers higher than 9 in this system, we instead use the letters A-F, where A = 10, B = 11, ..., F = 15. 
 
-Hexadecimal are used by software developers and the like because each hexadecimal digit can represent four `bits` (also known as a `nibble`), meaning that one byte 8 digits long can be expressed in hexadecimal using only two characters. This makes the counting system much faster to represent, as 256 can be either `11111111` when represented in binary, or `FF` in hexadecimals. The letter `a`, can now be represented as `01100001` in binary, `97` in decimal or `61` in hexadecimals:
-$$ (6 \cdot 16^1) + (1 \cdot 16^0)$$
+Hexadecimal are used by software developers and the like because each hexadecimal digit can represent four `bits` (also known as a `nibble` or `nybble`), meaning that one byte can be expressed in hexadecimal using only two characters. This makes the counting system much faster to represent, as 256 can be either `11111111` when represented in binary, or `FF` in hexadecimals. The letter `a`, can now be represented as `01100001` in binary, `97` in decimal or `61` in hexadecimals, following:
 
-To summarize, when you open a program such as Notepad and begin recording data, every new typed character appends a number between 0 and 255 to the end of your document. Inside the components of your computer, this physically translates to a group of capacitors becoming charged or discharged. Other systems of the computer can then store and retrieve the positions of those capacitors as well as their current state. Then, when you open the file in a program, the values are assigned to different characters depending on the program. Each program is provided with a set of instructions to translate these values into a graphical representation of some kind.
+$$(6 \cdot 16^1) + (1 \cdot 16^0)$$
 
-So, let's talk about that set of instructions next. How does your computer take what is essentially a large number saved on your computer's memory cards and turn it into a document you can understand? How does Notepad know to open a `.txt` file and represent what it reads as `01100001` as the letter `a`? 
+To summarize, when you open a text editing program such as Notepad and begin recording data, every new typed character appends a number between 0 and 255 to the end of your document. Inside the components of your computer, this physically translates to a group of capacitors becoming charged or discharged. Other systems of the computer can then store and retrieve the positions of those capacitors as well as their current state. Then, when you open the file in a program, the values are assigned to different characters or other graphical representations depending on the program. Each program is provided with a set of instructions to translate these values into a representation of some kind.
+
+So, let's talk about that set of instructions next. How does your computer take what is essentially a large number saved on your computer's memory cards and turn it into a document you can understand? How do text editors know to open a `.txt` file and represent what it reads as `01100001` as the letter `a`? 
 
 ## 3.2 Opening a file
 
@@ -91,7 +129,7 @@ UTF-8 Byte Map, from https://en.wikipedia.org/wiki/UTF-8#Byte_map
 
 Here, the row selects the first hex character of a byte and the column selects the second. You can find `a` here in row 6, column 1. 
 
-Since Notepad translates all of the information of a file through UTF-8, it's pretty useful to illustrate what data is contained in other filetypes. Let's see what happens when we try to use Notepad to open a filetype that it wasn't designed for, such as a `GIF`. `GIF` stands for "Graphics Interchange Format", and is notable for being able to represent multiple images in a single file, so the filetype is often used for animations. For this example, we'll be using a gif taken from Wikipedia's article on the subject of GIFs:
+Since Notepad translates all of the information of a file through UTF-8, it's pretty useful to illustrate what data is contained in other file types. Let's see what happens when we try to use Notepad to open a file type that it wasn't designed for, such as a `GIF`. `GIF` stands for "Graphics Interchange Format", and is notable for being able to represent multiple images in a single file, so the file type is often used for animations. For this example, we'll be using a gif taken from Wikipedia's article on the subject of GIFs:
 
 ![Rotating Earth](https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif)
 ```
@@ -135,13 +173,13 @@ The `converter` section on the bottom right of the screen provides multiple diff
 
 Finally, there is the `info panel` which provides information about a selection of bytes, such as the length of the selection and where in the data stream the selection is.
 
-If you are interested in following along more precisely with the `gif.ksy` file, there is also extensive documentation provided to describe the file format. Having documentation about the file format is crucial for describing your filetype. Without documentation to follow, this process looks less like declarative programming and more like cryptography, as you would have to decipher the purpose of much of the binary data unless it happens to be written in plain text already. It's not impossible, just definitely not an ideal or efficient method.
+If you are interested in following along more precisely with the `gif.ksy` file, there is also extensive documentation provided to describe the file format. Having documentation about the file format is crucial for describing your file type. Without documentation to follow, this process looks less like declarative programming and more like cryptography, as you would have to decipher the purpose of much of the binary data unless it happens to be written in plain text already. It's not impossible, just definitely not an ideal or efficient method.
 
-We won't fully describe everything being done in the example `.ksy` file here, instead we are just going to look at a broad overview to give an idea of how to use the program. Now that we know what we're looking at in the IDE, we can take a look at how the filetype is being described.
+We won't fully describe everything being done in the example `.ksy` file here, instead we are just going to look at a broad overview to give an idea of how to use the program. Now that we know what we're looking at in the IDE, we can take a look at how the file type is being described.
 
 ## 4.2 meta and seq
 
-Your `.ksy` files should always start with a `meta` section, defining the meta-information of your filetype such as the file extension (like `.gif` or `.tiff`, etc), titles, licenses, endianness (what byte-order the file should be read in), cross-references, miscellaneous documentation (like lines 17-33 of `gif.ksy`), versions, types, encodings, etc.
+Your `.ksy` files should always start with a `meta` section, defining the meta-information of your file type such as the file extension (like `.gif` or `.tiff`, etc), titles, licenses, endianness (what byte-order the file should be read in), cross-references, miscellaneous documentation (like lines 17-33 of `gif.ksy`), versions, types, encodings, etc.
 
 The `seq` section is where the declarative work really starts. In `seq`, we can begin to describe how to handle the raw data. While it is possible to directly define streams in `seq`, it is necessary to first declare an `id` which will be the name shown in the object tree for any given attribute. You can also specify information such as a `type`, which tells the IDE what to do with the data in that section, a `size` which states the number of bytes for the object to capture, `content` can be specified for `magic` signatures, `encoding` choice can be determined here, etc.
 
@@ -151,7 +189,7 @@ Instead of investigating all four different `types` in the file's `seq`, let's i
 
 ## 4.3 Types
 
-The `types` section is where it becomes vital to reference documentation around the filetype you're trying to parse. A link to the documentation is provided in the `gif.ksy` file for the first time on line 43 for the `glocal_color_table` section, pointing the user to section 18 of the [Cover Sheet for the GIF89a Specification](https://www.w3.org/Graphics/GIF/spec-gif89a.txt).
+The `types` section is where it becomes vital to reference documentation around the file type you're trying to parse. A link to the documentation is provided in the `gif.ksy` file for the first time on line 43 for the `glocal_color_table` section, pointing the user to section 18 of the [Cover Sheet for the GIF89a Specification](https://www.w3.org/Graphics/GIF/spec-gif89a.txt).
 
 While it takes around 150 lines of code to full describe the types in `gif.ksy` (from line 48-197), longer descriptions aren't always necessary depending on the scope of your project. For instance, if you would expect the first 4 bytes to identify an object's width and height, your type could be settled quickly in the main `seq` section without ever having to create a type description, as:
 ```
@@ -230,7 +268,7 @@ This is a good time to mention that `bytes` are not some kind of fundamental uni
 
 In our case, `flags` = 247, or `11110111`, so `has_color_table = True`, and `1+(flags mod 8) = 8`, $2^8 = 256$, so `color_table_size = 256`
 
-All of this section has been to explain, in broad strokes, some of the types as shown in the `GIF` filetype. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found [here](http://doc.kaitai.io/user_guide.html#_kaitai_struct_language). For now, let's continue this lesson and talk about how this same filetype definition can be done with the Construct library.
+All of this section has been to explain, in broad strokes, some of the types as shown in the `GIF` file type. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found [here](http://doc.kaitai.io/user_guide.html#_kaitai_struct_language). For now, let's continue this lesson and talk about how this same file type definition can be done with the Construct library.
 
 # 5 Defining the Structure in Construct
 
@@ -294,3 +332,27 @@ gif_logical_screen = Struct(
 ```
 
 Here we can see that `width` and `height` have the expected definitions, but `flags` is using something called a `BitStruct`. These are much like a normal `Struct`, but designed to operate on bits instead of bytes. In parsing these, the data is converted to a stream of `\x01` and `\x00`s (`1`s and `0`s) and then fed into the subconstructs. So `global_color_table` grabs just the first bit, `color_resolution` grabs the next 3 bits and parses them as an integer, etc. These values are then used in `palette` if `global_color_table` is `True` (`1`), and an `Array` is constructed with a length determined by raising 2 to the power of `global_color_table_bpp + 1` where each element in the array is another `Struct` defining the RGB values of each pixel.
+
+# Conclusion
+
+Further works:
+
+YT community dev mailing list (yt-dev@python.org), amy's email, kaitai gitter,
+
+# i. Advanced
+
+## Advanced Kaitai Users
+
+There are several reasons that one might choose to install the `Kaitai-Struct-Compiler` directly onto their machines as opposed to using the Web IDE. The desktop and console versions can also be used when you're done using the Web IDE to compile the file for other programming languages. The different OS downloads are available [here](https://kaitai.io/#download).
+
+After installation, you should have:
+* `ksc` (`kaitai-struct-compiler`) - a command line Kaitai Struct Compiler which translates `.ksy` files into parsing libraries for a chosen target language.
+* `ksv` (`kaitai-struct-visualizer`, optional) a console visualizer
+
+## Advanced Construct Users
+
+While not necessary for this lesson, if you instead wish to install all the supported modules alongside your Construct install, instead type or copy the following and hit enter:
+
+```
+pip install construct[extras]
+``` 
