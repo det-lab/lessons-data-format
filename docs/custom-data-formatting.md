@@ -270,7 +270,7 @@ In our case, `flags` = 247, or `11110111`, so `has_color_table = True`, and `1+(
 
 All of this section has been to explain, in broad strokes, some of the types as shown in the `GIF` file type. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found [here](http://doc.kaitai.io/user_guide.html#_kaitai_struct_language). For now, let's continue this lesson and talk about how this same file type definition can be done with the Construct library.
 
-# 5 Defining the Structure in Construct
+# 5. Defining the Structure in Construct
 
 As mentioned earlier, Construct is a library designed to work specifically in Python, but it's functionality is similar to the functionality of Kaitai, just with more programmatic language. In Construct, we define `Structs` which are similar to `types` in Kaitai. By describing the structure of different sections of the data byte by byte, `Structs` can be combined with each other to capture larger sections of the data until they're combined in a final `Struct` which can capture all of the file's data.
 
@@ -335,9 +335,9 @@ Here we can see that `width` and `height` have the expected definitions, but `fl
 
 # Conclusion
 
-Further works:
+TODO
 
-YT community dev mailing list (yt-dev@python.org), amy's email, kaitai gitter,
+Include YT community dev mailing list (yt-dev@python.org), Professor Roberts' email, kaitai gitter link
 
 # i. Advanced
 
