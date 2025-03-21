@@ -9,7 +9,7 @@
     - [2.1 Kaitai IDE](#21-kaitai-ide)
     - [2.2 Python Setup](#22-python-setup)
     - [2.3 Construct Setup](#23-construct-setup)
-- [3. Introduction: What is a file type?](#3-introduction-what-is-a-file type)
+- [3. Introduction: What is a file type?](#3-introduction-what-is-a-file-type)
     - [3.1 Computer language and number systems](#31-computer-language-and-number-systems)
       - [3.1.1 Counting in binary and hexadecimals](#311-counting-in-binary-and-hexadecimals)
     - [3.2 Opening a file](#32-opening-a-file)
