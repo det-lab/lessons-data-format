@@ -1,0 +1,3 @@
+# 1: Introduction
+
+It's common in the scientific community to record data in a custom format which might be unreadable to existing applications or programming languages. This means that in the processes of data analysis for a project, it can sometimes be necessary to create and describe a new file type and/or format. This lesson will be exploring first how to setup your computer to use the Kaitai language and Construct library before explaing how they can be used to translate one's custom binary data to make it easier to use. Kaitai can be utilized in Python, CSharp, Java, Javascript, Perl, PHP, or Ruby, while Construct is designed specifically for use with Python.  
