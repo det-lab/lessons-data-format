@@ -18,7 +18,7 @@ By following the link, you should have the option to download the IDE for your o
 
 After installing the Python IDE of your choice, open or navigate to the console. In Spyder, the console is found as the window on the bottom right (by default), and should resemble the below image.
 
-![Spyder terminal](/images/spyder-terminal.png)
+![Spyder terminal](images/spyder-terminal.png)
 
 If you're having trouble finding the console, or have removed the window by accident (or on purpose and are unsure how to return it), it should be possible to turn it back on by navigating to `View` > `Panes` > and checking the box next to `IPython Console`. Alternatively on Windows, you can also type `CTRL+SHIFT+I` to open or close the console window.
 
