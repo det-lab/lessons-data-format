@@ -2,8 +2,6 @@
 
 As mentioned earlier, Construct is a library designed to work specifically in Python, but it's functionality is similar to the functionality of Kaitai, just with more programmatic language. In Construct, we define `Structs` which are similar to `types` in Kaitai. By describing the structure of different sections of the data byte by byte, `Structs` can be combined with each other to capture larger sections of the data until they're combined in one final `Struct` which can capture all of the file's data.
 
-We can start by opening the [github page for Construct](https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py) at the definition for `.gif`. 
-
 ## 5.1 Structs
 
 In Construct, a `Struct` is a collection of ordered and (usually) named fields that are parsed or built in the defined order. The object can then be either parsed when reading in a file's data or built to create a file with the type definitions. When a `Struct` is parsed, values are returned in a dictionary with keys matching the defined names, but names aren't strictly necessary like they are in Kaitai. It's possible to instead build from nothing and return nothing when parsing, so a name can be skipped in those instances. To recreate our dimension example from the Kaitai section, we can define a `Struct` as:
@@ -22,6 +20,8 @@ example = Struct(
   "dimensions" / dimensions
 )
 ```
+
+We can start by opening the [github page for Construct](https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py) at the definition for `.gif`. 
 
 When we look at `gif.py`, we can see that the structure is almost reversed when compared to Kaitai. This is because the structures in Kaitai are global - the order is arbitrary as long as they're placed in the right sections (`types` or `seq`), while in Construct the structures must be defined in order - one Struct can't use another until the other is defined. Let's try looking at the file backwards then, starting with the final `Struct` on line 121:
 

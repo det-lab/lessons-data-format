@@ -6,14 +6,14 @@ Let's try loading the GIF file in the Kaitai Web IDE to understand this better. 
 
 On the left side of the webpage, you'll see a list of folders, each containing pre-built `.ksy` files which you can use to test functionality. For this example, navigate to `formats/image/gif.ksy`, and double click `gif.ksy` to load it into the IDE. The buttons on the bottom left of the webpage are for creating new `.ksy` files, uploading `.ksy` or data files, and saving `.ksy` files respectively:
 
-![buttons](/images/kaitai-icons.png)
+![buttons](images/kaitai-icons.png)
 ```
 New, Upload, Save
 ```
 
 Click the upload button to select a `.gif` file from your computer and load it here. You should now see a webpage that looks like:
 
-![IDE](/images/kaitai_ide.png)
+![IDE](images/kaitai_ide.png)
 
 The viewer on the far right side should look somewhat familiar: it's the same data as when the file was opened in Notepad, now just with several of the unreadable symbols replaced with `.`s instead of Notepad's `` symbol, showing the typeable characters alongside their hexadecimal representations. 
 

@@ -13,7 +13,7 @@ In some sense, a file format is a set of instructions that a program needs in or
 
 Let's say you want to take some data under an existing file type, such as writing your results down in a `.txt` document. When you type a character on your keyboard, the mechanical action presses conductive material into place against a complex printed circuit laying underneath the key, allowing for a current to flow through a distinct path. This isn't necessarily true for every method of documenting characters, such as touch screens or speech-to-text, but the underlying principle is still important to note.
 
-![keyboard circuit](/images/computer-keyboard-disassemble2.jpg)
+![keyboard circuit](images/computer-keyboard-disassemble2.jpg)
 
 `
 Woodford, Chris, (2022). Computer Keyboards
@@ -81,7 +81,7 @@ Plain text editors are pretty straightforward to understand. Generally, they con
 
 The map explaining how characters are selected from a given byte (converted into hexadecimals) looks like:
 
-![byte chart](/images/utf8-table.png)
+![byte chart](images/utf8-table.png)
 ```
 UTF-8 Byte Map, from https://en.wikipedia.org/wiki/UTF-8#Byte_map
 ```
@@ -102,7 +102,7 @@ In general, it should be possible to simply right-click (or command-click for ma
 
 Now that we have successfully opened a gif using a text editor file, the result should appear as a jumble of seemingly nonsensical characters, which should look something like the following in the case of the rotating globe gif.
 
-![gif](/images/gif_txt.png)
+![gif](images/gif_txt.png)
 
 You might notice in that collection of seemingly random symbols that there are still some understandable combinations of characters, such as the first 3 which spell out "GIF", or further down on the left side you can find "NETSCAPE2.0".
 
