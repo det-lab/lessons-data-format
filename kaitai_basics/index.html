@@ -20,7 +20,7 @@
     
     
       
-        <title>Kaitai basics - Custom data format</title>
+        <title>4. Kaitai basics - Custom data format</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kaitai basics
+              4. Kaitai basics
             
           </span>
         </div>
@@ -213,7 +213,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction
+    1. Introduction
   </span>
   
 
@@ -232,7 +232,7 @@
         
   
   <span class="md-ellipsis">
-    Setup
+    2. Setup
   </span>
   
 
@@ -251,7 +251,7 @@
         
   
   <span class="md-ellipsis">
-    File types
+    3. File types
   </span>
   
 
@@ -279,7 +279,7 @@
           
   
   <span class="md-ellipsis">
-    Kaitai basics
+    4. Kaitai basics
   </span>
   
 
@@ -290,7 +290,7 @@
         
   
   <span class="md-ellipsis">
-    Kaitai basics
+    4. Kaitai basics
   </span>
   
 
@@ -363,7 +363,7 @@
         
   
   <span class="md-ellipsis">
-    Construct basics
+    5. Construct basics
   </span>
   
 
@@ -382,7 +382,7 @@
         
   
   <span class="md-ellipsis">
-    Putting it together
+    6. Putting it together
   </span>
   
 
@@ -401,7 +401,7 @@
         
   
   <span class="md-ellipsis">
-    Conclusion
+    7. Conclusion
   </span>
   
 
@@ -420,7 +420,7 @@
         
   
   <span class="md-ellipsis">
-    Advanced
+    8. Advanced
   </span>
   
 
@@ -590,7 +590,7 @@ This strength is also apparent in the next type, <code>logical_screen_descriptor
 <p>This is a good time to mention that <code>bytes</code> are not some kind of fundamental unit of computation. The choice to have 8 bits in one byte was a decision made by the International Organization for Standardization (ISO) and the International Electrotechnical Commmission (IEC) in 1993, but 6 and 9 bit bytes were common through the 1960s. Bit masking can allow for one to use every individual bit or combination of bits in a selection to correspond to a different value. In this way, one can surpass some of the artificially imposed limits on computation.</p>
 <p><code>color_table_size</code> is doing a similar operation but with different syntax. <code>7</code> in binary is <code>00000111</code>, so <code>(flags &amp; 7)</code> is selecting the final 3 bits. <code>2</code> in binary is <code>00000010</code> - <code>&lt;&lt;</code> is the command to shift bits to the left, so that command shifts 2 to the left by <code>flags &amp; 7</code> places. This is equivalent to raising 2 to the power of <code>1+(flags mod 8)</code> and then assigning that new value to a character.</p>
 <p>In our case, <code>flags</code> = 247, or <code>11110111</code>, so <code>has_color_table = True</code>, and <code>1+(flags mod 8) = 8</code>, <span class="arithmatex">\(2^8 = 256\)</span>, so <code>color_table_size = 256</code></p>
-<p>All of this section has been to explain, in broad strokes, some of the types as shown in the <code>GIF</code> file type. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found <a href="http://doc.kaitai.io/user_guide.html#_kaitai_struct_language">here</a>. For now, let's continue this lesson and talk about how this same file type definition can be done with the Construct library.</p>
+<p>All of this section has been to explain, in broad strokes, some of the types as shown in the <code>GIF</code> file type. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found <a href="http://doc.kaitai.io/user_guide.html#_kaitai_struct_language">at this link</a>. For now, let's continue this lesson and talk about how this same file type definition can be done with the Construct library.</p>
 
 
 
