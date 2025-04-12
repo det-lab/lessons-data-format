@@ -508,11 +508,11 @@
 <p>Let's try loading the GIF file in the Kaitai Web IDE to understand this better. Start by navigating to the <a href="https://ide.kaitai.io/">Web IDE</a> if you don't already have it open. </p>
 <h2 id="41-anatomy-of-the-web-ide">4.1 Anatomy of the Web IDE</h2>
 <p>On the left side of the webpage, you'll see a list of folders, each containing pre-built <code>.ksy</code> files which you can use to test functionality. For this example, navigate to <code>formats/image/gif.ksy</code>, and double click <code>gif.ksy</code> to load it into the IDE. The buttons on the bottom left of the webpage are for creating new <code>.ksy</code> files, uploading <code>.ksy</code> or data files, and saving <code>.ksy</code> files respectively:</p>
-<p><img alt="buttons" src="/images/kaitai-icons.png" /></p>
+<p><img alt="buttons" src="../images/kaitai-icons.png" /></p>
 <pre><code>New, Upload, Save
 </code></pre>
 <p>Click the upload button to select a <code>.gif</code> file from your computer and load it here. You should now see a webpage that looks like:</p>
-<p><img alt="IDE" src="/images/kaitai_ide.png" /></p>
+<p><img alt="IDE" src="../images/kaitai_ide.png" /></p>
 <p>The viewer on the far right side should look somewhat familiar: it's the same data as when the file was opened in Notepad, now just with several of the unreadable symbols replaced with <code>.</code>s instead of Notepad's <code></code> symbol, showing the typeable characters alongside their hexadecimal representations. </p>
 <p>If you click to highlight specific characters or sets of characters on either side of the <code>hex viewer</code>, the corresponding characters will be highlighted on the other side as well, allowing you to see both the hex code and UTF-8/ASCII representations for any selection. This is also true for the <code>object tree</code> section. By clicking on an item in the <code>object tree</code> underneath the <code>.ksy</code> file such as the <code>hdr</code> section, the bytes described by the section are automatically selected in the <code>hex viewer</code>. </p>
 <p>In the same window as the <code>hex viewer</code> are the <code>JS Code</code> and <code>JS Code (debug)</code> sections. These show how the <code>.ksy</code> file is being translated in the <code>JavaScript</code> programming language alongside a debugger.</p>

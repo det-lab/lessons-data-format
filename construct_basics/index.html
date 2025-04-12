@@ -452,7 +452,6 @@
 
 <h1 id="5-defining-the-structure-in-construct">5: Defining the Structure in Construct</h1>
 <p>As mentioned earlier, Construct is a library designed to work specifically in Python, but it's functionality is similar to the functionality of Kaitai, just with more programmatic language. In Construct, we define <code>Structs</code> which are similar to <code>types</code> in Kaitai. By describing the structure of different sections of the data byte by byte, <code>Structs</code> can be combined with each other to capture larger sections of the data until they're combined in one final <code>Struct</code> which can capture all of the file's data.</p>
-<p>We can start by opening the <a href="https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py">github page for Construct</a> at the definition for <code>.gif</code>. </p>
 <h2 id="51-structs">5.1 Structs</h2>
 <p>In Construct, a <code>Struct</code> is a collection of ordered and (usually) named fields that are parsed or built in the defined order. The object can then be either parsed when reading in a file's data or built to create a file with the type definitions. When a <code>Struct</code> is parsed, values are returned in a dictionary with keys matching the defined names, but names aren't strictly necessary like they are in Kaitai. It's possible to instead build from nothing and return nothing when parsing, so a name can be skipped in those instances. To recreate our dimension example from the Kaitai section, we can define a <code>Struct</code> as:</p>
 <pre><code>dimensions = Struct(
@@ -465,6 +464,7 @@
   &quot;dimensions&quot; / dimensions
 )
 </code></pre>
+<p>We can start by opening the <a href="https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py">github page for Construct</a> at the definition for <code>.gif</code>. </p>
 <p>When we look at <code>gif.py</code>, we can see that the structure is almost reversed when compared to Kaitai. This is because the structures in Kaitai are global - the order is arbitrary as long as they're placed in the right sections (<code>types</code> or <code>seq</code>), while in Construct the structures must be defined in order - one Struct can't use another until the other is defined. Let's try looking at the file backwards then, starting with the final <code>Struct</code> on line 121:</p>
 <pre><code>gif_file = Struct(
     &quot;signature&quot; / Const(b&quot;GIF&quot;),
