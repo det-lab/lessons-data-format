@@ -120,4 +120,4 @@ This is a good time to mention that `bytes` are not some kind of fundamental uni
 
 In our case, `flags` = 247, or `11110111`, so `has_color_table = True`, and `1+(flags mod 8) = 8`, $2^8 = 256$, so `color_table_size = 256`
 
-All of this section has been to explain, in broad strokes, some of the types as shown in the `GIF` file type. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found [here](http://doc.kaitai.io/user_guide.html#_kaitai_struct_language). For now, let's continue this lesson and talk about how this same file type definition can be done with the Construct library.
+All of this section has been to explain, in broad strokes, some of the types as shown in the `GIF` file type. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found [at this link](http://doc.kaitai.io/user_guide.html#_kaitai_struct_language). For now, let's continue this lesson and talk about how this same file type definition can be done with the Construct library.

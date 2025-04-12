@@ -6,7 +6,7 @@ Now that we have the basics down, let's try putting it all together. To do this,
 
 Let's say that the data that we're taking comes as a waveform in a binary file. We can pretend that we're measuring vibrations through some material or, current intensity in some electrical system. As we're fabricating data, not actually measuring it, the justification doesn't really matter. 
 
-For this example we'll be working in Python as it is necessary for using Construct. If you have yet to install an IDE, a link and some instructions were provided in the [setup section (2.2)](setup.md) to install the Spyder environment.
+For this example we'll be working in Python as it is necessary for using Construct. If you have yet to install an IDE, a link and some instructions were provided in the [setup section (2.2)](/setup/) to install the Spyder environment.
 
 Let's say that for some reason we want to break our data into 3 different sections depending on the intensity. The first section can describe the entire wave form, the second can capture only some mid-range values, and the third section captures only the most intense values. 
 

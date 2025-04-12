@@ -65,15 +65,15 @@ So, let's talk about that set of instructions next. How does your computer take 
 
 ### 3.1.2 Endianness
 
-One of the first steps that a computer follows when opening a file relates to the system's `endianness`. This refers to the order that the computer will read the bytes of a given `word`, which is a fixed number of bytes, normally set by the computer's processor. There are two main types of endianness: `big-endian` (BE) or `little-endian` (LE). 
+One of the first steps that a computer follows when opening a file relates to the system's `endianness`. This refers to the order that the computer will read the bytes of a given `word`, which is a fixed number of bytes, normally set by the computer's processor. There are two types of endianness: `big-endian` (BE) or `little-endian` (LE). 
 
-Let's say that your computer defines a `word` as four bytes. We can then think of endianness like writing down a 4-digit number on a piece of paper. Let's say we want to write the number `2024`:
+Let's say that your computer defines a `word` as four bytes. We can then think of endianness like reading an english style book from left to right or a japanese one from right to left. Let's say we want to write the number `2024`:
 
-* In big-endian, the number would be written straightforwardly: `2-0-2-4`. The most significant digit (the leftmost one) comes first, in the smallest memory address available to the computer, and the least significant digit (the rightmost one) comes last, in the largest memory address.
+* In big-endian, the number would be written in the order: `2-0-2-4`. The most significant digit (the leftmost one) comes first, in the smallest memory address available to the computer, and the least significant digit (the rightmost one) comes last, in the largest memory address.
 
 * In little-endian, this is reversed. The number would instead be written as: `4-2-0-2`, with the least significant digit being written to the smallest memory address, and the most significant digit being written to the largest memory address.
 
-If a file is saved using one endianness but opened using another, the bytes will be misinterpreted, like trying to read a book from the back to front. Many file formats will include a byte order mark (`BOM`) to indicate to the computer which endianness to use.
+If a file is saved using one endianness but opened using another, the bytes will be misinterpreted, like trying to read a manga from left to right, or a novel starting from the last page. Many file formats will include a byte order mark (`BOM`) to indicate to the computer which endianness to use.
 
 ## 3.2 Opening a file with a text editor
 
