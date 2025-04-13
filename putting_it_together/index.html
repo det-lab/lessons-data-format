@@ -512,21 +512,21 @@
 <p>Let's say that the data that we're taking comes as a waveform in a binary file. We can pretend that we're measuring vibrations through some material or, current intensity in some electrical system. As we're fabricating data, not actually measuring it, the justification doesn't really matter. </p>
 <p>For this example we'll be working in Python as it is necessary for using Construct. If you have yet to install an IDE, a link and some instructions were provided in the <a href="/setup/">setup section (2.2)</a> to install the Spyder environment.</p>
 <p>Let's say that for some reason we want to break our data into 3 different sections depending on the intensity. The first section can describe the entire wave form, the second can capture only some mid-range values, and the third section captures only the most intense values. </p>
-<p>First, we'll need to make sure that all of the necessary libraries are installed and imported. For this data, we'll need the numpy library and the struct (not Construct) library. Optionally, we can also include matplotlib in order to plot our simulated data. To check if you already have these libraries installed, open your IDE's terminal and enter:</p>
+<p>First, we'll need to make sure that all of the necessary libraries are installed and imported. For this data, we'll need the numpy library and the struct (which is different from Construct) library. Optionally, we can also include matplotlib in order to plot our simulated data. To check if you already have these libraries installed, open your IDE's terminal and enter:</p>
 <pre><code>pip list
 </code></pre>
-<p>This will return an alphabetical list of all modules currently installed packages/modules that your install of Python has access to, as well as their version numbers. Simply scroll through the result to see if <code>matplotlib</code>, <code>numpy</code>, and <code>python-struct</code> are installed, and if not, run:</p>
+<p>This will return an alphabetical list of all currently installed packages/modules that your install of Python has access to, as well as their version numbers. Simply scroll through the result to see if <code>matplotlib</code>, <code>numpy</code>, and <code>python-struct</code> are installed, and if not, run:</p>
 <pre><code>pip install numpy
 pip install matplotlib
 pip install python_struct
 </code></pre>
-<p>You should now be free to create a new <code>.py</code> or <code>.ipynb</code> file, named something like "example_data". Most IDEs will require you to save the file before allowing you to run it. </p>
+<p>You should now be free to create a new <code>.py</code> or <code>.ipynb</code> file, named something like "example_data". Feel free to take a look at the final product of this section to follow along with at <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_data.ipynb">this page's github</a>.  </p>
 <p>At the beginning of your new file, import the necessary modules using the commands:</p>
 <pre><code>import numpy as np
 import struct
 import matplotlib.pyplot as plt
 </code></pre>
-<p>Now, let's initialize 6 different arrays, one for each x and y value that is being selected from each different section.</p>
+<p>Keep in mind that most IDEs will require you to save the file before allowing you to run it. Now, let's initialize 6 different arrays, one for each x and y value that is being selected from each desired section.</p>
 <pre><code>full_x = []
 full_y = []
 
@@ -536,7 +536,9 @@ mid_y = []
 peak_x = []
 peak_y = []
 </code></pre>
-<p>Next, we'll want to populate these arrays with their respective data. Let's create a <code>for</code> loop which will create a wave using an equation. For this example, I'll be creating a function that is defined from <code>x=-5</code> to <code>x=5</code>, creating a y data point every increment of <code>0.0001</code> on the x axis, meaning the full data will contain 100000 points. The actual function chosen for this example doesn't matter much as long as it's possible to graph in two dimensions - you can simply plot a cosine or sin function with arbitrary limits without running into any issues (as long as your computer can handle the number of data points you create):</p>
+<p>Next, we'll want to populate these arrays with their respective data. Let's create a <code>for</code> loop which will create data points for a wave using an equation. For this example, I'll be creating a function that is defined from <code>x=-5</code> to <code>x=5</code>, creating a y data point every increment of <code>0.0001</code> on the x axis, meaning the full data will contain 100000 points. </p>
+<p>The actual function chosen for this example doesn't matter much as long as it's possible to graph in two dimensions - you should be able to simply plot a cosine or sin function with arbitrary limits without running into any issues (as long as your computer can handle the number of data points you create). In fact, mixing things up a bit and trying a different equation is encouranged! Doing so while keeping the documentation pages for Construct and Kaitai open will allow you to find any holes in my abilities to teach them while allowing you to fill up those holes with your own troubleshooting abilities.</p>
+<p>Looking at my function, we have:</p>
 <pre><code>for i in np.arange(-5,5,0.0001):
   # Function that is being plotted
   n = (np.cos((2 * np.pi * i**2)/(i**2 + i))) * np.sin(i)
@@ -569,7 +571,7 @@ plt.show()
 <p><img alt="full" src="../images/full-graph.png" />
 <img alt="mid" src="../images/mid-graph.png" />
 <img alt="peak" src="../images/peak-graph.png" /></p>
-<p>Next, we'll want to load all of our wave data into separate numpy arrays. This allows us to set the datatype as <code>float32</code>, so each x and y value can be saved across 32 bits or 4 bytes of data. Feel free to experiment with this choice as well. You can save the data over twice as many bytes by using <code>float64</code> to double the resolution (and the filesize), or across fewer bytes using <code>float16</code> for 2 bytes or <code>float8</code> for 1 byte. You could even decide to flatten every point across integers if you wish by using <code>uint64</code>, <code>uint32</code>, and so on. Even complex numbers can be captured, with the options beginning at <code>complex64</code> and doubling until <code>complex256</code>. In any case, your arrays should look similar to:</p>
+<p>Next, we'll want to load all of our wave data into separate numpy arrays. This allows us to set the datatype as <code>float32</code>, so each x and y value can be saved across 32 bits/4 bytes of data. Feel free to experiment with this choice as well. You can save the data over twice as many bytes by using <code>float64</code> to double the resolution (and the filesize), or across fewer bytes using <code>float16</code> for 2 bytes or <code>float8</code> for 1 byte. You could even decide to flatten every point across integers if you wish by using <code>uint64</code>, <code>uint32</code>, and so on. Even complex numbers can be captured, with the options beginning at <code>complex64</code> and doubling until <code>complex256</code>. In any case, your arrays should look similar to:</p>
 <pre><code># Save data to numpy arrays
 full_y_data = np.array(full_y, dtype=np.float32)
 full_x_data = np.array(full_x, dtype=np.float32)
@@ -580,7 +582,8 @@ mid_x_data = np.array(mid_x, dtype=np.float32)
 peak_y_data = np.array(peak_y, dtype=np.float32)
 peak_x_data = np.array(peak_x, dtype=np.float32)
 </code></pre>
-<p>The next and final step of creating our example data is to write everything we've done so far to a new <code>.test</code> file. As mentioned earlier, it is very useful to include the length of each section somewhere in our final file. It's simplest to include the length at the beginning of the file, but you could also put each length before its respective section. There are other ways to manage this kind of data, but including the lengths is one of the simplest. Here's what that looks like for this data:</p>
+<p>The next and final step of creating our example data is to write everything we've done so far to a new <code>.test</code> file. It is very useful to include the length of each section somewhere in our final file. The simplest choice is to include the length of every array at the beginning of the file, but you could also put each length before its respective section. There are other ways to manage this kind of data, but including the lengths this way avoids some of the more convoluted methods, such as giving each array a specific signature or creating termination strings. </p>
+<p>Here's what it looks like to write our data in this way:</p>
 <pre><code># Save data to binary file
 with open('wave_data.test', 'wb') as f:
   # Write array lengths to file as integers
@@ -600,7 +603,7 @@ with open('wave_data.test', 'wb') as f:
 </code></pre>
 <p>We now have a file titled "wave_data.test" saved in the same directory as our python program. The file type can be decided arbitrarily - it used to be the case that type extensions were required to be 3 characters or less, but that standard has since fallen out of use.</p>
 <h2 id="62-describing-the-data-in-kaitai">6.2 Describing the data in Kaitai</h2>
-<p>Now that we have our raw binary data, we can begin working on writing the <code>.ksy</code> file which we'll be able to use later to compile our data into something useable. If you no longer have it open, navigate back to the <a href="https://ide.kaitai.io/">Kaitai web IDE</a> and create a new <code>.ksy</code> file named something like "wave_parser.ksy". We're going to start by describing the <code>meta</code> section. Our example is pretty simple, so we'll only need to fill out the <code>id</code>, <code>file-extension</code> and <code>endian</code> sections. </p>
+<p>Now that we have our raw binary data, we can begin working on writing the <code>.ksy</code> file which we'll be able to use later to compile our data into something useable. If you no longer have it open, navigate back to the <a href="https://ide.kaitai.io/">Kaitai web IDE</a> and create a new <code>.ksy</code> file named something like "wave_parser.ksy". We're going to start by describing the <code>meta</code> section. Our example is pretty simple, so we'll only need to fill out the <code>id</code>, <code>file-extension</code> and <code>endian</code> sections. Feel free to reference our finalized file which can also be found at <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/wave_parser.ksy">this page's github</a>.</p>
 <p>Since we didn't explicitly define the endianness while creating our raw data file, it was written using your operating system's native endianness. If you are unsure what endianness your system uses, simply search "(your OS) byte order." You could also rewrite the code generating the example data to force a specific endianness. To do that, change the lines which create the arrays from:</p>
 <pre><code>full_x_data = np.array(full_x, dtype=np.float32)
 .
@@ -642,7 +645,7 @@ full_x_data = np.array(full_x, dtype='&gt;float32') # or '&gt;f4'
   - id: lengths
     type: full_mid_peak_lens
 </code></pre>
-<p>Next, we can use the <code>length</code> object to select arrays which are the length of each respective section of the data. It's important to remember here what choice was made to define the size of each data point. As I went with <code>float32</code>, each data point will be saved as a float valued <code>f4</code> type. Kaitai has the options of <code>f1</code>, <code>f2</code>, <code>f4</code>, and <code>f8</code>, (or <code>u1</code>, <code>s1</code>, etc) each specifying how many bytes they capture. To capture the <code>full_data</code> section, let's move back to the <code>types</code> section and continue:</p>
+<p>Next, we can use our newly created <code>lengths</code> object to select arrays which are the length of each respective section of the data. It's important to remember here what choice was made to define the size of each data point. As I went with <code>float32</code>, each data point will be saved as a float valued <code>f4</code> type. Kaitai has the options of <code>f1</code>, <code>f2</code>, <code>f4</code>, and <code>f8</code> for float values, (or <code>u1</code>, <code>s1</code>, etc for unsigned or signed integers) each specifying how many bytes they capture. To capture the <code>full_data</code> section, let's move back to the <code>types</code> section and continue:</p>
 <pre><code>  full_data:
     seq:
       - id: x_data
@@ -672,7 +675,7 @@ full_x_data = np.array(full_x, dtype='&gt;float32') # or '&gt;f4'
 <p>To get started, you'll need to know the path to your .ksy file and to the folder generated by your install of <code>ksc</code>. Then, you'll want to navigate to the generated folder using WSL.</p>
 <pre><code>cd /path/to/kaitai_struct_awkward_runtime
 </code></pre>
-<p>Next, you'll generate the source and header files for your target language.</p>
+<p>Next, you'll generate the source file for your target language. If you're working with languages besides python, this step might also produce a header file as well.</p>
 <pre><code>ksc -t &lt;language&gt; --outdir &lt;new_foldername&gt; &lt;path/to/your/file.ksy&gt;
 </code></pre>
 <p>Replacing the parts in brackets accordingly. For <code>language</code>, the options are: <code>cpp_stl</code>, <code>csharp</code>, <code>java</code>, <code>javascript</code>, <code>perl</code>, <code>php</code>, <code>python</code>, <code>ruby</code>, or <code>all</code></p>
@@ -685,7 +688,7 @@ full_x_data = np.array(full_x, dtype='&gt;float32') # or '&gt;f4'
 from wave_test.test import * # replace wave_test with your folder name
 import matplotlib.pyplot as plt
 </code></pre>
-<p>We are now able to load our data file in and begin parsing it. Let's first load our raw data before parsing it as the generated <code>Test</code> class. If you didn't use the same <code>id</code> as in the example, open the generated <code>.py</code> file and use the highest level <code>class</code> - it should match the <code>id</code> from your <code>meta</code> section.</p>
+<p>We are now able to load our data file and begin parsing it. As before, you can view my file from <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/ksy_parser.ipynb">this page's github</a>. Let's first load our raw data before parsing it as the generated <code>Test</code> class. If you didn't use the same meta level <code>id</code> as in the example, open the generated <code>.py</code> file and use the highest level <code>class</code> - it should match the <code>id</code> from your <code>meta</code> section.</p>
 <pre><code>raw_data = Path('wave_data.test')
 wave_data = Test.from_file(raw_data)
 </code></pre>
@@ -694,21 +697,23 @@ wave_data = Test.from_file(raw_data)
 m_length = wave_data.lengths.mid_len
 p_length = wave_data.lengths.peak_len
 print(f_length, m_length, p_length)
+&gt;&gt; 100000 78719 10020
 </code></pre>
-<p>We can also access the wave data the same way:</p>
+<p>We can also access the wave data in the same way:</p>
 <pre><code>full_x = wave_data.f_data.x_data
 full_y = wave_data.f_data.y_data
 plt.plot(full_x, full_y)
 </code></pre>
-<p>This can be repeated for the <code>mid</code> and <code>peak</code> data as well using <code>m_data</code> and <code>p_data</code> respectively. And with that, we have officially learned how to use a <code>.ksy</code> file to parse raw data! Let's move on to doing the same with Construct definitions.</p>
+<p>This can be repeated for the <code>mid</code> and <code>peak</code> data as well using <code>m_data</code> and <code>p_data</code> respectively. And with that, we have officially learned how to use a <code>.ksy</code> file to read your first raw data file! </p>
+<p>Let's move on to doing the same with Construct definitions.</p>
 <h2 id="64-describing-the-data-in-construct">6.4 Describing the data in Construct</h2>
-<p>If for some reason it's useful for your project to create a description of your file format using both Kaitai and Construct, I'd recommend first creating a Kaitai description and then basing your Construct file off of it, simply because the syntax for Kaitai is more straightforward. With that being said, let's open up a new <code>.py</code> or <code>.ipynb</code> file and begin by importing the Construct module, matplotlib.pyplot, and numpy before defining our Structs. </p>
+<p>If for some reason it might benefit your project to create a description of your file format using both Kaitai and Construct, I'd recommend first creating a Kaitai description and then basing your Construct file off of it, simply because the syntax for Kaitai is a little more straightforward. As before, there is an example file for this section on <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_struct.ipynb">this page's github</a>. With that being said, let's open up a new <code>.py</code> or <code>.ipynb</code> file and begin by importing the Construct module, matplotlib.pyplot, and numpy before defining our Structs. </p>
 <pre><code>from construct import *
 import matplotlib.pyplot as plt
 import numpy as np
 </code></pre>
 <p>Next, as before, we'll want to capture the three numbers at the front of the file which tell us how long each array is. Our approach here will look much like our Kaitai work, but there are still multiple different ways to perform this capture, and experimenting to see what feels most efficient for you is definitely encouraged.</p>
-<p>For this example, I'm going to start off with what will eventually be the final Struct and create a sub Struct which will use the values captured here.</p>
+<p>For this example, I'm going to start off with what will eventually be the final Struct and create a sub Struct which will capture those values.</p>
 <pre><code>test_struct = Struct(
   &quot;lengths&quot; / Struct(
     &quot;full_data_len&quot; / Int32ul,
@@ -717,7 +722,8 @@ import numpy as np
   )
 )
 </code></pre>
-<p>As mentioned previously, this Struct will come last. This is a limitation of Python more than of Construct, as Python is unable to use variables or Structs that have yet to be declared. But since the Struct that comes before this one will only be <strong>used</strong> when it's later nested into <code>test_struct</code>, we'll be able to reference the <code>lengths</code> sub-Struct to capture the full, mid, and peak data lengths. Each of the data sections will select 4 bytes at a time and save them into an array of the stated length.</p>
+<p>This could be accomplished equivalently by creating the lengths <code>Struct</code> first, followed by using that substruct here.</p>
+<p>As mentioned previously, the <code>test_struct</code> <code>Struct</code> will come last. This is a limitation of Python more than of Construct, as Python is unable to use variables or Structs that have yet to be declared. But since the <code>Struct</code> that comes before this one will only be <strong>used</strong> when it's later nested into <code>test_struct</code>, we'll be able to reference the <code>lengths</code> sub-Struct to capture the full, mid, and peak data lengths. Each of the data sections will select 4 bytes at a time and save them into an array of the stated length.</p>
 <pre><code>data_sections = Struct(
     &quot;full_x_data&quot; / Array(
         this._root.lengths.full_data_len,
@@ -747,7 +753,7 @@ import numpy as np
     ),
 )
 </code></pre>
-<p>Now we can simply add this Struct into <code>test_struct</code> as:</p>
+<p>Again, there are plenty of ways to do this. You could instead make a different <code>Struct</code> for each of the data captures and then put them altogether in <code>data_sects</code>. Or you could copy what we did with the <code>lengths</code> <code>Struct</code>, using only <code>test_struct</code> to define your data with everything else as a substruct. As it is though, we can add this Struct into <code>test_struct</code> as:</p>
 <pre><code>test_struct = Struct(
     &quot;lengths&quot; / Struct(
         &quot;full_data_len&quot; / Int32ul,
@@ -757,9 +763,9 @@ import numpy as np
     &quot;data_sects&quot; / data_sections
 )
 </code></pre>
-<p>For selections that only have one defining Struct, like <code>data_sects</code>, there isn't necessarily a reason not to also name the sub Struct (<code>data_sects</code>) after the Struct that it's using (<code>data_sections</code>). In this case, it's simply a matter of shortening the name to reduce how much typing is necessary to call that attribute later. It's not uncommon to have a Struct with a very clear name which is then given a shortened name in the Struct that actually uses it. Remember when doing this that only the quoted name will be useable. If You try to reference <code>data_sections</code> instead of <code>data_sects</code>, you'll end up with a <code>KeyError</code>.</p>
+<p>For selections that only have one defining <code>Struct</code>, like <code>data_sects</code>, there isn't necessarily a reason not to also name the sub <code>Struct</code> (<code>data_sects</code>) after the <code>Struct</code> that it's using (<code>data_sections</code>), or to have the name be the same as the <code>Struct</code>. In this case, it's simply a matter of shortening the name to reduce how much typing is necessary to call that attribute later. It's not uncommon to have a <code>Struct</code> with a very clear name which is then given a shortened name in the higher <code>Struct</code> which actually uses it. Remember when doing this that only the quoted name will be useable. If You try to reference <code>data_sections</code> instead of <code>data_sects</code>, you'll end up with a <code>KeyError</code>.</p>
 <h2 id="65-parsing-raw-data-using-construct">6.5 Parsing raw data using Construct</h2>
-<p>This process is much simpler than with Kaitai - you can do all of the work from the same file as where you set the Structs. Let's now just create a function that parses our file and then plots the results:</p>
+<p>This process is much simpler than with Kaitai - you can do all of the work from the same file as where you set the Structs. Let's now just create a function that parses our file and plots the results:</p>
 <pre><code>def parse_file(input_path):
   with open(input_path, 'rb') as input_f: # 'rb' ='read binary'
     raw_data = input_f.read()
