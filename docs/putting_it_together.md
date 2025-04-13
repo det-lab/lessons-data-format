@@ -196,7 +196,7 @@ And just like that, we've described our first file format using Kaitai! Make sur
 
 ## 6.3 Parsing raw data with a .ksy file
 
-It was mentioned in the page for our setup that advanced users may wish to install `ksc` for further work. Doing this install now would be necessary in order to continue, so if you have not yet followed the instructions in the [advanced section](/advanced/), please do so to continue. 
+It was mentioned in the page for our setup that advanced users may wish to install `ksc` for further work. Doing this install now would be necessary in order to continue, so if you have not yet followed the instructions in the [appendix](/appendix/), please do so to continue. 
 
 TODO: WSL Installation instructions
 
