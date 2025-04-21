@@ -1,3 +1,6 @@
+### Objectives:
+* Learn how to setup and work with the Kaitai IDE and the Construct Python library.
+
 # 2: Setup
 
 Installation isn't strictly necessary for working with Kaitai, but is required for working with Construct. 

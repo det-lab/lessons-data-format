@@ -1,8 +1,12 @@
+### Objectives:
+* Understand how to begin working with Construct and its basic structure. 
+* Explore the Construct description of the gif filetype to see it in action.
+
 # 5: Defining the Structure in Construct
 
-As mentioned earlier, Construct is a library designed to work specifically in Python, but it's functionality is similar to the functionality of Kaitai, just with more programmatic language. In Construct, we define `Structs` which are similar to `types` in Kaitai. After describing the structure of a section on the byte level, `Structs` can then be combined with each other to capture larger sections of the data until they're combined in a final `Struct` which captures all of the file's data.
+As mentioned earlier, Construct is a library designed to work specifically in Python, but it's functionality is similar to the functionality of Kaitai, just with more programmatic language. In Construct, we define `Structs` which are similar to `types` in Kaitai. After describing the structure of a section on the byte level, `Structs` can then be combined with each other to capture larger sections of the data until they're combined in a final main `Struct` which captures all of the file's data.
 
-## 5.1 Struct basics
+## 5.1: Struct basics
 
 In Construct, a `Struct` is a collection of ordered and (usually) named fields that are then parsed or built in the defined order. The `Struct` can either used to parse a file's data or build a file that matches the file format. When a `Struct` is parsed, values are returned in a dictionary with keys matching the defined names, but names aren't strictly necessary like they are in Kaitai. It's possible to instead build from nothing and return nothing when parsing, so a name can be skipped in those instances. 
 
@@ -23,7 +27,7 @@ example = Struct(
 )
 ```
 
-## 5.2 Building gif.py
+## 5.2: Building gif.py
 
 Ok, now let's take a look at how Construct defines a gif from the file [gif.py](https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py) in Construct's github. 
 

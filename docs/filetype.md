@@ -1,17 +1,22 @@
+### Objectives:
+* Understand what a file type is and what a file format is. 
+* Understand why it is that computers use binary, how to represent binary with hexadecimals, and why it makes sense to do so. 
+* Take a look at a file's raw data to explain how computers open files.
+
 # 3: What is a file type?
-While it's easy to say that a `.jpg` "is a picture", a `.gif` "is an animation", or a `.txt` "is a text document" let's back up and think about how data is stored on a computer and translated into something that we can read and understand. 
+While it's easy to say that a `.jpg` file "is a picture", a `.gif` file "is an animation", or a `.txt` file "is a text document" let's back up and think about how data is stored on a computer and translated into something that we can read and understand. 
 
 Humans have invented what are now pretty familiar systems for interacting with computers, but it's important to remember that we interact with computers through several layers of culturally specific translations, abstractions, and conveniences that exist as barriers between our world of symbols and the laws of electromagnetism. We have spent much of the last century learning to shape metals and electricity into incredibly complex devices which we call things like "processing units" or "graphics cards". These tools can then deliver us images on demand of things that we call "cats", or even graphs to represent something called "the economy" when combined with a monitor of some kind. The point being that *every* file type is custom. Someone, somewhere, created a set of instructions which can be used to teach a computer program how to load a specific file format. 
 
-A file `type` describes the extension which is used at the end of a file's name, such as `.jpg`, `.gif`, or `.txt`. The extension tells a program which `format` to use to read a given file. It is possible for different file types to share file formats, such as `.jpg` and `.jpeg`, and it is also possible for different file formats to share a file type, such as `.bin`. The `.bin` (short for binary) file type can be used to describe file formats ranging from executable binary files, game ROMs, or even CD/DVD data. File formats and file types both exist as a set of conventions rather than as strict rules. However, if you try to open an executable binary file as a game ROM, the program is likely to produce errors or simply fail to correctly interpret the data - unless the program is already prepared for either possibility.
+A file `type` describes the extension which is used at the end of a file's name, such as `.jpg`, `.gif`, or `.txt`. The extension tells a program which `format` to use to read a given file. It is possible for different file types to share file formats, such as the more obvious examples of `.jpg` and `.jpeg`, and it is also possible for different file formats to share a file type, such as `.bin`. The `.bin` (short for binary) file type can be used to describe file formats ranging from executable binary files, game ROMs, or even CD/DVD data. File formats and file types both exist as a set of conventions rather than as strict rules. However, if you try to open an executable binary file as a game ROM, the program is likely to produce errors or simply fail to correctly interpret the data - unless the program is already prepared for either possibility.
 
 As file types and formats become more niche and specific to a project, it is up to developers to define their new file formats and create the software necessary to read a string of `1`s and `0`s and return something that humans can understand. 
 
-## 3.1 Computer language and number systems
+## 3.1: Computer language and number systems
 
-In some sense, a file format is a set of instructions that a program needs in order to be able to successfully open and/or save a file. Given a collection of bytes, a program will perform a set of computations to determine how to convert those bytes into a human-readable format. When considering the string of `1`s and `0`s mentioned earlier, we can ask one of the fundamental questions of computer science: How are `1`s and `0`s generated in the first place?
+In some sense, a file format is a set of instructions that a program needs in order to be able to successfully open, edit, and/or save a file. Given a collection of bytes, a program will perform a set of computations to determine how to convert those bytes into a human-readable format. When considering the string of `1`s and `0`s mentioned earlier, we can ask one of the fundamental questions of computer science: How are `1`s and `0`s generated in the first place?
 
-Let's say you want to take some data under an existing file type, such as writing your results down in a `.txt` document. When you type a character on your keyboard, the mechanical action presses conductive material into place against a complex printed circuit laying underneath the key, allowing for a current to flow through a distinct path. This isn't necessarily true for every method of documenting characters, such as touch screens or speech-to-text, but the underlying principle is still important to note.
+Let's say you want to take some data using an existing file type, such as writing your results down in a `.txt` document. When you type a character on your keyboard, the mechanical action presses conductive material into place against a complex printed circuit laying underneath the key, allowing for a current to flow through a distinct path. This isn't necessarily true for every method of documenting characters, such as touch screens or speech-to-text, but the underlying principle is still important to note.
 
 ![keyboard circuit](images/computer-keyboard-disassemble2.jpg)
 
@@ -31,7 +36,7 @@ It's in this way that the typed character `a` gets translated into the binary re
 
 Ok, so what exactly is a "base two" counting system?
 
-### 3.1.1 Counting in binary and hexadecimals
+### 3.1.1: Counting in binary and hexadecimals
 
 To understand counting systems, remember that the number system humans are used to were derived almost entirely from the fact that our species happens to have 10 fingers. As a result, we use what is called a "base 10" or "decimal" counting system. If we happened to have 8 fingers, we would instead likely use a "base 8" counting system. 
 
@@ -63,7 +68,7 @@ To summarize, when you open a text editing program and begin recording data, eve
 
 So, let's talk about that set of instructions next. How does your computer take what is essentially a large number saved on your computer's memory cards and turn it into a document you can understand? How do text editors know to open a `.txt` file and represent what it reads as `01100001` as the letter `a`?
 
-### 3.1.2 Endianness
+### 3.1.2: Endianness
 
 One of the first steps that a computer follows when opening a file relates to the system's `endianness`. This refers to the order that the computer will read the bytes of a given `word`, which is a fixed number of bytes, normally set by the computer's processor. There are two types of endianness: `big-endian` (BE) or `little-endian` (LE). 
 
@@ -75,7 +80,7 @@ Let's say that your computer defines a `word` as four bytes. We can then think o
 
 If a file is saved using one endianness but opened using another, the bytes will be misinterpreted, like trying to read a manga from left to right, or a novel starting from the last page. Many file formats will include a byte order mark (`BOM`) to indicate to the computer which endianness to use.
 
-## 3.2 Opening a file with a text editor
+## 3.2: Opening a file with a text editor
 
 Plain text editors are pretty straightforward to understand. Generally, they convert all of the inputted data from binary into legible characters using encoding instructions such as the Unicode Transformation Format - 8-bit (`UTF-8`) or the American Standard Code for Information Interchange (`ASCII`). `UTF-8` is the preferred option, with 99% of average global use, but it was designed to be backwards compatible with `ASCII`, so the two systems share their first 128 characters.
 
@@ -94,7 +99,7 @@ Since your standard text editor translates all of the information of a file thro
 ```
 Rotating_earth_(large).gif, from https://en.wikipedia.org/wiki/GIF
 ```
-### 3.2.1 Text editor setup
+### 3.2.1: Text editor setup
 
 Which text editor to use will depend on your operating system. Windows users should have access to the "Notepad" application, while on macOS the default text editor is called "TextEdit". For Linux users, your default text editor will depend on which distribution of Linux you're running. If you're unsure of which editor is available, search for "default text editor" + "`your distribution`" to find out. For Ubuntu users, the default editor is called "Gedit". For other distributions, common default text editors are Kate, Kwrite, and Geany.
 

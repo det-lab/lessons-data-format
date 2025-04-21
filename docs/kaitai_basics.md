@@ -1,8 +1,12 @@
+### Objectives:
+* Understand how to begin working with Kaitai and the basics of its syntax. 
+* Explore the Kaitai description for the gif filetype to see it in action.
+
 # 4: Defining the Structure in Kaitai
 
 Let's try loading the GIF file in the Kaitai Web IDE to understand this better. Start by navigating to the [Web IDE](https://ide.kaitai.io/) if you don't already have it open. 
 
-## 4.1 Anatomy of the Web IDE
+## 4.1: Anatomy of the Web IDE
 
 On the left side of the webpage, you'll see a list of folders, each containing pre-built `.ksy` files which you can use to test functionality. For this example, navigate to `formats/image/gif.ksy`, and double click `gif.ksy` to load it into the IDE. The buttons on the bottom left of the webpage are for creating new `.ksy` files, uploading `.ksy` or data files, and saving `.ksy` files respectively:
 
@@ -29,7 +33,7 @@ If you are interested in following along more precisely with the `gif.ksy` file,
 
 We won't fully describe everything being done in the example `.ksy` file here, instead we are just going to look at a broad overview to give an idea of how to use the program. Now that we know what we're looking at in the IDE, we can take a look at how the file type is being described.
 
-## 4.2 meta and seq
+## 4.2: meta and seq
 
 Your `.ksy` files should always start with a `meta` section, defining the meta-information of your file type such as the file extension (like `.gif` or `.tiff`, etc), titles, licenses, endianness (what byte-order the file should be read in), cross-references, miscellaneous documentation (like lines 17-33 of `gif.ksy`), versions, types, encodings, etc.
 
@@ -39,7 +43,7 @@ The `types` are then executed in the order that they're declared in `seq`, meani
 
 Instead of investigating all four different `types` in the file's `seq`, let's instead look only at the first two: `header` and `logical_screen_descriptor` to get a better idea of how Kaitai operates.
 
-## 4.3 Types
+## 4.3: Types
 
 The `types` section is where it becomes vital to reference documentation around the file type you're trying to parse. A link to the documentation is provided in the `gif.ksy` file for the first time on line 43 for the `glocal_color_table` section, pointing the user to section 18 of the [Cover Sheet for the GIF89a Specification](https://www.w3.org/Graphics/GIF/spec-gif89a.txt).
 
@@ -108,7 +112,7 @@ This strength is also apparent in the next type, `logical_screen_descriptor_stru
 
 As you can see, it simply grabs the width and the height of the screen on which the gif will be drawn as 2 unsigned bytes, followed by three unsigned bytes that describe the `flags`, `bg_color_index`, and `pixel_aspect_ratio`. 
 
-### 4.3.1 Instances
+### 4.3.1: Instances
 
 After the `id`s are set in the type `seq`, we then see an `instances` section. This section is setting new variables by manipulating the previously found `flags` object using Kaitai's expression language. 
 
