@@ -12,7 +12,7 @@
         <link rel="prev" href="../kaitai_basics/">
       
       
-        <link rel="next" href="../putting_it_together/">
+        <link rel="next" href="../creating_example_data/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-defining-the-structure-in-construct" class="md-skip">
+        <a href="#objectives" class="md-skip">
           Skip to content
         </a>
       
@@ -291,8 +291,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -321,8 +319,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -331,16 +327,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#51-struct-basics" class="md-nav__link">
-    5.1 Struct basics
+  <a href="#objectives" class="md-nav__link">
+    Objectives:
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#52-building-gifpy" class="md-nav__link">
-    5.2 Building gif.py
+  <a href="#5-defining-the-structure-in-construct" class="md-nav__link">
+    5: Defining the Structure in Construct
   </a>
+  
+    <nav class="md-nav" aria-label="5: Defining the Structure in Construct">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-struct-basics" class="md-nav__link">
+    5.1: Struct basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-building-gifpy" class="md-nav__link">
+    5.2: Building gif.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -358,11 +374,49 @@
   
   
     <li class="md-nav__item">
-      <a href="../putting_it_together/" class="md-nav__link">
+      <a href="../creating_example_data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    6. Putting it together
+    6. Creating Example Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaitai_next_steps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Kaitai Next Steps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../construct_next_steps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Construct Next Steps
   </span>
   
 
@@ -381,7 +435,7 @@
         
   
   <span class="md-ellipsis">
-    7. Conclusion
+    9. Conclusion
   </span>
   
 
@@ -426,8 +480,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -436,16 +488,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#51-struct-basics" class="md-nav__link">
-    5.1 Struct basics
+  <a href="#objectives" class="md-nav__link">
+    Objectives:
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#52-building-gifpy" class="md-nav__link">
-    5.2 Building gif.py
+  <a href="#5-defining-the-structure-in-construct" class="md-nav__link">
+    5: Defining the Structure in Construct
   </a>
+  
+    <nav class="md-nav" aria-label="5: Defining the Structure in Construct">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-struct-basics" class="md-nav__link">
+    5.1: Struct basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-building-gifpy" class="md-nav__link">
+    5.2: Building gif.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -464,9 +536,14 @@
                   
 
 
+<h3 id="objectives">Objectives:</h3>
+<ul>
+<li>Understand how to begin working with Construct and its basic structure. </li>
+<li>Explore the Construct description of the gif filetype to see it in action.</li>
+</ul>
 <h1 id="5-defining-the-structure-in-construct">5: Defining the Structure in Construct</h1>
-<p>As mentioned earlier, Construct is a library designed to work specifically in Python, but it's functionality is similar to the functionality of Kaitai, just with more programmatic language. In Construct, we define <code>Structs</code> which are similar to <code>types</code> in Kaitai. After describing the structure of a section on the byte level, <code>Structs</code> can then be combined with each other to capture larger sections of the data until they're combined in a final <code>Struct</code> which captures all of the file's data.</p>
-<h2 id="51-struct-basics">5.1 Struct basics</h2>
+<p>As mentioned earlier, Construct is a library designed to work specifically in Python, but it's functionality is similar to the functionality of Kaitai, just with more programmatic language. In Construct, we define <code>Structs</code> which are similar to <code>types</code> in Kaitai. After describing the structure of a section on the byte level, <code>Structs</code> can then be combined with each other to capture larger sections of the data until they're combined in a final main <code>Struct</code> which captures all of the file's data.</p>
+<h2 id="51-struct-basics">5.1: Struct basics</h2>
 <p>In Construct, a <code>Struct</code> is a collection of ordered and (usually) named fields that are then parsed or built in the defined order. The <code>Struct</code> can either used to parse a file's data or build a file that matches the file format. When a <code>Struct</code> is parsed, values are returned in a dictionary with keys matching the defined names, but names aren't strictly necessary like they are in Kaitai. It's possible to instead build from nothing and return nothing when parsing, so a name can be skipped in those instances. </p>
 <p>Let's recreate our dimension example from the Kaitai section. We can define the <code>dimensions</code> <code>Struct</code> with:</p>
 <pre><code>dimensions = Struct(
@@ -479,7 +556,7 @@
   &quot;dimensions&quot; / dimensions
 )
 </code></pre>
-<h2 id="52-building-gifpy">5.2 Building gif.py</h2>
+<h2 id="52-building-gifpy">5.2: Building gif.py</h2>
 <p>Ok, now let's take a look at how Construct defines a gif from the file <a href="https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py">gif.py</a> in Construct's github. </p>
 <p>When we look at <code>gif.py</code>, we can see that the structure is essentially reversed when compared to Kaitai. All of the smaller, defining fields come first before they're put together into larger <code>Structs</code>. This is because the structures in Kaitai are global; the order is arbitrary as long as they're placed in the right sections (<code>types</code> or <code>seq</code>), while in Construct the structures must be defined in order - one <code>Struct</code> can't use another unless the other is already defined. Let's try looking at the file backwards then, starting with the final <code>Struct</code> on line 121:</p>
 <pre><code>gif_file = Struct(
