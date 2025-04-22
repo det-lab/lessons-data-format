@@ -122,5 +122,4 @@ with open('wave_data.test', 'wb') as f:
 You now have a binary file called `wave_data.test` in your working directory. The file extension is arbitrary; modern systems do not require three-letter extensions.
 
 ---
-
-In the next sections, you'll learn how to describe and parse this file format using Kaitai and Construct.
+Continue to [Kaitai Next Steps](07_kaitai_next_steps.md) to describe and parse your custom data with Kaitai Struct.

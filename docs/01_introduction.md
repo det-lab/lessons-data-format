@@ -7,3 +7,6 @@ This lack of interoperability creates a hurdle: before the data can be analyzed 
 2.  **Construct:** A Python library for parsing and building binary data structures.
 
 We will guide you through installing these tools and then demonstrate how they enable you to translate custom binary data into readily usable formats for your analysis workflows.
+
+---
+Continue to [Setup](02_setup.md) to get your environment ready.

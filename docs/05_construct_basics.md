@@ -103,3 +103,6 @@ This modular, programmatic approach makes Construct powerful for describing bina
 ---
 
 Now that you have seen how to describe file formats in both Kaitai and Construct, the next step is to create your own custom data format and try parsing it using these tools. Continue to the next section to learn how to generate and work with example data.
+
+---
+Continue to [Creating Example Data](06_creating_example_data.md) to generate and save your own binary data.

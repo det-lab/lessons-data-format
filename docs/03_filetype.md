@@ -109,3 +109,6 @@ Notice that among the symbols, some readable text appears—such as "GIF" at the
 A program designed to open a GIF file uses all of these bytes—both readable and unreadable—to determine properties like image width, height, frame count, and pixel colors.
 
 While tools like Kaitai and Construct (covered in later sections) don't display the animation directly, they allow you to parse and interpret the raw data, making it possible to extract and use this information in your own programs.
+
+---
+Continue to [Kaitai basics](04_kaitai_basics.md) to start describing file formats declaratively.

@@ -135,3 +135,6 @@ For example, if `flags = 247` (which is `11110111` in binary), then `has_color_t
 All of this section has been to explain, in broad strokes, some of the types as shown in the GIF file type. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found [here](http://doc.kaitai.io/user_guide.html#_kaitai_struct_language).
 
 For now, let's continue this lesson and talk about how this same file type definition can be done with the Construct library.
+
+---
+Continue to [Construct basics](05_construct_basics.md) to learn how to describe file formats programmatically in Python.
