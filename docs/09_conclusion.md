@@ -1,15 +1,28 @@
 # 9: Conclusion
 
-I hope it's not necessary to say that we've barely scratched the surface of the possible use cases for Kaitai and Construct, let alone their versatility. There's just too much that you're able to do with these in the way of describing and parsing your unique file format to go through every possible solution. That's why there already exist extensive communities of support in case you run into any issues while trying to use these tools. 
+Congratulations on completing this lesson on custom binary data formats! You have learned how to:
 
-If you're working with volumetric and/or astronomical data, consider joining the yt project's mailing list for either users or developers of the yt python package. While the yt project isn't directly related to Kaitai or Construct, astronomical data still needs to be parsed appropriately, and they have experience with this.
+- Understand the difference between file types and file formats.
+- Examine raw binary data and its representation in text editors.
+- Use Kaitai Struct to describe and parse binary file formats in a declarative way.
+- Use the Construct library in Python to programmatically parse and build binary data.
+- Create, save, and visualize your own example binary data.
 
-For development related discussion, follow [this link to subscribe to the development mailing list](https://mail.python.org/mailman3/lists/yt-dev.python.org/).
+These skills are foundational for working with scientific, engineering, or custom data formats that are not supported by standard tools. Kaitai and Construct are both powerful and flexible, and can be applied to a wide range of real-world problems.
 
-For usage help and general discussion, follow [this link to subscribe to the usage mailing list](https://mail.python.org/mailman3/lists/yt-users.python.org/).
+Remember, this lesson only scratches the surface of what you can do with these tools. Both Kaitai and Construct have extensive documentation and active communities:
 
-Feel free also to contact Professor Amy Roberts at the University of Colorado Denver for software and analysis assistance at amy.roberts@ucdenver.edu
+- **Kaitai Struct:**  
+  - [Official documentation](https://kaitai.io/docs/)
+  - [Gitter community chat](https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im)
+- **Construct:**  
+  - [Official documentation](https://construct.readthedocs.io/)
+  - [GitHub repository](https://github.com/construct/construct)
 
-For assistance with kaitai, you can find an active community of developers who may help you with questions by following [this link to the kaitai gitter page](https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im)
+If you are working with volumetric or astronomical data, consider joining the yt project's mailing lists for users or developers of the yt Python package:
+- [yt-dev mailing list](https://mail.python.org/mailman3/lists/yt-dev.python.org/)
+- [yt-users mailing list](https://mail.python.org/mailman3/lists/yt-users.python.org/)
 
-If all else fails - remember to look through the existing documentation! Good luck, and happy coding.
+For further assistance, you can also contact Professor Amy Roberts at the University of Colorado Denver for software and analysis help: amy.roberts@ucdenver.edu
+
+If you get stuck, remember to consult the official documentation and reach out to the community. Good luck, and happy coding!
