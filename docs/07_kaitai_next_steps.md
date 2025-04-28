@@ -1,42 +1,41 @@
 ### Objectives:
-* Describe our fabricated data in the Kaitai IDE. 
+* Describe our fabricated data in the Kaitai IDE.
 * Use the description to parse our custom file format.
 
-# 7: Describing the data in Kaitai
+# 7: Describing the Data in Kaitai
 
-Now that we have our raw binary data, we can begin working on writing the `.ksy` file which we'll be able to use later to compile our data into something useable. If you no longer have it open, navigate back to the [Kaitai web IDE](https://ide.kaitai.io/) and create a new `.ksy` file named something like "wave_parser.ksy". We're going to start by describing the `meta` section. Our example is pretty simple, so we'll only need to fill out the `id`, `file-extension` and `endian` sections. Feel free to reference our finalized file which can also be found at [this page's github](https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/wave_parser.ksy).
+Now that you have created a custom binary file, let's describe its structure using Kaitai Struct. This will allow you to parse and analyze your data with generated code.
 
-Since we didn't explicitly define the endianness while creating our raw data file, it was written using your operating system's native endianness. If you are unsure what endianness your system uses, simply search "(your OS) byte order." You could also rewrite the code generating the example data to force a specific endianness. To do that, change the lines which created the arrays from:
-```
-full_x_data = np.array(full_x, dtype=np.float32)
-.
-.
-.
-```
-To instead say:
-```
+If you don't have the [Kaitai Web IDE](https://ide.kaitai.io/) open, navigate there and create a new `.ksy` file (e.g., `wave_parser.ksy`). You can also reference the [example file](https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/wave_parser.ksy).
+
+## 7.1: Writing the Kaitai Description
+
+### Setting Endianness
+
+By default, the binary data you created was written using your operating system's native endianness. If you want to ensure consistency, you can explicitly set the endianness when generating your arrays in Python:
+
+```python
 # For little-endian
-full_x_data = np.array(full_x, dtype='<float32') # or '<f4'
-.
-.
-.
+full_x_data = np.array(full_x, dtype='<float32')  # or '<f4'
 
 # For big-endian
-full_x_data = np.array(full_x, dtype='>float32') # or '>f4'
-.
-.
-.
+full_x_data = np.array(full_x, dtype='>float32')  # or '>f4'
 ```
 
-Now in our `meta` section, let's add:
-```
+In your `.ksy` file, specify the endianness in the `meta` section:
+
+```yaml
 meta:
   id: test
   file-extension: test
-  endian: le # or be
+  endian: le  # or 'be' for big-endian
 ```
-When creating our file, we used the line `f.write(struct.pack('I', len(full_data)))` to add the size of each section to the beginning of the file. In this line `I` stands for an unsigned 4-byte integer. In Kaitai, this is captured by `type: u4`, so we define a `type` called `full_mid_peak_lens` which grabs `full_len`, `mid_len`, and `peak_len` as `u4`s so that they can be used elsewhere.
-```
+
+### Describing the File Structure
+
+Recall that when saving your binary file, you wrote three unsigned 4-byte integers at the start, representing the lengths of each data section. In Kaitai, you can capture these using `u4` types:
+
+```yaml
 types:
   full_mid_peak_lens:
     seq:
@@ -47,90 +46,107 @@ types:
       - id: peak_len
         type: u4
 ```
-Now we can go above the `types` section to the main `seq` and create an object to store these lengths so that we can retrieve them later:
-```
+
+In the main `seq` section, reference this type to read the lengths:
+
+```yaml
 seq:
   - id: lengths
     type: full_mid_peak_lens
 ```
-Next, we can use our newly created `lengths` object to select arrays which are the length of each respective section of the data. It's important to remember here what choice was made to define the size of your data points. As I went with `float32` for all three sections, each data point will be saved as a float valued `f4` type. Kaitai has the options of `f1`, `f2`, `f4`, and `f8` for float values, (or `u1`, `s1`, etc for unsigned or signed integers) each specifying how many bytes they capture. To capture the `full_data` section, let's move back to the `types` section and continue:
-```
+
+Next, define the structure for each data section. Since each section contains two arrays (`x_data` and `y_data`) of `float32` values, and you know the length from the header, you can use `repeat-expr`:
+
+```yaml
   full_data:
     seq:
       - id: x_data
         type: f4
         repeat: expr
         repeat-expr: _root.lengths.full_len
-
       - id: y_data
         type: f4
         repeat: expr
         repeat-expr: _root.lengths.full_len
+
+  mid_data:
+    seq:
+      - id: x_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.mid_len
+      - id: y_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.mid_len
+
+  peak_data:
+    seq:
+      - id: x_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.peak_len
+      - id: y_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.peak_len
 ```
-Now we can simply repeat this step for each of the sections, creating the similar `mid_data` and `peak_data` types before returning above the `type` section once more to the main `seq`. From there, all we have to do is create a new object for each of these types to be used in, which should look something like:
-```
+
+Finally, add these sections to the main `seq`:
+
+```yaml
   - id: f_data
     type: full_data
-
   - id: m_data
     type: mid_data
-  
   - id: p_data
     type: peak_data
 ```
-And just like that, we've described our first file format using Kaitai! Make sure to save your file, and we can learn how to use our `.ksy` file to rebuild our raw data.
 
-## 7.1: Parsing raw data with a .ksy file
+Your `.ksy` file should now fully describe the structure of your binary file.
 
-It was mentioned in the page for our setup that advanced users may wish to install `ksc` for further work. Doing this install now would be necessary in order to continue, so if you have not yet followed the instructions in the [appendix](/appendix/), please do so to continue. 
+## 7.2: Parsing Raw Data with a .ksy File
 
-These instructions are also written for WSL (Windows Subsystem for Linux), but they should hold valid for other terminal installations.
+To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (`ksc`). If you haven't installed it, see the [appendix](10_appendix.md).
 
-To get started, you'll need to know the path to your .ksy file and to the folder generated by your install of `ksc`. Then, you'll want to navigate to the generated folder using WSL.
-```
-cd /path/to/kaitai_struct_compiler
-```
-Next, you'll generate the source file for your target language. If you're working with languages besides python, this step might also produce a header file as well.
-```
-ksc -t <language> --outdir <new_foldername> <path/to/your/file.ksy>
-```
-Replacing the parts in brackets accordingly. For `language`, the options are: `cpp_stl`, `csharp`, `java`, `javascript`, `perl`, `php`, `python`, `ruby`, or `all`
+From your terminal, generate the parser (for Python):
 
-For `new_foldername`, the new folder will be created inside the `kaitai-struct-awkward-runtime` folder. After running the above commands, you should have generated a new folder and file. If your target (`-t`) language was python, the generated file will appear as `<extension>.py`. In my case, we now have the folder `wave_test` which contains `test.py`, so we can finally put this all together.
+```sh
+ksc -t python --outdir wave_test wave_parser.ksy
+```
 
-You can either create a new python or notebook file at the same level as your `wave_test` folder, move/copy that folder where you want to make your parsing file, or keep the folders seperate and start your new file by running:
-```
-import sys
-```
-before using `sys.path.append()` to point to the respective folder. Having the folder on the same hierarchy as your new file will avoid this extra step however. Now, we'll want to import everything from our generated file, import `Path` in order to use the raw file, and `matplotlib.pyplot` in order to plot it. If you don't have `Path` installed, first run:
-```
-pip install Path
-```
-From your IDE terminal before starting your file with the lines:
-```
+This will create a folder (e.g., `wave_test`) containing a Python file (e.g., `test.py`).
+
+## 7.3: Loading and Using the Parser in Python
+
+Make sure your generated parser and your binary data file are in the same directory or update your import paths accordingly.
+
+Example usage in Python:
+
+```python
 from pathlib import Path
-from wave_test.test import * # replace wave_test with your folder name
+from wave_test.test import Test  # Replace with the actual class name from your .ksy meta:id
 import matplotlib.pyplot as plt
-```
-We are now able to load our data file and begin parsing it. As before, you can view my file from [this page's github](https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/ksy_parser.ipynb). Let's first load our raw data before parsing it as the generated `Test` class. If you didn't use the same meta level `id` as in the example, open the generated `.py` file and use the highest level `class` - or just check the `id` from your `meta` section.
-```
+
 raw_data = Path('wave_data.test')
 wave_data = Test.from_file(raw_data)
-```
-From here, the different types and their subtypes can be accessed directly as attributes, so we can print out each of the lengths using:
-```
+
+# Access lengths
 f_length = wave_data.lengths.full_len
 m_length = wave_data.lengths.mid_len
 p_length = wave_data.lengths.peak_len
 print(f_length, m_length, p_length)
->> 100000 78719 10020
-```
-We can also access the wave data in the same way:
-```
+
+# Access and plot full data
 full_x = wave_data.f_data.x_data
 full_y = wave_data.f_data.y_data
 plt.plot(full_x, full_y)
+plt.title("Full Data")
+plt.show()
 ```
-This can be repeated for the `mid` and `peak` data as well using `m_data` and `p_data` respectively. And with that, we have officially learned how to use a `.ksy` file to read your first (extremely basic) raw data file! 
 
-Let's move on to doing the same with Construct definitions.
+Repeat for `m_data` and `p_data` as needed.
+
+---
+
+You have now described and parsed your custom binary file using Kaitai Struct!  Continue to [Construct Next Steps](08_construct_next_steps.md) to parse your custom data with the Construct library.
