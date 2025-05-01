@@ -1,16 +1,16 @@
 site_name: Custom data format
 nav:
-  - Home: index.md
-  - 1. Introduction: introduction.md
-  - 2. Setup: setup.md
-  - 3. File types: filetype.md
-  - 4. Kaitai basics: kaitai_basics.md
-  - 5. Construct basics: construct_basics.md
-  - 6. Creating Example Data: creating_example_data.md
-  - 7. Kaitai Next Steps: kaitai_next_steps.md
-  - 8. Construct Next Steps: construct_next_steps.md
-  - 9. Conclusion: conclusion.md
-  - Appendix: appendix.md
+  - Home: 00_index.md
+  - 1. Introduction: 01_introduction.md
+  - 2. Setup: 02_setup.md
+  - 3. File types: 03_filetype.md
+  - 4. Kaitai basics: 04_kaitai_basics.md
+  - 5. Construct basics: 05_construct_basics.md
+  - 6. Creating Example Data: 06_creating_example_data.md
+  - 7. Kaitai Next Steps: 07_kaitai_next_steps.md
+  - 8. Construct Next Steps: 06_construct_next_steps.md
+  - 9. Conclusion: 09_conclusion.md
+  - Appendix: 10_appendix.md
 theme: 
   name: material
 

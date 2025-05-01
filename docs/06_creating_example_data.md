@@ -7,7 +7,7 @@ Now that you understand the basics of file formats and parsing tools, let's put 
 
 Suppose we want to simulate a waveform and store it in a binary file. For demonstration, imagine we're measuring vibrations or current intensity. Since we're fabricating data, the context is flexible.
 
-We'll use Python for this example, as it's required for Construct. If you haven't set up your Python environment yet, see the [setup section (2.2)](/02_setup.md) for instructions.
+We'll use Python for this example, as it's required for Construct. If you haven't set up your Python environment yet, see the [setup section (2.2)](02_setup.md) for instructions.
 
 ## 6.1: Designing the Data Structure
 
@@ -113,10 +113,10 @@ with open('wave_data.test', 'wb') as f:
     # Write all arrays in order
     full_x_data.tofile(f)
     full_y_data.tofile(f)
-    
+
     mid_x_data.tofile(f)
     mid_y_data.tofile(f)
-    
+
     peak_x_data.tofile(f)
     peak_y_data.tofile(f)
 ```
