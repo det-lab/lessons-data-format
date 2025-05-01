@@ -10,20 +10,20 @@ Construct is a Python library for declaratively describing and parsing binary da
 
 A `Struct` in Construct is a collection of ordered fields, each with a name and a type. Fields are parsed or built in the order they are defined. When parsing, Construct returns a dictionary-like object with keys matching the field names. Unlike Kaitai, field names are optional in Construct, but naming fields makes the resulting data much easier to work with.
 
-Let's recreate the dimensions example from the Kaitai section. Here is how you would define a `dimensions` `Struct` in Construct:
+Let's recreate the dimensions example from the Kaitai section. Here is how you would define a `width_and_height` `Struct` in Construct:
 
 ```python
-dimensions = Struct(
+width_and_height = Struct(
     "width" / Int16ul,
     "height" / Int16ul
 )
 ```
 
-Here, `Int16ul` means an **Int**eger of **16** **u**nsigned bits in **l**ittle-endian format. You can reuse this `dimensions` struct in other structures:
+Here, `Int16ul` means an **Int**eger of **16** **u**nsigned bits in **l**ittle-endian format. You can then reuse this `width_and_height` struct in other structures:
 
 ```python
-example = Struct(
-    "dimensions" / dimensions
+dimensions = Struct(
+    "w_and_h" / width_and_height
 )
 ```
 
@@ -31,9 +31,9 @@ This modular approach allows you to build up complex file formats from smaller, 
 
 ## 5.2: Building gif.py
 
-Let's look at how Construct can describe the GIF file format, using the [gif.py](https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py) example from Construct's GitHub repository.
+Let's look at how Construct can be used to describe the GIF file format, using the [gif.py](https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py) example from Construct's GitHub repository.
 
-Unlike Kaitai, where types can be declared in any order, Construct requires that each `Struct` be defined before it is referenced. This means you typically define the smallest components first and then combine them into larger structures.
+Unlike Kaitai, where types can be declared in any order, Python requires that each `Struct` be defined before it is referenced. This means you typically define the smallest components first and then combine them into larger structures. This means that when examining the structure of `Structs`, it often makes sense to start from the final defined `Struct` to see what building blocks it uses.
 
 Here is the top-level `gif_file` struct, which represents the entire GIF file:
 
@@ -47,11 +47,11 @@ gif_file = Struct(
 )
 ```
 
-- `Const(b"GIF")` and `Const(b"89a")` ensure the file starts with the correct signature and version, similar to the `magic` keyword in Kaitai.
-- `logical_screen` and `data` are parsed using other structs defined below.
+- `Const(b"GIF")` and `Const(b"89a")` ensure the file starts with the correct signature and version, similar to the `magic` keyword in Kaitai. However, this also means it will fail to parse if the version number is anything other than `89a`.
+- `logical_screen` and `data` are parsed using other structs defined above `gif_file`.
 - `GreedyRange(gif_data)` repeats the `gif_data` struct until the end of the file.
 
-Now, let's look at the `logical_screen` struct:
+Now, let's look at the `gif_logical_screen` struct:
 
 ```python
 gif_logical_screen = Struct(
@@ -94,9 +94,9 @@ gif_data = Struct(
 
 - The `introducer` byte determines whether the next section is an extension or an image descriptor.
 - `Switch` selects the appropriate struct based on the value of `introducer`.
-- Each of these sub-structs (`extension`, `image_descriptor`, etc.) is defined elsewhere in the file.
+- Each of these sub-structs (`extension`, `image_descriptor`) is defined elsewhere in the file.
 
-`GreedyRange(gif_data)` in the top-level struct repeats this process for each data block in the file, allowing Construct to parse the entire sequence of GIF blocks.
+As mentioned earlier, having `GreedyRange(gif_data)` in the top-level struct repeats this process for each data block in the file, allowing Construct to parse the entire sequence of GIF blocks.
 
 This modular, programmatic approach makes Construct powerful for describing binary formats in Python. While Kaitai uses a declarative YAML-based syntax, Construct leverages Python's syntax and logic, which can be more flexible for complex parsing tasks.
 

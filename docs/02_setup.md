@@ -11,7 +11,7 @@ This section will guide you through setting up the tools needed for this lesson:
 - To get started:  
   1. Go to [https://ide.kaitai.io/](https://ide.kaitai.io/)  
   2. Click "New" to create a new .ksy file  
-  3. Follow the instructions in [Section 4: Defining the Structure in Kaitai](kaitai_basics.md)
+  3. Follow the instructions in [Section 4: Defining the Structure in Kaitai](04_kaitai_basics.md)
 
 *Advanced users*: If you want to use Kaitai offline or generate parsers locally, see the [appendix](10_appendix.md) for installing `ksc` and `ksv`.
 

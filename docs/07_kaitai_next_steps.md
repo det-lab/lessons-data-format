@@ -1,6 +1,7 @@
 ### Objectives:
 * Describe our fabricated data in the Kaitai IDE.
 * Use the description to parse our custom file format.
+* Return the plots that were created in [section 6](06_creating_example_data.md)
 
 # 7: Describing the Data in Kaitai
 
@@ -112,10 +113,16 @@ To parse your data outside the Web IDE, you need to generate code using the Kait
 From your terminal, generate the parser (for Python):
 
 ```sh
+ksc -t <language> --outdir <new_foldername> <path/to/your/file.ksy>
+```
+
+Replacing the parts in the brackets accordingly. For language, the options are: `cpp_stl`, `csharp`, `java`, `javascript`, `perl`, `php`, `python`, `ruby`, or `all`. For this example, we'll be running:
+
+```sh
 ksc -t python --outdir wave_test wave_parser.ksy
 ```
 
-This will create a folder (e.g., `wave_test`) containing a Python file (e.g., `test.py`).
+This will create a folder (`wave_test`) containing a Python file (`test.py`).
 
 ## 7.3: Loading and Using the Parser in Python
 
@@ -125,7 +132,7 @@ Example usage in Python:
 
 ```python
 from pathlib import Path
-from wave_test.test import Test  # Replace with the actual class name from your .ksy meta:id
+from wave_test.test import *  # Replace with the actual class name from your .ksy meta:id
 import matplotlib.pyplot as plt
 
 raw_data = Path('wave_data.test')

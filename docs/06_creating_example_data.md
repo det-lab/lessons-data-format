@@ -5,7 +5,7 @@
 
 Now that you understand the basics of file formats and parsing tools, let's put everything together by generating some example data, saving it in a binary file, and preparing to describe its structure with Kaitai and Construct. This hands-on section will help you see how real binary data is created and organized.
 
-Suppose we want to simulate a waveform and store it in a binary file. For demonstration, imagine we're measuring vibrations or current intensity—since we're fabricating data, the context is flexible.
+Suppose we want to simulate a waveform and store it in a binary file. For demonstration, imagine we're measuring vibrations or current intensity. Since we're fabricating data, the context is flexible.
 
 We'll use Python for this example, as it's required for Construct. If you haven't set up your Python environment yet, see the [setup section (2.2)](/02_setup.md) for instructions.
 
@@ -54,21 +54,21 @@ mid_x, mid_y = [], []
 peak_x, peak_y = [], []
 ```
 
-Populate these arrays with simulated data. For example, generate 100,000 points from `x = -5` to `x = 5`:
+Populate these arrays with simulated data. For example, generate 100,000 points from `x = -5` to `x = 5` using the (totally arbitrary) equation $y=cos(\frac{2 \pi x^2}{x^2 +x})sin(x)$:
 ```python
-for i in np.arange(-5, 5, 0.0001):
-    n = (np.cos((2 * np.pi * i**2)/(i**2 + i))) * np.sin(i)
-    full_x.append(i)
-    full_y.append(n)
-    if n**2 < 0.3:
-        mid_x.append(i)
-        mid_y.append(n)
-    if n**2 > 0.65:
-        peak_x.append(i)
-        peak_y.append(n)
+for x in np.arange(-5, 5, 0.0001):
+    y = (np.cos((2 * np.pi * x**2)/(x**2 + x))) * np.sin(x)
+    full_x.append(x)
+    full_y.append(y)
+    if y**2 < 0.3:
+        mid_x.append(x)
+        mid_y.append(y)
+    if y**2 > 0.65:
+        peak_x.append(x)
+        peak_y.append(y)
 ```
 
-You can visualize the data:
+You can then visualize the data:
 ```python
 plt.plot(full_x, full_y)
 plt.title("Full Data")
@@ -85,9 +85,9 @@ plt.show()
 
 The resulting graphs should look like:
 
-![full](images/full-graph.png)
-![mid](images/mid-graph.png)
-![peak](images/peak-graph.png)
+![full](examples/full-graph.png)
+![mid](examples/mid-graph.png)
+![peak](examples/peak-graph.png)
 
 ## 6.4: Saving Data as Binary
 
@@ -102,7 +102,7 @@ peak_y_data = np.array(peak_y, dtype=np.float32)
 ```
 > You can experiment with other types like `float64`, `float16`, or even integer types if you wish.
 
-When saving binary data, it's helpful to include the length of each section at the start of the file. This makes parsing easier later.
+When saving binary data, it's helpful to include the length of each section at the start of the file or near the front of its respective section. This makes parsing easier later. 
 
 ```python
 with open('wave_data.test', 'wb') as f:
@@ -113,8 +113,10 @@ with open('wave_data.test', 'wb') as f:
     # Write all arrays in order
     full_x_data.tofile(f)
     full_y_data.tofile(f)
+    
     mid_x_data.tofile(f)
     mid_y_data.tofile(f)
+    
     peak_x_data.tofile(f)
     peak_y_data.tofile(f)
 ```

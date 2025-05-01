@@ -1,5 +1,5 @@
 ### Objectives:
-* Create Structs to describe our fabricated data using the Construct library.
+* Create Structs to describe our example data using the Construct library.
 * Combine our Structs in a final description of our custom file format.
 * Parse our custom file format using our Struct.
 
@@ -35,8 +35,10 @@ Next, define a Struct for the data arrays. Each section contains two arrays (`x`
 data_sections = Struct(
     "full_x_data" / Array(this._root.lengths.full_data_len, Float32l),
     "full_y_data" / Array(this._root.lengths.full_data_len, Float32l),
+    
     "mid_x_data" / Array(this._root.lengths.mid_data_len, Float32l),
     "mid_y_data" / Array(this._root.lengths.mid_data_len, Float32l),
+    
     "peak_x_data" / Array(this._root.lengths.peak_data_len, Float32l),
     "peak_y_data" / Array(this._root.lengths.peak_data_len, Float32l),
 )
