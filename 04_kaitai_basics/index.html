@@ -1,0 +1,627 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>04 kaitai basics - Custom data format</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#objectives" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Custom data format" class="md-header__button md-logo" aria-label="Custom data format" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Custom data format
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              04 kaitai basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Custom data format" class="md-nav__button md-logo" aria-label="Custom data format" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Custom data format
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../filetype.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. File types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaitai_basics.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Kaitai basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../construct_basics.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Construct basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../creating_example_data.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Creating Example Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kaitai_next_steps.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Kaitai Next Steps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../construct_next_steps.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Construct Next Steps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Conclusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-defining-the-structure-in-kaitai" class="md-nav__link">
+    4: Defining the Structure in Kaitai
+  </a>
+  
+    <nav class="md-nav" aria-label="4: Defining the Structure in Kaitai">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-anatomy-of-the-web-ide" class="md-nav__link">
+    4.1: Anatomy of the Web IDE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-meta-and-seq" class="md-nav__link">
+    4.2: meta and seq
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-types" class="md-nav__link">
+    4.3: Types
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3: Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-instances" class="md-nav__link">
+    4.3.1: Instances
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h3 id="objectives">Objectives:</h3>
+<ul>
+<li>Understand how to begin working with Kaitai and the basics of its syntax.</li>
+<li>Explore the Kaitai description for the GIF filetype to see it in action.</li>
+</ul>
+<h1 id="4-defining-the-structure-in-kaitai">4: Defining the Structure in Kaitai</h1>
+<p>Let's try loading the GIF file in the Kaitai Web IDE to understand this better. Start by navigating to the <a href="https://ide.kaitai.io/">Kaitai Web IDE</a> if you don't already have it open.</p>
+<h2 id="41-anatomy-of-the-web-ide">4.1: Anatomy of the Web IDE</h2>
+<p>On the left side of the webpage, you'll see a list of folders, each containing pre-built <code>.ksy</code> files you can use to test functionality. For this example, navigate to <code>formats/image/gif.ksy</code> and double-click <code>gif.ksy</code> to load it into the IDE. The buttons on the bottom left of the webpage are for creating new <code>.ksy</code> files, uploading <code>.ksy</code> or data files, and saving <code>.ksy</code> files:</p>
+<p><img alt="buttons" src="../images/kaitai-icons.png" /></p>
+<pre><code>New, Upload, Save
+</code></pre>
+<p>Click the upload button to select a <code>.gif</code> file from your computer and load it here. You should now see a webpage that looks like:</p>
+<p><img alt="IDE" src="../images/kaitai_ide.png" /></p>
+<p>The viewer on the far right side should look somewhat familiar: it's the same data as when the file was opened in Notepad, but with unreadable symbols replaced by <code>.</code>s, showing the typeable characters alongside their hexadecimal representations.</p>
+<p>If you highlight specific characters or sets of characters on either side of the <code>hex viewer</code>, the corresponding characters will be highlighted on the other side as well, allowing you to see both the hex code and UTF-8/ASCII representations for any selection. This is also true for the <code>object tree</code> section. By clicking on an item in the <code>object tree</code> (such as the <code>hdr</code> section), the bytes described by the section are automatically selected in the <code>hex viewer</code>.</p>
+<p>In the same window as the <code>hex viewer</code> are the <code>JS Code</code> and <code>JS Code (debug)</code> sections. These show how the <code>.ksy</code> file is being translated into JavaScript, alongside a debugger.</p>
+<p>The <code>converter</code> section on the bottom right provides multiple ways to convert selected characters, showing different methods of translating a hex code as an integer (e.g., <code>i8</code> for an 8-bit integer, <code>i16le</code> for a 16-bit integer in little-endian format, etc.).</p>
+<p>Finally, there is the <code>info panel</code>, which provides information about a selection of bytes, such as the length of the selection and where in the data stream the selection is.</p>
+<p>If you are interested in following along more precisely with the <code>gif.ksy</code> file, there is also extensive documentation provided to describe the file format. Having documentation about the file format is crucial for describing your file type. Without documentation to follow, this process looks less like declarative programming and more like cryptography, as you would have to decipher and assume/assert the purposes of much of the data unless it happens to be written in plain text already.</p>
+<p>We won't fully describe everything being done in the example <code>.ksy</code> file here. Instead, we'll look at a broad overview to give an idea of Kaitai's functionality. Now that we know what we're looking at in the IDE, we can take a look at how the file type is being described.</p>
+<h2 id="42-meta-and-seq">4.2: meta and seq</h2>
+<p>Your <code>.ksy</code> files should always start with a <code>meta</code> section, defining meta-information about your file type such as the file extension (like <code>.gif</code> or <code>.tiff</code>), title, license, endianness, cross-references, documentation, version, types, encodings, etc.</p>
+<p>The <code>seq</code> section is where the declarative work really starts. In <code>seq</code>, you describe how to handle the raw data. Each entry in <code>seq</code> must declare an <code>id</code> (the name shown in the object tree for that attribute). You can also specify a <code>type</code> (how to interpret the data), a <code>size</code> (number of bytes to capture), <code>contents</code> (for magic signatures), <code>encoding</code>, and more.</p>
+<p>When reading the raw data of our GIF, Kaitai will apply the <code>header</code> type until its conditions are fulfilled, then the <code>logical_screen_descriptor_struct</code> type, then <code>color_table</code> type, and finally the <code>blocks</code> type. If any type conditions are not fulfilled, the IDE will interrupt parsing and display an error message underneath the object tree.</p>
+<p>Instead of investigating all four different <code>types</code> in the file's <code>seq</code>, let's look only at the first two: <code>header</code> and <code>logical_screen_descriptor</code>, to learn the basics of using Kaitai.</p>
+<h2 id="43-types">4.3: Types</h2>
+<p>The <code>types</code> section is where it becomes vital to reference documentation about the file type you're trying to parse. For example, the <code>gif.ksy</code> file links to the <a href="https://www.w3.org/Graphics/GIF/spec-gif89a.txt">GIF89a Specification</a>.</p>
+<p>While it takes around 150 lines of code to fully describe the types in <code>gif.ksy</code>, longer descriptions aren't always necessary depending on your project's scope. For instance, if you expect the first 4 bytes to identify an object's width and height, your type could be settled quickly in the main <code>seq</code> section without even having to create a type description:</p>
+<pre><code class="language-yaml">seq:
+  - id: width
+    type: u2
+  - id: height
+    type: u2
+</code></pre>
+<p>In this example, <code>u2</code> could be replaced with <code>s1</code>, <code>s2</code>, <code>s4</code>, <code>u1</code>, <code>u2</code>, <code>u4</code>, etc., where <code>s</code> or <code>u</code> stands for signed or unsigned bytes, and the number tells the IDE how many bytes to read of that type. However, if you know you'll need to grab a different width and height for some reason, you could instead write this as:</p>
+<pre><code class="language-yaml">seq:
+  - id: dimensions
+    type: width_and_height
+
+types:
+  width_and_height:
+    seq:
+      - id: width
+        type: u2
+      - id: height
+        type: u2
+</code></pre>
+<p>The former method is useful for simple, straightforward data, while the latter is useful for describing repetitive data structures or for reusing types. It allows you to consolidate multiple types into a single place, to repeat types, or to use certain types in the definitions of other types.</p>
+<p>When looking at <code>gif.ksy</code>'s <code>header</code> type, we see:</p>
+<pre><code class="language-yaml">header:
+  doc-ref: https://www.w3.org/Graphics/GIF/spec-gif89a.txt - section 17
+  seq:
+    - id: magic
+      contents: 'GIF'
+    - id: version
+      type: str
+      size: 3
+      encoding: ASCII
+</code></pre>
+<p>The keyword <code>magic</code> is especially useful here as a safeguard, acting as a file signature when paired with the <code>contents</code> key. It checks that the first bytes match the contents, "GIF" in this case. The <code>magic</code> id is then followed by <code>version</code>, which grabs the next 3 bytes as denoted by <code>size</code> using the built-in <code>str</code> (string) type, and specifies that it is using <code>ASCII</code> encoding.</p>
+<p>This also highlights one of the bigger strengths of Kaitai: in general, it's pretty straightforward to read and understand. It is also for this reason that, if your project would benefit from having both a Kaitai and a Construct definition, it can be easier to first write your Kaitai description and base the Construct file off of that.</p>
+<p>This almost-plain-text description strength is also apparent in the next type, <code>logical_screen_descriptor_struct</code>:</p>
+<pre><code class="language-yaml">logical_screen_descriptor_struct:
+  doc-ref: https://www.w3.org/Graphics/GIF/spec-gif89a.txt - section 18
+  seq:
+    - id: screen_width
+      type: u2
+    - id: screen_height
+      type: u2
+    - id: flags
+      type: u1
+    - id: bg_color_index
+      type: u1
+    - id: pixel_aspect_ratio
+      type: u1
+  instances:
+    has_color_table:
+      value: '(flags &amp; 0b10000000) != 0'
+    color_table_size:
+      value: '2 &lt;&lt; (flags &amp; 7)'
+</code></pre>
+<p>As you can see, it simply grabs the width and the height of the screen on which the GIF will be drawn as 2 unsigned bytes, followed by three unsigned bytes that describe the <code>flags</code>, <code>bg_color_index</code>, and <code>pixel_aspect_ratio</code>. Where it starts to get less straightforward here is in the <code>instances</code> section, which are next up to be explained.</p>
+<h3 id="431-instances">4.3.1: Instances</h3>
+<p>After the <code>id</code>s are set in the type <code>seq</code>, we then see the <code>instances</code> section. This section sets new variables by manipulating the previously found <code>flags</code> object using Kaitai's expression language.</p>
+<p>For example, <code>value: '(flags &amp; 0b10000000) != 0'</code> is doing something called "bit masking": taking the bits from the <code>flags</code> byte and showing only the first one. The beginning <code>0b</code> means to read the <code>flags</code> object as pure bytes, then the <code>1</code> means the first bit is allowed through while the rest are masked with <code>0</code>. The value is set as <code>True</code> or <code>False</code> depending on if the first bit is <strong>NOT</strong> (<code>!=</code>) equal to 0. This expression serves as a boolean operation. Either the GIF does or does not have a color table, and this status is encoded in the first bit of the <code>flags</code> byte.</p>
+<p>It's worth noting that <code>bytes</code> are not some fundamental unit of computation. The choice to have 8 bits in one byte was a decision made by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC) in 1993, but 6- and 9-bit bytes were common through the 1960s. Bit masking allows you to use every individual bit or combination of bits in a selection to correspond to a different value, surpassing some of the artificially imposed limits on computation. This could come in especially useful if you are attempting to deal with archival data, or if your project would otherwise benefit from non-standard byte-sizing. </p>
+<p><code>color_table_size</code> is doing a similar operation but with different syntax. <code>7</code> in binary is <code>00000111</code>, so <code>(flags &amp; 7)</code> selects the final 3 bits. <code>2</code> in binary is <code>00000010</code> and <code>&lt;&lt;</code> is the command to "shift" bits to the left, so this command shifts "2" to the left by <code>(flags &amp; 7)</code> places. This is equivalent to raising 2 to the power of <code>1 + (flags mod 8)</code> and then assigning that new value to a character.</p>
+<p>In our case, <code>flags = 247</code> (<code>11110111</code> in binary), so <code>has_color_table = True</code>, and <code>1 + (flags mod 8) = 1 + (247 mod 8) = 1 + 7 = 8</code>. Then, <span class="arithmatex">\(2^8 = 256\)</span>, meaning that <code>color_table_size = 256</code>.</p>
+<hr />
+<p>All of this section has been to explain, in broad strokes, some of the types as shown in the GIF file type. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found <a href="http://doc.kaitai.io/user_guide.html#_kaitai_struct_language">here</a>.</p>
+<p>For now, let's continue this lesson and talk about how this same file type definition can be performed using the Construct library.</p>
+<hr />
+<p>Continue to <a href="../05_construct_basics/">Construct basics</a> to learn how to describe file formats programmatically in Python.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../construct_basics/">
-      
-      
-        <link rel="next" href="../kaitai_next_steps/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>6. Creating Example Data - Custom data format</title>
+        <title>02 setup - Custom data format</title>
       
     
     
@@ -101,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              6. Creating Example Data
+              02 setup
             
           </span>
         </div>
@@ -190,7 +186,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../index.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -209,7 +205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+      <a href="../introduction.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -228,7 +224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../setup/" class="md-nav__link">
+      <a href="../setup.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -247,7 +243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../filetype/" class="md-nav__link">
+      <a href="../filetype.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -266,7 +262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kaitai_basics/" class="md-nav__link">
+      <a href="../kaitai_basics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -285,7 +281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../construct_basics/" class="md-nav__link">
+      <a href="../construct_basics.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -302,27 +298,9 @@
       
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    6. Creating Example Data
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../creating_example_data.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -331,38 +309,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
-    Objectives:
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-creating-example-data" class="md-nav__link">
-    6: Creating Example Data
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -373,7 +319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kaitai_next_steps/" class="md-nav__link">
+      <a href="../kaitai_next_steps.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -392,7 +338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../construct_next_steps/" class="md-nav__link">
+      <a href="../construct_next_steps.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -411,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../conclusion/" class="md-nav__link">
+      <a href="../conclusion.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -430,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../appendix/" class="md-nav__link">
+      <a href="../appendix.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -475,9 +421,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-creating-example-data" class="md-nav__link">
-    6: Creating Example Data
+  <a href="#2-setup" class="md-nav__link">
+    2: Setup
   </a>
+  
+    <nav class="md-nav" aria-label="2: Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-kaitai-ide" class="md-nav__link">
+    2.1 Kaitai IDE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-python-and-ide-setup" class="md-nav__link">
+    2.2 Python and IDE Setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-construct-setup" class="md-nav__link">
+    2.3 Construct Setup
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -498,104 +471,50 @@
 
 <h3 id="objectives">Objectives:</h3>
 <ul>
-<li>Create fake data on which to practice our understandings of Kaitai and Construct.</li>
+<li>Learn how to setup and work with the Kaitai IDE and the Construct Python library.</li>
 </ul>
-<h1 id="6-creating-example-data">6: Creating Example Data</h1>
-<p>Now that we have the basics down, let's try putting it all together. To do this, let's fabricate some data, save that data in a binary file, and then define the structure for that data in both Kaitai and Construct. After that, we can compile our formats and begin to manipulate and work with this data.</p>
-<p>Let's say that the data that we're taking comes as a waveform in a binary file. We can pretend that we're measuring vibrations through some material, or current intensity in some electrical system, or something like that. As we're fabricating data, not actually taking measurements, the justification doesn't really matter. </p>
-<p>For this example we'll be working in Python as it is necessary for using Construct. If you have yet to install an IDE, a link and some instructions were provided in the <a href="/setup/">setup section (2.2)</a> to install the Spyder environment.</p>
-<p>Let's say that for some reason we want to break our data into 3 different sections depending on the intensity. The first section can describe the entire wave form, the second can capture only some mid-range values, and the third section captures only the most intense values. In real life, this could translate to three different sensors that each have different sensitivities being used to gather our data.</p>
-<p>First, we'll need to make sure that all of the necessary libraries are installed and imported. For this data, we'll need the numpy library and the struct (which is different from Construct) library. Optionally, we can also include matplotlib in order to plot our simulated data. To check if you already have these libraries installed, open your IDE's terminal and enter:</p>
-<pre><code>pip list
+<h1 id="2-setup">2: Setup</h1>
+<p>This section will guide you through setting up the tools needed for this lesson: the Kaitai Web IDE (for describing binary formats) and the Construct Python library (for parsing them in Python). By the end, you'll be ready to follow along with all code examples.</p>
+<h2 id="21-kaitai-ide">2.1 Kaitai IDE</h2>
+<p><strong>No installation is required</strong> for most users. Simply open the <a href="https://ide.kaitai.io/">Kaitai Web IDE</a> in your browser.<br />
+- To get started:<br />
+  1. Go to <a href="https://ide.kaitai.io/">https://ide.kaitai.io/</a><br />
+  2. Click "New" to create a new .ksy file<br />
+  3. Follow the instructions in <a href="../04_kaitai_basics/">Section 4: Defining the Structure in Kaitai</a></p>
+<p><em>Advanced users</em>: If you want to use Kaitai offline or generate parsers locally, see the <a href="../10_appendix/">appendix</a> for installing <code>ksc</code> and <code>ksv</code>.</p>
+<h2 id="22-python-and-ide-setup">2.2 Python and IDE Setup</h2>
+<p>To use Construct, you need Python 3.6 or newer.<br />
+- Download Python from <a href="https://www.python.org/downloads/">python.org</a> if you don't have it.
+- Check your Python version:
+    <code>bash
+    python --version</code></p>
+<p>We recommend using a Python virtual environment to keep your dependencies isolated.<br />
+To set up a virtual environment using <code>virtualenv</code>:</p>
+<ol>
+<li>Install <code>virtualenv</code> if you don't have it:
+    <code>bash
+    pip install --user virtualenv</code></li>
+<li>Create a new environment (replace <code>env</code> with your preferred name):
+    <code>bash
+    python -m virtualenv env</code></li>
+<li>Activate the environment:<ul>
+<li>On Linux/macOS:
+    <code>bash
+    source env/bin/activate</code></li>
+<li>On Windows:
+    <code>bash
+    .\env\Scripts\activate</code></li>
+</ul>
+</li>
+</ol>
+<p>You can use any IDE (e.g., <a href="https://code.visualstudio.com/">VS Code</a>, <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>, <a href="https://www.anaconda.com/">Anaconda</a>), but we recommend <a href="https://www.spyder-ide.org/download">Spyder</a> for beginners.</p>
+<h2 id="23-construct-setup">2.3 Construct Setup</h2>
+<p>With your virtual environment activated, install Construct:</p>
+<pre><code class="language-bash">pip install construct
 </code></pre>
-<p>This will return an alphabetical list of all currently installed packages/modules that your install of Python has access to, as well as their version numbers. Simply scroll through the result to see if <code>matplotlib</code>, <code>numpy</code>, and <code>python-struct</code> are installed, and if not, run:</p>
-<pre><code>pip install numpy
-pip install matplotlib
-pip install python_struct
-</code></pre>
-<p>You should now be free to create a new <code>.py</code> or <code>.ipynb</code> file, named something like "example_data". Feel free to take a look at the final product of this section to follow along with at <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_data.ipynb">this page's github</a>.  </p>
-<p>At the beginning of your new file, import the necessary modules using the commands:</p>
-<pre><code>import numpy as np
-import struct
-import matplotlib.pyplot as plt
-</code></pre>
-<p>Keep in mind that most IDEs will require you to save the file before allowing you to run it. Now, let's create 6 different arrays, one for each x and y value that is being selected from each desired section.</p>
-<pre><code>full_x = []
-full_y = []
-
-mid_x = []
-mid_y = []
-
-peak_x = []
-peak_y = []
-</code></pre>
-<p>We'll then want to populate these arrays with their respective data. Let's create a <code>for</code> loop which will create data points for a wave using an equation. For this example, I'll be creating a function that is defined from <code>x=-5</code> to <code>x=5</code>, creating a y data point every increment of <code>0.0001</code> on the x axis, meaning the full data will contain 100000 points. </p>
-<p>The actual function chosen for this example doesn't matter much as long as it's valid within the range you choose. You should be able to simply plot a cosine or sin function with arbitrary limits without running into any issues as long as your computer can handle the number of data points you create. In fact, mixing things up a bit and trying a different equation than is shown here is encouranged! Doing so while referencing the documentation pages for Construct and Kaitai will allow you to find any holes in what this lesson has the space to offer while allowing you to fill them using your own troubleshooting abilities.</p>
-<p>For my function, we have:</p>
-<pre><code>for i in np.arange(-5,5,0.0001):
-  # Function that is being plotted
-  n = (np.cos((2 * np.pi * i**2)/(i**2 + i))) * np.sin(i)
-
-  # Put every point in full_x and full_y
-  full_x.append(i)
-  full_y.append(n)
-
-  # Select only mid range points
-  if n**2 &lt; 0.3:
-    mid_x.append(i)
-    mid_y.append(n)
-
-  # Select only extrema
-  if n**2 &gt; 0.65:
-    peak_x.append(i)
-    peak_y.append(n)
-</code></pre>
-<p>You could now plot the three graphs if you wish to see what these produce by using:</p>
-<pre><code>plt.plot(full_x, full_y)
-plt.show()
-
-plt.plot(mid_x, mid_y)
-plt.show()
-
-plt.scatter(peak_x, peak_y, s=1)
-plt.show()
-</code></pre>
-<p>The resulting graphs should look like:</p>
-<p><img alt="full" src="../images/full-graph.png" />
-<img alt="mid" src="../images/mid-graph.png" />
-<img alt="peak" src="../images/peak-graph.png" /></p>
-<p>Next, we'll want to load all of our wave data into separate numpy arrays. This allows us to set the datatype so each x and y value can be saved across a custom number of bytes. </p>
-<p>Feel free to experiment with the byte size choices as well. You can save the data across 8 bytes by using <code>float64</code> for high resolution, 4 bytes by using <code>float32</code>, <code>float16</code> for 2 bytes, or <code>float8</code> for 1 byte. Maybe it would make sense for your "experiment" if the full_x and full_y data were saved with the highest resolution, with each successive drop in sample size also dropping the resolution. You could even decide to flatten every point into integers if you wish by using <code>uint64</code>, <code>uint32</code>, and so on. Even imaginary numbers can be captured if you choose to visualize a complex equation, with the options beginning at <code>complex64</code> and doubling until <code>complex256</code>. In any case, your arrays should hopefully look similar to:</p>
-<pre><code># Save data to numpy arrays
-full_y_data = np.array(full_y, dtype=np.float32)
-full_x_data = np.array(full_x, dtype=np.float32)
-
-mid_y_data = np.array(mid_y, dtype=np.float32)
-mid_x_data = np.array(mid_x, dtype=np.float32)
-
-peak_y_data = np.array(peak_y, dtype=np.float32)
-peak_x_data = np.array(peak_x, dtype=np.float32)
-</code></pre>
-<p>The next and final step of creating our example data is to write everything we've done so far to a new <code>.test</code> (or whatever extension you choose) file. It is also often useful to include the length of each section somewhere in our final file to make it easier to select the full arrays when compiling. The simplest choice is to include the length of every array at the beginning of the file, but you could also put each length before its respective section. There are other ways to manage this kind of data, but including the lengths this way avoids some of the more convoluted methods, such as giving each array a specific signature or creating termination strings. </p>
-<p>Here's what it looks like to write our data in this way:</p>
-<pre><code># Save data to binary file
-with open('wave_data.test', 'wb') as f:
-  # Write array lengths to file as integers
-  f.write(struct.pack('I', len(full_y_data)))
-  f.write(struct.pack('I', len(mid_y_data)))
-  f.write(struct.pack('I', len(peak_y_data)))
-
-  # Write each array to the file
-  full_x_data.tofile(f)
-  full_y_data.tofile(f)
-
-  mid_x_data.tofile(f)
-  mid_y_data.tofile(f)
-
-  peak_x_data.tofile(f)
-  peak_y_data.tofile(f)
-</code></pre>
-<p>We now have a file titled "wave_data.test" saved in the same directory as our python program. The file type can be decided arbitrarily - it used to be the case that type extensions were required to be 3 characters or less, but that standard has since fallen out of use.</p>
+<p>If you encounter installation issues, refer to the <a href="../10_appendix/">Appendix</a> or consult the official documentation for Kaitai and Construct.</p>
+<hr />
+<p>Continue to <a href="../03_filetype/">File types and formats</a> to learn how computers interpret and store different file types.</p>
 
 
 
