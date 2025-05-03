@@ -10,6 +10,8 @@
       
       
       
+        <link rel="next" href="01_introduction/">
+      
       
       <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
@@ -97,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Creating a custom data format
+              Home
             
           </span>
         </div>
@@ -184,9 +186,29 @@
       
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="00_index.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -195,6 +217,40 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    Commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-layout" class="md-nav__link">
+    Project layout
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -457,7 +513,7 @@
 <h2 id="project-layout">Project layout</h2>
 <pre><code>mkdocs.yml    # The configuration file.
 docs/
-    index.md                 # The documentation homepage.
+    index.md                    # The documentation homepage.
     01_introduction.md          # Explaining the purpose of the lesson
     02_setup.md                 # How to install and use Kaitai and Construct
     03_filetype.md              # Describing file formats, types, and the basics of computer language
