@@ -1,6 +1,6 @@
 site_name: Custom data format
 nav:
-  - Home: 00_index.md
+  - Home: index.md
   - 1. Introduction: 01_introduction.md
   - 2. Setup: 02_setup.md
   - 3. File types: 03_filetype.md

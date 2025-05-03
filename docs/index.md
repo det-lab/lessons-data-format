@@ -13,7 +13,7 @@
 
     mkdocs.yml    # The configuration file.
     docs/
-        index.md                 # The documentation homepage.
+        index.md                    # The documentation homepage.
         01_introduction.md          # Explaining the purpose of the lesson
         02_setup.md                 # How to install and use Kaitai and Construct
         03_filetype.md              # Describing file formats, types, and the basics of computer language
