@@ -18,11 +18,13 @@ This section will guide you through setting up the tools needed for this lesson:
 ## 2.2 Python and IDE Setup
 
 To use Construct, you need Python 3.6 or newer.  
+
 - Download Python from [python.org](https://www.python.org/downloads/) if you don't have it.
+
 - Check your Python version:
-    ```bash
-    python --version
-    ```
+```bash
+python --version
+```
 
 We recommend using a Python virtual environment to keep your dependencies isolated.  
 To set up a virtual environment using `virtualenv`:
