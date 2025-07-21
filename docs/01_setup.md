@@ -58,4 +58,4 @@ pip install construct
 If you encounter installation issues, refer to the [Appendix](10_appendix.md) or consult the official documentation for Kaitai and Construct.
 
 ---
-Continue to [File types and formats](03_filetype.md) to learn how computers interpret and store different file types.
+Continue to [File types and formats](02_filetype.md) to learn how computers interpret and store different file types.

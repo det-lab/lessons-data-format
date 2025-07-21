@@ -1,17 +1,12 @@
-## Project layout
-**Created by Adrian Fisher**
+# 1: Introduction
+In scientific computing, data is often stored in custom *binary* formats. These formats might be tailored for specific instruments, simulations, or to optimize for storage space or read/write speed. However, a major drawback is that standard analysis software and programming language libraries usually cannot interpret these specialized binary structures directly.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md                    # The documentation homepage.
-        01_introduction.md          # Explaining the purpose of the lesson
-        02_setup.md                 # How to install and use Kaitai and Construct
-        03_filetype.md              # Describing file formats, types, and the basics of computer language
-        04_kaitai_basics.md         # Describing the basics of using Kaitai
-        05_construct_basics.md      # Describing the basics of using Construct
-        06_creating_example_data.md # Creating an example raw data file
-        07_kaitai_next_steps.md     # Parsing the example data file with Kaitai
-        08_construct_next_steps.md  # Parsing the example data file with Construct
-        09_conclusion.md            # Final thoughts and resources
-        10_appendix.md              # Installation resources and advanced options
-        ...       # Other markdown pages, images and other files.
+This lack of interoperability creates a hurdle: before the data can be analyzed or shared effectively, its binary layout must be explicitly defined and parsed. This lesson addresses this common challenge. We will explore how to set up and use two powerful tools:
+
+1.  **Kaitai Struct:** A YAML based declarative language for describing binary data structures, which can generate parser code in various languages (Python, C#, Java, JavaScript, Perl, PHP, Ruby).
+2.  **Construct:** A Python library for parsing and building binary data structures.
+
+We will guide you through installing these tools and then demonstrate how they enable you to translate custom binary data into readily usable formats for your analysis workflows.
+
+---
+Continue to [Setup](01_setup.md) to get your environment ready.

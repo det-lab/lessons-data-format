@@ -137,4 +137,4 @@ All of this section has been to explain, in broad strokes, some of the types as 
 For now, let's continue this lesson and talk about how this same file type definition can be performed using the Construct library.
 
 ---
-Continue to [Construct basics](05_construct_basics.md) to learn how to describe file formats programmatically in Python.
+Continue to [Construct basics](04_construct_basics.md) to learn how to describe file formats programmatically in Python.
