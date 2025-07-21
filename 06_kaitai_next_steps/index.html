@@ -575,7 +575,7 @@
 <ul>
 <li>Describe our fabricated data in the Kaitai IDE.</li>
 <li>Use the description to parse our custom file format.</li>
-<li>Return the plots that were created in <a href="06_creating_example_data.md">section 6</a></li>
+<li>Return the plots that were created in <a href="../05_creating_example_data/">the previous section</a></li>
 </ul>
 <h1 id="7-describing-the-data-in-kaitai">7: Describing the Data in Kaitai</h1>
 <p>Now that you have created a custom binary file, let's describe its structure using Kaitai Struct. This will allow you to parse and analyze your data with generated code.</p>
@@ -656,7 +656,7 @@ full_x_data = np.array(full_x, dtype='&gt;float32')  # or '&gt;f4'
 </code></pre>
 <p>Your <code>.ksy</code> file should now fully describe the structure of your binary file.</p>
 <h2 id="72-parsing-raw-data-with-a-ksy-file">7.2: Parsing Raw Data with a .ksy File</h2>
-<p>To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (<code>ksc</code>). If you haven't installed it, see the <a href="10_appendix.md">appendix</a>.</p>
+<p>To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (<code>ksc</code>). If you haven't installed it, see the <a href="../09_appendix/">appendix</a>.</p>
 <p>From your terminal, generate the parser (for Python):</p>
 <pre><code class="language-sh">ksc -t &lt;language&gt; --outdir &lt;new_foldername&gt; &lt;path/to/your/file.ksy&gt;
 </code></pre>
@@ -689,7 +689,7 @@ plt.show()
 </code></pre>
 <p>Repeat for <code>m_data</code> and <code>p_data</code> as needed.</p>
 <hr />
-<p>You have now described and parsed your custom binary file using Kaitai Struct!  Continue to <a href="08_construct_next_steps.md">Construct Next Steps</a> to parse your custom data with the Construct library.</p>
+<p>You have now described and parsed your custom binary file using Kaitai Struct!  Continue to <a href="../07_construct_next_steps/">Construct Next Steps</a> to parse your custom data with the Construct library.</p>
 
 
 
