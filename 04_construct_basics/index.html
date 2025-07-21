@@ -315,23 +315,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-defining-the-structure-in-construct" class="md-nav__link">
-    5: Defining the Structure in Construct
+  <a href="#defining-the-structure-in-construct" class="md-nav__link">
+    Defining the Structure in Construct
   </a>
   
-    <nav class="md-nav" aria-label="5: Defining the Structure in Construct">
+    <nav class="md-nav" aria-label="Defining the Structure in Construct">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-struct-basics" class="md-nav__link">
-    5.1: Struct basics
+  <a href="#struct-basics" class="md-nav__link">
+    Struct basics
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-building-gifpy" class="md-nav__link">
-    5.2: Building gif.py
+  <a href="#building-gifpy" class="md-nav__link">
+    Building gif.py
   </a>
   
 </li>
@@ -476,23 +476,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-defining-the-structure-in-construct" class="md-nav__link">
-    5: Defining the Structure in Construct
+  <a href="#defining-the-structure-in-construct" class="md-nav__link">
+    Defining the Structure in Construct
   </a>
   
-    <nav class="md-nav" aria-label="5: Defining the Structure in Construct">
+    <nav class="md-nav" aria-label="Defining the Structure in Construct">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-struct-basics" class="md-nav__link">
-    5.1: Struct basics
+  <a href="#struct-basics" class="md-nav__link">
+    Struct basics
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-building-gifpy" class="md-nav__link">
-    5.2: Building gif.py
+  <a href="#building-gifpy" class="md-nav__link">
+    Building gif.py
   </a>
   
 </li>
@@ -522,9 +522,9 @@
 <li>Understand how to begin working with Construct and its basic structure.</li>
 <li>Explore the Construct description of the GIF file type to see it in action.</li>
 </ul>
-<h1 id="5-defining-the-structure-in-construct">5: Defining the Structure in Construct</h1>
+<h1 id="defining-the-structure-in-construct">Defining the Structure in Construct</h1>
 <p>Construct is a Python library for declaratively describing and parsing binary data formats. Its functionality is similar to Kaitai Struct, but it uses Python code and programmatic constructs. In Construct, you define <code>Structs</code> (structures) that describe how to interpret sections of a binary file. These <code>Structs</code> can be combined and nested to represent complex file formats, ultimately building up to a main <code>Struct</code> that captures the entire file's structure.</p>
-<h2 id="51-struct-basics">5.1: Struct basics</h2>
+<h2 id="struct-basics">Struct basics</h2>
 <p>A <code>Struct</code> in Construct is a collection of ordered fields, each with a name and a type. Fields are parsed or built in the order they are defined. When parsing, Construct returns a dictionary-like object with keys matching the field names. Unlike Kaitai, field names are optional in Construct, but naming fields makes the resulting data much easier to work with.</p>
 <p>Let's recreate the dimensions example from the Kaitai section. Here is how you would define a <code>width_and_height</code> <code>Struct</code> in Construct:</p>
 <pre><code class="language-python">width_and_height = Struct(
@@ -538,7 +538,7 @@
 )
 </code></pre>
 <p>This modular approach allows you to build up complex file formats from smaller, reusable pieces.</p>
-<h2 id="52-building-gifpy">5.2: Building gif.py</h2>
+<h2 id="building-gifpy">Building gif.py</h2>
 <p>Let's look at how Construct can be used to describe the GIF file format, using the <a href="https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py">gif.py</a> example from Construct's GitHub repository.</p>
 <p>Unlike Kaitai, where types can be declared in any order, Python requires that each <code>Struct</code> be defined before it is referenced. This means you typically define the smallest components first and then combine them into larger structures. This means that when examining the structure of <code>Structs</code>, it often makes sense to start from the final defined <code>Struct</code> to see what building blocks it uses.</p>
 <p>Here is the top-level <code>gif_file</code> struct, which represents the entire GIF file:</p>

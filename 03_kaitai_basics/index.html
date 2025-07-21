@@ -296,38 +296,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-defining-the-structure-in-kaitai" class="md-nav__link">
-    4: Defining the Structure in Kaitai
+  <a href="#defining-the-structure-in-kaitai" class="md-nav__link">
+    Defining the Structure in Kaitai
   </a>
   
-    <nav class="md-nav" aria-label="4: Defining the Structure in Kaitai">
+    <nav class="md-nav" aria-label="Defining the Structure in Kaitai">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-anatomy-of-the-web-ide" class="md-nav__link">
-    4.1: Anatomy of the Web IDE
+  <a href="#anatomy-of-the-web-ide" class="md-nav__link">
+    Anatomy of the Web IDE
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-meta-and-seq" class="md-nav__link">
-    4.2: meta and seq
+  <a href="#meta-and-seq" class="md-nav__link">
+    meta and seq
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-types" class="md-nav__link">
-    4.3: Types
+  <a href="#types" class="md-nav__link">
+    Types
   </a>
   
-    <nav class="md-nav" aria-label="4.3: Types">
+    <nav class="md-nav" aria-label="Types">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#431-instances" class="md-nav__link">
-    4.3.1: Instances
+  <a href="#instances" class="md-nav__link">
+    Instances
   </a>
   
 </li>
@@ -496,38 +496,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-defining-the-structure-in-kaitai" class="md-nav__link">
-    4: Defining the Structure in Kaitai
+  <a href="#defining-the-structure-in-kaitai" class="md-nav__link">
+    Defining the Structure in Kaitai
   </a>
   
-    <nav class="md-nav" aria-label="4: Defining the Structure in Kaitai">
+    <nav class="md-nav" aria-label="Defining the Structure in Kaitai">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41-anatomy-of-the-web-ide" class="md-nav__link">
-    4.1: Anatomy of the Web IDE
+  <a href="#anatomy-of-the-web-ide" class="md-nav__link">
+    Anatomy of the Web IDE
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-meta-and-seq" class="md-nav__link">
-    4.2: meta and seq
+  <a href="#meta-and-seq" class="md-nav__link">
+    meta and seq
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#43-types" class="md-nav__link">
-    4.3: Types
+  <a href="#types" class="md-nav__link">
+    Types
   </a>
   
-    <nav class="md-nav" aria-label="4.3: Types">
+    <nav class="md-nav" aria-label="Types">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#431-instances" class="md-nav__link">
-    4.3.1: Instances
+  <a href="#instances" class="md-nav__link">
+    Instances
   </a>
   
 </li>
@@ -562,9 +562,9 @@
 <li>Understand how to begin working with Kaitai and the basics of its syntax.</li>
 <li>Explore the Kaitai description for the GIF filetype to see it in action.</li>
 </ul>
-<h1 id="4-defining-the-structure-in-kaitai">4: Defining the Structure in Kaitai</h1>
+<h1 id="defining-the-structure-in-kaitai">Defining the Structure in Kaitai</h1>
 <p>Let's try loading the GIF file in the Kaitai Web IDE to understand this better. Start by navigating to the <a href="https://ide.kaitai.io/">Kaitai Web IDE</a> if you don't already have it open.</p>
-<h2 id="41-anatomy-of-the-web-ide">4.1: Anatomy of the Web IDE</h2>
+<h2 id="anatomy-of-the-web-ide">Anatomy of the Web IDE</h2>
 <p>On the left side of the webpage, you'll see a list of folders, each containing pre-built <code>.ksy</code> files you can use to test functionality. For this example, navigate to <code>formats/image/gif.ksy</code> and double-click <code>gif.ksy</code> to load it into the IDE. The buttons on the bottom left of the webpage are for creating new <code>.ksy</code> files, uploading <code>.ksy</code> or data files, and saving <code>.ksy</code> files:</p>
 <p><img alt="buttons" src="../images/kaitai-icons.png" /></p>
 <pre><code>New, Upload, Save
@@ -578,12 +578,12 @@
 <p>Finally, there is the <code>info panel</code>, which provides information about a selection of bytes, such as the length of the selection and where in the data stream the selection is.</p>
 <p>If you are interested in following along more precisely with the <code>gif.ksy</code> file, there is also extensive documentation provided to describe the file format. Having documentation about the file format is crucial for describing your file type. Without documentation to follow, this process looks less like declarative programming and more like cryptography, as you would have to decipher and assume/assert the purposes of much of the data unless it happens to be written in plain text already.</p>
 <p>We won't fully describe everything being done in the example <code>.ksy</code> file here. Instead, we'll look at a broad overview to give an idea of Kaitai's functionality. Now that we know what we're looking at in the IDE, we can take a look at how the file type is being described.</p>
-<h2 id="42-meta-and-seq">4.2: meta and seq</h2>
+<h2 id="meta-and-seq"><code>meta</code> and <code>seq</code></h2>
 <p>Your <code>.ksy</code> files should always start with a <code>meta</code> section, defining meta-information about your file type such as the file extension (like <code>.gif</code> or <code>.tiff</code>), title, license, endianness, cross-references, documentation, version, types, encodings, etc.</p>
 <p>The <code>seq</code> section is where the declarative work really starts. In <code>seq</code>, you describe how to handle the raw data. Each entry in <code>seq</code> must declare an <code>id</code> (the name shown in the object tree for that attribute). You can also specify a <code>type</code> (how to interpret the data), a <code>size</code> (number of bytes to capture), <code>contents</code> (for magic signatures), <code>encoding</code>, and more.</p>
 <p>When reading the raw data of our GIF, Kaitai will apply the <code>header</code> type until its conditions are fulfilled, then the <code>logical_screen_descriptor_struct</code> type, then <code>color_table</code> type, and finally the <code>blocks</code> type. If any type conditions are not fulfilled, the IDE will interrupt parsing and display an error message underneath the object tree.</p>
 <p>Instead of investigating all four different <code>types</code> in the file's <code>seq</code>, let's look only at the first two: <code>header</code> and <code>logical_screen_descriptor</code>, to learn the basics of using Kaitai.</p>
-<h2 id="43-types">4.3: Types</h2>
+<h2 id="types">Types</h2>
 <p>The <code>types</code> section is where it becomes vital to reference documentation about the file type you're trying to parse. For example, the <code>gif.ksy</code> file links to the <a href="https://www.w3.org/Graphics/GIF/spec-gif89a.txt">GIF89a Specification</a>.</p>
 <p>While it takes around 150 lines of code to fully describe the types in <code>gif.ksy</code>, longer descriptions aren't always necessary depending on your project's scope. For instance, if you expect the first 4 bytes to identify an object's width and height, your type could be settled quickly in the main <code>seq</code> section without even having to create a type description:</p>
 <pre><code class="language-yaml">seq:
@@ -640,7 +640,7 @@ types:
       value: '2 &lt;&lt; (flags &amp; 7)'
 </code></pre>
 <p>As you can see, it simply grabs the width and the height of the screen on which the GIF will be drawn as 2 unsigned bytes, followed by three unsigned bytes that describe the <code>flags</code>, <code>bg_color_index</code>, and <code>pixel_aspect_ratio</code>. Where it starts to get less straightforward here is in the <code>instances</code> section, which are next up to be explained.</p>
-<h3 id="431-instances">4.3.1: Instances</h3>
+<h3 id="instances">Instances</h3>
 <p>After the <code>id</code>s are set in the type <code>seq</code>, we then see the <code>instances</code> section. This section sets new variables by manipulating the previously found <code>flags</code> object using Kaitai's expression language.</p>
 <p>For example, <code>value: '(flags &amp; 0b10000000) != 0'</code> is doing something called "bit masking": taking the bits from the <code>flags</code> byte and showing only the first one. The beginning <code>0b</code> means to read the <code>flags</code> object as pure bytes, then the <code>1</code> means the first bit is allowed through while the rest are masked with <code>0</code>. The value is set as <code>True</code> or <code>False</code> depending on if the first bit is <strong>NOT</strong> (<code>!=</code>) equal to 0. This expression serves as a boolean operation. Either the GIF does or does not have a color table, and this status is encoded in the first bit of the <code>flags</code> byte.</p>
 <p>It's worth noting that <code>bytes</code> are not some fundamental unit of computation. The choice to have 8 bits in one byte was a decision made by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC) in 1993, but 6- and 9-bit bytes were common through the 1960s. Bit masking allows you to use every individual bit or combination of bits in a selection to correspond to a different value, surpassing some of the artificially imposed limits on computation. This could come in especially useful if you are attempting to deal with archival data, or if your project would otherwise benefit from non-standard byte-sizing. </p>

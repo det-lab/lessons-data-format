@@ -353,19 +353,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-describing-the-data-in-kaitai" class="md-nav__link">
-    7: Describing the Data in Kaitai
+  <a href="#describing-the-data-in-kaitai" class="md-nav__link">
+    Describing the Data in Kaitai
   </a>
   
-    <nav class="md-nav" aria-label="7: Describing the Data in Kaitai">
+    <nav class="md-nav" aria-label="Describing the Data in Kaitai">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#71-writing-the-kaitai-description" class="md-nav__link">
-    7.1: Writing the Kaitai Description
+  <a href="#writing-the-kaitai-description" class="md-nav__link">
+    Writing the Kaitai Description
   </a>
   
-    <nav class="md-nav" aria-label="7.1: Writing the Kaitai Description">
+    <nav class="md-nav" aria-label="Writing the Kaitai Description">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -388,15 +388,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#72-parsing-raw-data-with-a-ksy-file" class="md-nav__link">
-    7.2: Parsing Raw Data with a .ksy File
+  <a href="#parsing-raw-data-with-a-ksy-file" class="md-nav__link">
+    Parsing Raw Data with a .ksy File
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#73-loading-and-using-the-parser-in-python" class="md-nav__link">
-    7.3: Loading and Using the Parser in Python
+  <a href="#loading-and-using-the-parser-in-python" class="md-nav__link">
+    Loading and Using the Parser in Python
   </a>
   
 </li>
@@ -503,19 +503,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-describing-the-data-in-kaitai" class="md-nav__link">
-    7: Describing the Data in Kaitai
+  <a href="#describing-the-data-in-kaitai" class="md-nav__link">
+    Describing the Data in Kaitai
   </a>
   
-    <nav class="md-nav" aria-label="7: Describing the Data in Kaitai">
+    <nav class="md-nav" aria-label="Describing the Data in Kaitai">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#71-writing-the-kaitai-description" class="md-nav__link">
-    7.1: Writing the Kaitai Description
+  <a href="#writing-the-kaitai-description" class="md-nav__link">
+    Writing the Kaitai Description
   </a>
   
-    <nav class="md-nav" aria-label="7.1: Writing the Kaitai Description">
+    <nav class="md-nav" aria-label="Writing the Kaitai Description">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -538,15 +538,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#72-parsing-raw-data-with-a-ksy-file" class="md-nav__link">
-    7.2: Parsing Raw Data with a .ksy File
+  <a href="#parsing-raw-data-with-a-ksy-file" class="md-nav__link">
+    Parsing Raw Data with a .ksy File
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#73-loading-and-using-the-parser-in-python" class="md-nav__link">
-    7.3: Loading and Using the Parser in Python
+  <a href="#loading-and-using-the-parser-in-python" class="md-nav__link">
+    Loading and Using the Parser in Python
   </a>
   
 </li>
@@ -577,10 +577,10 @@
 <li>Use the description to parse our custom file format.</li>
 <li>Return the plots that were created in <a href="../05_creating_example_data/">the previous section</a></li>
 </ul>
-<h1 id="7-describing-the-data-in-kaitai">7: Describing the Data in Kaitai</h1>
+<h1 id="describing-the-data-in-kaitai">Describing the Data in Kaitai</h1>
 <p>Now that you have created a custom binary file, let's describe its structure using Kaitai Struct. This will allow you to parse and analyze your data with generated code.</p>
 <p>If you don't have the <a href="https://ide.kaitai.io/">Kaitai Web IDE</a> open, navigate there and create a new <code>.ksy</code> file (e.g., <code>wave_parser.ksy</code>). You can also reference the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/wave_parser.ksy">example file</a>.</p>
-<h2 id="71-writing-the-kaitai-description">7.1: Writing the Kaitai Description</h2>
+<h2 id="writing-the-kaitai-description">Writing the Kaitai Description</h2>
 <h3 id="setting-endianness">Setting Endianness</h3>
 <p>By default, the binary data you created was written using your operating system's native endianness. If you want to ensure consistency, you can explicitly set the endianness when generating your arrays in Python:</p>
 <pre><code class="language-python"># For little-endian
@@ -655,7 +655,7 @@ full_x_data = np.array(full_x, dtype='&gt;float32')  # or '&gt;f4'
     type: peak_data
 </code></pre>
 <p>Your <code>.ksy</code> file should now fully describe the structure of your binary file.</p>
-<h2 id="72-parsing-raw-data-with-a-ksy-file">7.2: Parsing Raw Data with a .ksy File</h2>
+<h2 id="parsing-raw-data-with-a-ksy-file">Parsing Raw Data with a .ksy File</h2>
 <p>To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (<code>ksc</code>). If you haven't installed it, see the <a href="../09_appendix/">appendix</a>.</p>
 <p>From your terminal, generate the parser (for Python):</p>
 <pre><code class="language-sh">ksc -t &lt;language&gt; --outdir &lt;new_foldername&gt; &lt;path/to/your/file.ksy&gt;
@@ -664,7 +664,7 @@ full_x_data = np.array(full_x, dtype='&gt;float32')  # or '&gt;f4'
 <pre><code class="language-sh">ksc -t python --outdir wave_test wave_parser.ksy
 </code></pre>
 <p>This will create a folder (<code>wave_test</code>) containing a Python file (<code>test.py</code>).</p>
-<h2 id="73-loading-and-using-the-parser-in-python">7.3: Loading and Using the Parser in Python</h2>
+<h2 id="loading-and-using-the-parser-in-python">Loading and Using the Parser in Python</h2>
 <p>Make sure your generated parser and your binary data file are in the same directory or update your import paths accordingly.</p>
 <p>Example usage in Python:</p>
 <pre><code class="language-python">from pathlib import Path

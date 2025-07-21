@@ -372,23 +372,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-describing-the-data-in-construct" class="md-nav__link">
-    8: Describing the Data in Construct
+  <a href="#describing-the-data-in-construct" class="md-nav__link">
+    Describing the Data in Construct
   </a>
   
-    <nav class="md-nav" aria-label="8: Describing the Data in Construct">
+    <nav class="md-nav" aria-label="Describing the Data in Construct">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#81-setting-up-and-defining-structs" class="md-nav__link">
-    8.1: Setting Up and Defining Structs
+  <a href="#setting-up-and-defining-structs" class="md-nav__link">
+    Setting Up and Defining Structs
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#82-parsing-and-visualizing-the-data" class="md-nav__link">
-    8.2: Parsing and Visualizing the Data
+  <a href="#parsing-and-visualizing-the-data" class="md-nav__link">
+    Parsing and Visualizing the Data
   </a>
   
 </li>
@@ -476,23 +476,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-describing-the-data-in-construct" class="md-nav__link">
-    8: Describing the Data in Construct
+  <a href="#describing-the-data-in-construct" class="md-nav__link">
+    Describing the Data in Construct
   </a>
   
-    <nav class="md-nav" aria-label="8: Describing the Data in Construct">
+    <nav class="md-nav" aria-label="Describing the Data in Construct">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#81-setting-up-and-defining-structs" class="md-nav__link">
-    8.1: Setting Up and Defining Structs
+  <a href="#setting-up-and-defining-structs" class="md-nav__link">
+    Setting Up and Defining Structs
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#82-parsing-and-visualizing-the-data" class="md-nav__link">
-    8.2: Parsing and Visualizing the Data
+  <a href="#parsing-and-visualizing-the-data" class="md-nav__link">
+    Parsing and Visualizing the Data
   </a>
   
 </li>
@@ -523,10 +523,10 @@
 <li>Combine our Structs in a final description of our custom file format.</li>
 <li>Parse our custom file format using our Struct.</li>
 </ul>
-<h1 id="8-describing-the-data-in-construct">8: Describing the Data in Construct</h1>
+<h1 id="describing-the-data-in-construct">Describing the Data in Construct</h1>
 <p>Now that you've described your custom binary file in Kaitai, let's do the same using the <a href="https://construct.readthedocs.io/">Construct</a> library in Python. This section will guide you through building Structs to match your file layout, parsing the data, and visualizing the results.</p>
 <p>If you want to compare with a working example, see the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_struct.ipynb">example_struct.ipynb</a> notebook.</p>
-<h2 id="81-setting-up-and-defining-structs">8.1: Setting Up and Defining Structs</h2>
+<h2 id="setting-up-and-defining-structs">Setting Up and Defining Structs</h2>
 <p>Start by importing the required libraries:</p>
 <pre><code class="language-python">from construct import *
 import matplotlib.pyplot as plt
@@ -560,7 +560,7 @@ import numpy as np
 <blockquote>
 <p><strong>Tip:</strong> You can name your sub-Structs however you like, but be consistent. The quoted names (e.g., <code>"data_sects"</code>) are the keys you'll use to access the parsed data.</p>
 </blockquote>
-<h2 id="82-parsing-and-visualizing-the-data">8.2: Parsing and Visualizing the Data</h2>
+<h2 id="parsing-and-visualizing-the-data">Parsing and Visualizing the Data</h2>
 <p>Parsing with Construct is straightforward. You can do everything in the same script or notebook:</p>
 <pre><code class="language-python">def parse_file(input_path):
     with open(input_path, 'rb') as input_f:

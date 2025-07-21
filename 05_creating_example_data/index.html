@@ -334,37 +334,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-creating-example-data" class="md-nav__link">
-    6: Creating Example Data
+  <a href="#creating-example-data" class="md-nav__link">
+    Creating Example Data
   </a>
   
-    <nav class="md-nav" aria-label="6: Creating Example Data">
+    <nav class="md-nav" aria-label="Creating Example Data">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-designing-the-data-structure" class="md-nav__link">
-    6.1: Designing the Data Structure
+  <a href="#designing-the-data-structure" class="md-nav__link">
+    Designing the Data Structure
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#62-preparing-your-environment" class="md-nav__link">
-    6.2: Preparing Your Environment
+  <a href="#preparing-your-environment" class="md-nav__link">
+    Preparing Your Environment
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#63-creating-and-visualizing-the-data" class="md-nav__link">
-    6.3: Creating and Visualizing the Data
+  <a href="#creating-and-visualizing-the-data" class="md-nav__link">
+    Creating and Visualizing the Data
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#64-saving-data-as-binary" class="md-nav__link">
-    6.4: Saving Data as Binary
+  <a href="#saving-data-as-binary" class="md-nav__link">
+    Saving Data as Binary
   </a>
   
 </li>
@@ -490,37 +490,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-creating-example-data" class="md-nav__link">
-    6: Creating Example Data
+  <a href="#creating-example-data" class="md-nav__link">
+    Creating Example Data
   </a>
   
-    <nav class="md-nav" aria-label="6: Creating Example Data">
+    <nav class="md-nav" aria-label="Creating Example Data">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#61-designing-the-data-structure" class="md-nav__link">
-    6.1: Designing the Data Structure
+  <a href="#designing-the-data-structure" class="md-nav__link">
+    Designing the Data Structure
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#62-preparing-your-environment" class="md-nav__link">
-    6.2: Preparing Your Environment
+  <a href="#preparing-your-environment" class="md-nav__link">
+    Preparing Your Environment
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#63-creating-and-visualizing-the-data" class="md-nav__link">
-    6.3: Creating and Visualizing the Data
+  <a href="#creating-and-visualizing-the-data" class="md-nav__link">
+    Creating and Visualizing the Data
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#64-saving-data-as-binary" class="md-nav__link">
-    6.4: Saving Data as Binary
+  <a href="#saving-data-as-binary" class="md-nav__link">
+    Saving Data as Binary
   </a>
   
 </li>
@@ -549,17 +549,17 @@
 <ul>
 <li>Create example data to practice using Kaitai and Construct.</li>
 </ul>
-<h1 id="6-creating-example-data">6: Creating Example Data</h1>
+<h1 id="creating-example-data">Creating Example Data</h1>
 <p>Now that you understand the basics of file formats and parsing tools, let's put everything together by generating some example data, saving it in a binary file, and preparing to describe its structure with Kaitai and Construct. This hands-on section will help you see how real binary data is created and organized.</p>
 <p>Suppose we want to simulate a waveform and store it in a binary file. For demonstration, imagine we're measuring vibrations or current intensity. Since we're fabricating data, the context is flexible.</p>
 <p>We'll use Python for this example, as it's required for Construct. If you haven't set up your Python environment yet, <a href="../01_setup/">return to the setup section</a> for instructions.</p>
-<h2 id="61-designing-the-data-structure">6.1: Designing the Data Structure</h2>
+<h2 id="designing-the-data-structure">Designing the Data Structure</h2>
 <p>Let's divide our data into three sections based on intensity:
 - <strong>Full data:</strong> The entire waveform.
 - <strong>Mid-range data:</strong> Only points where the signal is moderate.
 - <strong>Peak data:</strong> Only the most intense points.</p>
 <p>This could represent three sensors with different sensitivities.</p>
-<h2 id="62-preparing-your-environment">6.2: Preparing Your Environment</h2>
+<h2 id="preparing-your-environment">Preparing Your Environment</h2>
 <p>You'll need the following Python libraries:
 - <code>numpy</code> (for numerical arrays)
 - <code>struct</code> (for binary packing; different from Construct)
@@ -574,7 +574,7 @@ pip install matplotlib
 <blockquote>
 <p><strong>Note:</strong> There is no package called <code>python_struct</code>; <code>struct</code> is part of the Python standard library.</p>
 </blockquote>
-<h2 id="63-creating-and-visualizing-the-data">6.3: Creating and Visualizing the Data</h2>
+<h2 id="creating-and-visualizing-the-data">Creating and Visualizing the Data</h2>
 <p>Create a new <code>.py</code> or <code>.ipynb</code> file (e.g., <code>example_data.py</code>). You can also reference the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_data.ipynb">example notebook</a>.</p>
 <p>Import the necessary modules:</p>
 <pre><code class="language-python">import numpy as np
@@ -615,7 +615,7 @@ plt.show()
 <p><img alt="full" src="../examples/full-graph.png" />
 <img alt="mid" src="../examples/mid-graph.png" />
 <img alt="peak" src="../examples/peak-graph.png" /></p>
-<h2 id="64-saving-data-as-binary">6.4: Saving Data as Binary</h2>
+<h2 id="saving-data-as-binary">Saving Data as Binary</h2>
 <p>Convert your lists to numpy arrays with a specific data type (e.g., <code>float32</code> for 4 bytes per value):</p>
 <pre><code class="language-python">full_x_data = np.array(full_x, dtype=np.float32)
 full_y_data = np.array(full_y, dtype=np.float32)
