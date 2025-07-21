@@ -10,7 +10,7 @@
       
       
       
-        <link rel="next" href="01_introduction/">
+        <link rel="next" href="01_setup/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#project-layout" class="md-skip">
+        <a href="#1-introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Introduction
             
           </span>
         </div>
@@ -194,51 +194,18 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Home
+    Introduction
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    Project layout
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -250,11 +217,11 @@
   
   
     <li class="md-nav__item">
-      <a href="01_introduction/" class="md-nav__link">
+      <a href="01_setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    1. Introduction
+    Setup
   </span>
   
 
@@ -269,11 +236,11 @@
   
   
     <li class="md-nav__item">
-      <a href="02_setup/" class="md-nav__link">
+      <a href="02_filetype/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    2. Setup
+    File types
   </span>
   
 
@@ -288,11 +255,11 @@
   
   
     <li class="md-nav__item">
-      <a href="03_filetype/" class="md-nav__link">
+      <a href="03_kaitai_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    3. File types
+    Kaitai basics
   </span>
   
 
@@ -307,11 +274,11 @@
   
   
     <li class="md-nav__item">
-      <a href="04_kaitai_basics/" class="md-nav__link">
+      <a href="04_construct_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    4. Kaitai basics
+    Construct basics
   </span>
   
 
@@ -326,11 +293,11 @@
   
   
     <li class="md-nav__item">
-      <a href="05_construct_basics/" class="md-nav__link">
+      <a href="05_creating_example_data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    5. Construct basics
+    Creating Example Data
   </span>
   
 
@@ -345,11 +312,11 @@
   
   
     <li class="md-nav__item">
-      <a href="06_creating_example_data/" class="md-nav__link">
+      <a href="06_kaitai_next_steps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    6. Creating Example Data
+    Kaitai Next Steps
   </span>
   
 
@@ -364,11 +331,11 @@
   
   
     <li class="md-nav__item">
-      <a href="07_kaitai_next_steps/" class="md-nav__link">
+      <a href="07_construct_next_steps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7. Kaitai Next Steps
+    Construct Next Steps
   </span>
   
 
@@ -383,11 +350,11 @@
   
   
     <li class="md-nav__item">
-      <a href="08_construct_next_steps/" class="md-nav__link">
+      <a href="08_conclusion/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    8. Construct Next Steps
+    Conclusion
   </span>
   
 
@@ -402,26 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="09_conclusion/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    9. Conclusion
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="10_appendix/" class="md-nav__link">
+      <a href="09_appendix/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -451,21 +399,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    Project layout
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -480,25 +415,16 @@
                   
 
 
-  <h1>Home</h1>
-
-<h2 id="project-layout">Project layout</h2>
-<p><strong>Created by Adrian Fisher</strong></p>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md                    # The documentation homepage.
-    01_introduction.md          # Explaining the purpose of the lesson
-    02_setup.md                 # How to install and use Kaitai and Construct
-    03_filetype.md              # Describing file formats, types, and the basics of computer language
-    04_kaitai_basics.md         # Describing the basics of using Kaitai
-    05_construct_basics.md      # Describing the basics of using Construct
-    06_creating_example_data.md # Creating an example raw data file
-    07_kaitai_next_steps.md     # Parsing the example data file with Kaitai
-    08_construct_next_steps.md  # Parsing the example data file with Construct
-    09_conclusion.md            # Final thoughts and resources
-    10_appendix.md              # Installation resources and advanced options
-    ...       # Other markdown pages, images and other files.
-</code></pre>
+<h1 id="1-introduction">1: Introduction</h1>
+<p>In scientific computing, data is often stored in custom <em>binary</em> formats. These formats might be tailored for specific instruments, simulations, or to optimize for storage space or read/write speed. However, a major drawback is that standard analysis software and programming language libraries usually cannot interpret these specialized binary structures directly.</p>
+<p>This lack of interoperability creates a hurdle: before the data can be analyzed or shared effectively, its binary layout must be explicitly defined and parsed. This lesson addresses this common challenge. We will explore how to set up and use two powerful tools:</p>
+<ol>
+<li><strong>Kaitai Struct:</strong> A YAML based declarative language for describing binary data structures, which can generate parser code in various languages (Python, C#, Java, JavaScript, Perl, PHP, Ruby).</li>
+<li><strong>Construct:</strong> A Python library for parsing and building binary data structures.</li>
+</ol>
+<p>We will guide you through installing these tools and then demonstrate how they enable you to translate custom binary data into readily usable formats for your analysis workflows.</p>
+<hr />
+<p>Continue to <a href="01_setup/">Setup</a> to get your environment ready.</p>
 
 
 

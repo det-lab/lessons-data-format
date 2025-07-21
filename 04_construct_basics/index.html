@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../09_conclusion/">
+        <link rel="prev" href="../03_kaitai_basics/">
       
+      
+        <link rel="next" href="../05_creating_example_data/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Appendix - Custom data format</title>
+        <title>Construct basics - Custom data format</title>
       
     
     
@@ -63,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#i-appendix" class="md-skip">
+        <a href="#objectives" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Appendix
+              Construct basics
             
           </span>
         </div>
@@ -192,7 +194,7 @@
         
   
   <span class="md-ellipsis">
-    Home
+    Introduction
   </span>
   
 
@@ -207,11 +209,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../01_introduction/" class="md-nav__link">
+      <a href="../01_setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    1. Introduction
+    Setup
   </span>
   
 
@@ -226,11 +228,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_setup/" class="md-nav__link">
+      <a href="../02_filetype/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    2. Setup
+    File types
   </span>
   
 
@@ -245,125 +247,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../03_filetype/" class="md-nav__link">
+      <a href="../03_kaitai_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    3. File types
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04_kaitai_basics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    4. Kaitai basics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05_construct_basics/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    5. Construct basics
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06_creating_example_data/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. Creating Example Data
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07_kaitai_next_steps/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    7. Kaitai Next Steps
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08_construct_next_steps/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    8. Construct Next Steps
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09_conclusion/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    9. Conclusion
+    Kaitai basics
   </span>
   
 
@@ -384,14 +272,12 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Appendix
+    Construct basics
   </span>
   
 
@@ -402,7 +288,7 @@
         
   
   <span class="md-ellipsis">
-    Appendix
+    Construct basics
   </span>
   
 
@@ -414,8 +300,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -424,16 +308,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#kaitai-installation" class="md-nav__link">
-    Kaitai Installation
+  <a href="#objectives" class="md-nav__link">
+    Objectives:
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#additional-construct-installation" class="md-nav__link">
-    Additional Construct Installation
+  <a href="#5-defining-the-structure-in-construct" class="md-nav__link">
+    5: Defining the Structure in Construct
   </a>
+  
+    <nav class="md-nav" aria-label="5: Defining the Structure in Construct">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-struct-basics" class="md-nav__link">
+    5.1: Struct basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-building-gifpy" class="md-nav__link">
+    5.2: Building gif.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -441,6 +345,101 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_creating_example_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Example Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_kaitai_next_steps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kaitai Next Steps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_construct_next_steps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Construct Next Steps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_conclusion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conclusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_appendix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -462,8 +461,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -472,16 +469,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#kaitai-installation" class="md-nav__link">
-    Kaitai Installation
+  <a href="#objectives" class="md-nav__link">
+    Objectives:
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#additional-construct-installation" class="md-nav__link">
-    Additional Construct Installation
+  <a href="#5-defining-the-structure-in-construct" class="md-nav__link">
+    5: Defining the Structure in Construct
   </a>
+  
+    <nav class="md-nav" aria-label="5: Defining the Structure in Construct">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-struct-basics" class="md-nav__link">
+    5.1: Struct basics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-building-gifpy" class="md-nav__link">
+    5.2: Building gif.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -500,28 +517,91 @@
                   
 
 
-<h1 id="i-appendix">i: Appendix</h1>
-<h2 id="kaitai-installation">Kaitai Installation</h2>
-<p>While the <a href="https://ide.kaitai.io/">Kaitai Web IDE</a> is sufficient for most users, you may want to install the Kaitai Struct Compiler (<code>ksc</code>) locally if you need to:</p>
+<h3 id="objectives">Objectives:</h3>
 <ul>
-<li>Generate parser code for use in your own projects (Python, Java, C#, etc.)</li>
-<li>Work offline or automate parser generation</li>
-<li>Use the Kaitai Struct Visualizer (<code>ksv</code>) for console-based visualization</li>
+<li>Understand how to begin working with Construct and its basic structure.</li>
+<li>Explore the Construct description of the GIF file type to see it in action.</li>
 </ul>
-<p>You can download installers for your operating system from the <a href="https://kaitai.io/#download">Kaitai Struct download page</a>.</p>
-<p>After installation, you should have access to:</p>
-<ul>
-<li><code>ksc</code> (<code>kaitai-struct-compiler</code>): Command-line tool to compile <code>.ksy</code> files into parsing libraries for your chosen language.</li>
-<li><code>ksv</code> (<code>kaitai-struct-visualizer</code>, optional): Console-based visualizer for Kaitai Struct files.</li>
-</ul>
-<p>For usage instructions, see the <a href="https://kaitai.io/docs/">official Kaitai documentation</a>.</p>
-<h2 id="additional-construct-installation">Additional Construct Installation</h2>
-<p>The main Construct library is sufficient for this lesson. However, if you want to install all optional modules (for advanced features or additional protocol support), use:</p>
-<pre><code class="language-sh">pip install construct[extras]
+<h1 id="5-defining-the-structure-in-construct">5: Defining the Structure in Construct</h1>
+<p>Construct is a Python library for declaratively describing and parsing binary data formats. Its functionality is similar to Kaitai Struct, but it uses Python code and programmatic constructs. In Construct, you define <code>Structs</code> (structures) that describe how to interpret sections of a binary file. These <code>Structs</code> can be combined and nested to represent complex file formats, ultimately building up to a main <code>Struct</code> that captures the entire file's structure.</p>
+<h2 id="51-struct-basics">5.1: Struct basics</h2>
+<p>A <code>Struct</code> in Construct is a collection of ordered fields, each with a name and a type. Fields are parsed or built in the order they are defined. When parsing, Construct returns a dictionary-like object with keys matching the field names. Unlike Kaitai, field names are optional in Construct, but naming fields makes the resulting data much easier to work with.</p>
+<p>Let's recreate the dimensions example from the Kaitai section. Here is how you would define a <code>width_and_height</code> <code>Struct</code> in Construct:</p>
+<pre><code class="language-python">width_and_height = Struct(
+    &quot;width&quot; / Int16ul,
+    &quot;height&quot; / Int16ul
+)
 </code></pre>
-<p>For more details, refer to the <a href="https://construct.readthedocs.io/">Construct documentation</a>.</p>
+<p>Here, <code>Int16ul</code> means an <strong>Int</strong>eger of <strong>16</strong> <strong>u</strong>nsigned bits in <strong>l</strong>ittle-endian format. You can then reuse this <code>width_and_height</code> struct in other structures:</p>
+<pre><code class="language-python">dimensions = Struct(
+    &quot;w_and_h&quot; / width_and_height
+)
+</code></pre>
+<p>This modular approach allows you to build up complex file formats from smaller, reusable pieces.</p>
+<h2 id="52-building-gifpy">5.2: Building gif.py</h2>
+<p>Let's look at how Construct can be used to describe the GIF file format, using the <a href="https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py">gif.py</a> example from Construct's GitHub repository.</p>
+<p>Unlike Kaitai, where types can be declared in any order, Python requires that each <code>Struct</code> be defined before it is referenced. This means you typically define the smallest components first and then combine them into larger structures. This means that when examining the structure of <code>Structs</code>, it often makes sense to start from the final defined <code>Struct</code> to see what building blocks it uses.</p>
+<p>Here is the top-level <code>gif_file</code> struct, which represents the entire GIF file:</p>
+<pre><code class="language-python">gif_file = Struct(
+    &quot;signature&quot; / Const(b&quot;GIF&quot;),
+    &quot;version&quot; / Const(b&quot;89a&quot;),
+    &quot;logical_screen&quot; / gif_logical_screen,
+    &quot;data&quot; / GreedyRange(gif_data),
+    # &quot;trailer&quot; / Const(0x3B, Int8ul)  # Optional: GIF file terminator
+)
+</code></pre>
+<ul>
+<li><code>Const(b"GIF")</code> and <code>Const(b"89a")</code> ensure the file starts with the correct signature and version, similar to the <code>magic</code> keyword in Kaitai. However, this also means it will fail to parse if the version number is anything other than <code>89a</code>.</li>
+<li><code>logical_screen</code> and <code>data</code> are parsed using other structs defined above <code>gif_file</code>.</li>
+<li><code>GreedyRange(gif_data)</code> repeats the <code>gif_data</code> struct until the end of the file.</li>
+</ul>
+<p>Now, let's look at the <code>gif_logical_screen</code> struct:</p>
+<pre><code class="language-python">gif_logical_screen = Struct(
+    &quot;width&quot; / Int16ul,
+    &quot;height&quot; / Int16ul,
+    &quot;flags&quot; / BitStruct(
+        &quot;global_color_table&quot; / Bit,
+        &quot;color_resolution&quot; / BitsInteger(3),
+        &quot;sort_flag&quot; / Bit,
+        &quot;global_color_table_bpp&quot; / BitsInteger(3),
+    ),
+    &quot;bgcolor_index&quot; / Int8ul,
+    &quot;pixel_aspect_ratio&quot; / Int8ul,
+    &quot;palette&quot; / If(this.flags.global_color_table,
+        Array(lambda this: 2**(this.flags.global_color_table_bpp + 1),
+            Struct(
+                &quot;R&quot; / Int8ul,
+                &quot;G&quot; / Int8ul,
+                &quot;B&quot; / Int8ul,
+            )
+        )
+    ),
+)
+</code></pre>
+<ul>
+<li><code>BitStruct</code> allows you to parse individual bits within a byte, which is useful for fields like <code>flags</code> that pack multiple values into a single byte.</li>
+<li>The <code>palette</code> field is only present if <code>global_color_table</code> is <code>True</code>. Its length is determined by the value of <code>global_color_table_bpp</code>.</li>
+</ul>
+<p>The <code>data</code> section of the GIF file is parsed using a combination of <code>Struct</code>, <code>Switch</code>, and <code>GreedyRange</code>:</p>
+<pre><code class="language-python">gif_data = Struct(
+    &quot;introducer&quot; / Int8ul,
+    &quot;data&quot; / Switch(this.introducer, {
+        0x21: extension,
+        0x2C: image_descriptor,
+    })
+)
+</code></pre>
+<ul>
+<li>The <code>introducer</code> byte determines whether the next section is an extension or an image descriptor.</li>
+<li><code>Switch</code> selects the appropriate struct based on the value of <code>introducer</code>.</li>
+<li>Each of these sub-structs (<code>extension</code>, <code>image_descriptor</code>) is defined elsewhere in the file.</li>
+</ul>
+<p>As mentioned earlier, having <code>GreedyRange(gif_data)</code> in the top-level struct repeats this process for each data block in the file, allowing Construct to parse the entire sequence of GIF blocks.</p>
+<p>This modular, programmatic approach makes Construct powerful for describing binary formats in Python. While Kaitai uses a declarative YAML-based syntax, Construct leverages Python's syntax and logic, which can be more flexible for complex parsing tasks.</p>
 <hr />
-<p>If you encounter installation issues, check the official documentation or community forums linked in the <a href="../09_conclusion/">conclusion</a>.</p>
+<p>Now that you have seen how to describe file formats in both Kaitai and Construct, the next step is to create your own custom data format and try parsing it using these tools. Continue to the next section to learn how to generate and work with example data.</p>
+<hr />
+<p>Continue to <a href="../05_creating_example_data/">Creating Example Data</a> to generate and save your own binary data.</p>
 
 
 
