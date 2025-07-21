@@ -1,7 +1,7 @@
 ### Objectives:
 * Describe our fabricated data in the Kaitai IDE.
 * Use the description to parse our custom file format.
-* Return the plots that were created in [section 6](06_creating_example_data.md)
+* Return the plots that were created in [the previous section](05_creating_example_data.md)
 
 # 7: Describing the Data in Kaitai
 
@@ -108,7 +108,7 @@ Your `.ksy` file should now fully describe the structure of your binary file.
 
 ## 7.2: Parsing Raw Data with a .ksy File
 
-To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (`ksc`). If you haven't installed it, see the [appendix](10_appendix.md).
+To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (`ksc`). If you haven't installed it, see the [appendix](09_appendix.md).
 
 From your terminal, generate the parser (for Python):
 
@@ -156,4 +156,4 @@ Repeat for `m_data` and `p_data` as needed.
 
 ---
 
-You have now described and parsed your custom binary file using Kaitai Struct!  Continue to [Construct Next Steps](08_construct_next_steps.md) to parse your custom data with the Construct library.
+You have now described and parsed your custom binary file using Kaitai Struct!  Continue to [Construct Next Steps](07_construct_next_steps.md) to parse your custom data with the Construct library.
