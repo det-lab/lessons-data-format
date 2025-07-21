@@ -1,4 +1,4 @@
-# 9: Conclusion
+# Conclusion
 
 Congratulations on completing this lesson on custom binary data formats! You have learned how to:
 

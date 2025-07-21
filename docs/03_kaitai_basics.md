@@ -2,11 +2,11 @@
 * Understand how to begin working with Kaitai and the basics of its syntax.
 * Explore the Kaitai description for the GIF filetype to see it in action.
 
-# 4: Defining the Structure in Kaitai
+# Defining the Structure in Kaitai
 
 Let's try loading the GIF file in the Kaitai Web IDE to understand this better. Start by navigating to the [Kaitai Web IDE](https://ide.kaitai.io/) if you don't already have it open.
 
-## 4.1: Anatomy of the Web IDE
+## Anatomy of the Web IDE
 
 On the left side of the webpage, you'll see a list of folders, each containing pre-built `.ksy` files you can use to test functionality. For this example, navigate to `formats/image/gif.ksy` and double-click `gif.ksy` to load it into the IDE. The buttons on the bottom left of the webpage are for creating new `.ksy` files, uploading `.ksy` or data files, and saving `.ksy` files:
 
@@ -33,7 +33,7 @@ If you are interested in following along more precisely with the `gif.ksy` file,
 
 We won't fully describe everything being done in the example `.ksy` file here. Instead, we'll look at a broad overview to give an idea of Kaitai's functionality. Now that we know what we're looking at in the IDE, we can take a look at how the file type is being described.
 
-## 4.2: meta and seq
+## `meta` and `seq`
 
 Your `.ksy` files should always start with a `meta` section, defining meta-information about your file type such as the file extension (like `.gif` or `.tiff`), title, license, endianness, cross-references, documentation, version, types, encodings, etc.
 
@@ -43,7 +43,7 @@ When reading the raw data of our GIF, Kaitai will apply the `header` type until 
 
 Instead of investigating all four different `types` in the file's `seq`, let's look only at the first two: `header` and `logical_screen_descriptor`, to learn the basics of using Kaitai.
 
-## 4.3: Types
+## Types
 
 The `types` section is where it becomes vital to reference documentation about the file type you're trying to parse. For example, the `gif.ksy` file links to the [GIF89a Specification](https://www.w3.org/Graphics/GIF/spec-gif89a.txt).
 
@@ -118,7 +118,7 @@ logical_screen_descriptor_struct:
 
 As you can see, it simply grabs the width and the height of the screen on which the GIF will be drawn as 2 unsigned bytes, followed by three unsigned bytes that describe the `flags`, `bg_color_index`, and `pixel_aspect_ratio`. Where it starts to get less straightforward here is in the `instances` section, which are next up to be explained.
 
-### 4.3.1: Instances
+### Instances
 
 After the `id`s are set in the type `seq`, we then see the `instances` section. This section sets new variables by manipulating the previously found `flags` object using Kaitai's expression language.
 

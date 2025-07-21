@@ -3,13 +3,13 @@
 * Use the description to parse our custom file format.
 * Return the plots that were created in [the previous section](05_creating_example_data.md)
 
-# 7: Describing the Data in Kaitai
+# Describing the Data in Kaitai
 
 Now that you have created a custom binary file, let's describe its structure using Kaitai Struct. This will allow you to parse and analyze your data with generated code.
 
 If you don't have the [Kaitai Web IDE](https://ide.kaitai.io/) open, navigate there and create a new `.ksy` file (e.g., `wave_parser.ksy`). You can also reference the [example file](https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/wave_parser.ksy).
 
-## 7.1: Writing the Kaitai Description
+## Writing the Kaitai Description
 
 ### Setting Endianness
 
@@ -106,7 +106,7 @@ Finally, add these sections to the main `seq`:
 
 Your `.ksy` file should now fully describe the structure of your binary file.
 
-## 7.2: Parsing Raw Data with a .ksy File
+## Parsing Raw Data with a .ksy File
 
 To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (`ksc`). If you haven't installed it, see the [appendix](09_appendix.md).
 
@@ -124,7 +124,7 @@ ksc -t python --outdir wave_test wave_parser.ksy
 
 This will create a folder (`wave_test`) containing a Python file (`test.py`).
 
-## 7.3: Loading and Using the Parser in Python
+## Loading and Using the Parser in Python
 
 Make sure your generated parser and your binary data file are in the same directory or update your import paths accordingly.
 

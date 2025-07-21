@@ -1,9 +1,4 @@
-### Objectives:
-* Understand what a file type is and what a file format is.
-* Understand why computers use binary, how to represent binary with hexadecimals, and why it makes sense to do so.
-* Take a look at a file's raw data to explain how computers open files.
-
-# 3: What is a file type?
+# What is a file type?
 
 As we're about to begin exploring the mechanics of computers and programs on a more fundamental level than the average consumer might be used to, it's important to remember that we are navigating culturally specific conventions and abstractions that have been built up over several decades. During this time, humanity has been working on simplifying and making accessible some incredibly complex physics engines which have given us the ability to relate the laws of electromagnetism into our world of signs and symbols. After nearly a century of refining our processes and methods, we now have access to almost unthinkably complex devices which we call things like "graphics processing units", or "Random Access Memory cards", which can fit into your pocket and deliver you pictures of cats from around the world. 
 
@@ -15,7 +10,7 @@ Sometimes, different file types share the same format (e.g., `.jpg` and `.jpeg`)
 
 As new needs arise, developers define new file formats and create the software needed to interpret the raw binary data and present it in a way humans can understand.
 
-## 3.1: Computer language and number systems
+## Computer language and number systems
 
 A file format is a set of instructions that a program uses to open, edit, and/or save a file. At the lowest level, all data on a computer is stored as a sequence of `1`s and `0`s—**binary** digits, or **bits**. But how are these bits generated and used?
 
@@ -26,7 +21,7 @@ When you type a character in a `.txt` document, your keyboard completes a circui
 
 For example, the character `a` becomes the binary `01100001`. Each character is represented by a **byte** (8 bits). Since binary is a **base two** system, one byte can represent any value from `00000000` to `11111111` (0 to 255 in decimal).
 
-### 3.1.1: Counting in binary and hexadecimals
+### Counting in binary and hexadecimals
 
 As a side effect of finding ourselves with 10 fingers (usually), humans have developed a **base 10** (decimal) numerical system. In base 10, the number "3125" can be thought of as:
 
@@ -56,7 +51,7 @@ To summarize: when you type a character, a number between 0 and 255 is stored in
 
 So, how does your computer take a large number saved in memory and turn it into a document you can understand? How do text editors know to open a `.txt` file and represent `01100001` as the letter `a`?
 
-### 3.1.2: Endianness
+### Endianness
 
 One of the first steps a computer follows when opening a file relates to **endianness**, or the order in which bytes of a given "word" (a fixed number of bytes set by the computer's processor) are to be read. There are two types:
 
@@ -72,7 +67,7 @@ Suppose a word is four bytes, and you want to write the number `2024`:
 
 If a file is saved using one endianness but opened using another, the bytes will be misinterpreted. Think of it as similar to trying to read a manga from left to right, or a novel starting from the last word on the last page. Many file formats include a byte order mark (**BOM**) to indicate which endianness to use.
 
-## 3.2: Opening a file with a text editor
+## Opening a file with a text editor
 
 Plain text editors convert binary data into legible characters using encodings such as **UTF-8** or **ASCII**. UTF-8 is the most widely used encoding and is backwards compatible with ASCII for the first 128 characters.
 
@@ -90,7 +85,7 @@ Text editors work well for text files, but what happens if you open file that a 
 ![Rotating Earth](https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif)
 *Rotating_earth_(large).gif, from [Wikipedia](https://en.wikipedia.org/wiki/GIF)*
 
-### 3.2.1: Text editor setup
+### Text editor setup
 
 Which text editor to use depends on your operating system:
 

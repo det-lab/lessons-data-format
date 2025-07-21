@@ -3,13 +3,13 @@
 * Combine our Structs in a final description of our custom file format.
 * Parse our custom file format using our Struct.
 
-# 8: Describing the Data in Construct
+# Describing the Data in Construct
 
 Now that you've described your custom binary file in Kaitai, let's do the same using the [Construct](https://construct.readthedocs.io/) library in Python. This section will guide you through building Structs to match your file layout, parsing the data, and visualizing the results.
 
 If you want to compare with a working example, see the [example_struct.ipynb](https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_struct.ipynb) notebook.
 
-## 8.1: Setting Up and Defining Structs
+## Setting Up and Defining Structs
 
 Start by importing the required libraries:
 
@@ -55,7 +55,7 @@ test_struct = Struct(
 
 > **Tip:** You can name your sub-Structs however you like, but be consistent. The quoted names (e.g., `"data_sects"`) are the keys you'll use to access the parsed data.
 
-## 8.2: Parsing and Visualizing the Data
+## Parsing and Visualizing the Data
 
 Parsing with Construct is straightforward. You can do everything in the same script or notebook:
 

@@ -1,4 +1,4 @@
-# i: Appendix
+# Appendix
 
 ## Kaitai Installation
 

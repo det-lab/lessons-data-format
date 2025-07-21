@@ -1,11 +1,11 @@
 ### Objectives:
 * Learn how to setup and work with the Kaitai IDE and the Construct Python library.
 
-# 2: Setup
+# Setup
 
 This section will guide you through setting up the tools needed for this lesson: the Kaitai Web IDE (for describing binary formats) and the Construct Python library (for parsing them in Python). By the end, you'll be ready to follow along with all code examples.
 
-## 2.1 Kaitai IDE
+## Kaitai IDE
 
 **No installation is required** for most users. Simply open the [Kaitai Web IDE](https://ide.kaitai.io/) in your browser.  
 - To get started:  
@@ -15,7 +15,7 @@ This section will guide you through setting up the tools needed for this lesson:
 
 *Advanced users*: If you want to use Kaitai offline or generate parsers locally, see the [appendix](09_appendix.md) for installing `ksc` and `ksv`.
 
-## 2.2 Python and IDE Setup
+## Python and IDE Setup
 
 To use Construct, you need Python 3.6 or newer.  
 
@@ -49,7 +49,7 @@ To set up a virtual environment using `virtualenv`:
 
 You can use any IDE (e.g., [VS Code](https://code.visualstudio.com/), [PyCharm](https://www.jetbrains.com/pycharm/), [Anaconda](https://www.anaconda.com/)), but we recommend [Spyder](https://www.spyder-ide.org/download) for beginners.
 
-## 2.3 Construct Setup
+## Construct Setup
 
 With your virtual environment activated, install Construct:
 ```bash

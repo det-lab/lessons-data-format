@@ -1,7 +1,7 @@
 ### Objectives:
 * Create example data to practice using Kaitai and Construct.
 
-# 6: Creating Example Data
+# Creating Example Data
 
 Now that you understand the basics of file formats and parsing tools, let's put everything together by generating some example data, saving it in a binary file, and preparing to describe its structure with Kaitai and Construct. This hands-on section will help you see how real binary data is created and organized.
 
@@ -9,7 +9,7 @@ Suppose we want to simulate a waveform and store it in a binary file. For demons
 
 We'll use Python for this example, as it's required for Construct. If you haven't set up your Python environment yet, [return to the setup section](01_setup.md) for instructions.
 
-## 6.1: Designing the Data Structure
+## Designing the Data Structure
 
 Let's divide our data into three sections based on intensity:
 - **Full data:** The entire waveform.
@@ -18,7 +18,7 @@ Let's divide our data into three sections based on intensity:
 
 This could represent three sensors with different sensitivities.
 
-## 6.2: Preparing Your Environment
+## Preparing Your Environment
 
 You'll need the following Python libraries:
 - `numpy` (for numerical arrays)
@@ -36,7 +36,7 @@ pip install matplotlib
 ```
 > **Note:** There is no package called `python_struct`; `struct` is part of the Python standard library.
 
-## 6.3: Creating and Visualizing the Data
+## Creating and Visualizing the Data
 
 Create a new `.py` or `.ipynb` file (e.g., `example_data.py`). You can also reference the [example notebook](https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_data.ipynb).
 
@@ -89,7 +89,7 @@ The resulting graphs should look like:
 ![mid](examples/mid-graph.png)
 ![peak](examples/peak-graph.png)
 
-## 6.4: Saving Data as Binary
+## Saving Data as Binary
 
 Convert your lists to numpy arrays with a specific data type (e.g., `float32` for 4 bytes per value):
 ```python
