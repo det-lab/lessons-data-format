@@ -1,4 +1,4 @@
-# 1: Introduction
+# Introduction
 In scientific computing, data is often stored in custom *binary* formats. These formats might be tailored for specific instruments, simulations, or to optimize for storage space or read/write speed. However, a major drawback is that standard analysis software and programming language libraries usually cannot interpret these specialized binary structures directly.
 
 This lack of interoperability creates a hurdle: before the data can be analyzed or shared effectively, its binary layout must be explicitly defined and parsed. This lesson addresses this common challenge. We will explore how to set up and use two powerful tools:
