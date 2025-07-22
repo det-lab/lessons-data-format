@@ -1,6 +1,3 @@
-### Objectives:
-* Create example data to practice using Kaitai and Construct.
-
 # Creating Example Data
 
 Now that you understand the basics of file formats and parsing tools, let's put everything together by generating some example data, saving it in a binary file, and preparing to describe its structure with Kaitai and Construct. This hands-on section will help you see how real binary data is created and organized.

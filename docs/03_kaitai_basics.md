@@ -1,7 +1,3 @@
-### Objectives:
-* Understand how to begin working with Kaitai and the basics of its syntax.
-* Explore the Kaitai description for the GIF filetype to see it in action.
-
 # Defining the Structure in Kaitai
 
 Let's try loading the GIF file in the Kaitai Web IDE to understand this better. Start by navigating to the [Kaitai Web IDE](https://ide.kaitai.io/) if you don't already have it open.

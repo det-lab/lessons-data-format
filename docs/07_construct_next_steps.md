@@ -1,8 +1,3 @@
-### Objectives:
-* Create Structs to describe our example data using the Construct library.
-* Combine our Structs in a final description of our custom file format.
-* Parse our custom file format using our Struct.
-
 # Describing the Data in Construct
 
 Now that you've described your custom binary file in Kaitai, let's do the same using the [Construct](https://construct.readthedocs.io/) library in Python. This section will guide you through building Structs to match your file layout, parsing the data, and visualizing the results.

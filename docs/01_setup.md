@@ -1,6 +1,3 @@
-### Objectives:
-* Learn how to setup and work with the Kaitai IDE and the Construct Python library.
-
 # Setup
 
 This section will guide you through setting up the tools needed for this lesson: the Kaitai Web IDE (for describing binary formats) and the Construct Python library (for parsing them in Python). By the end, you'll be ready to follow along with all code examples.
@@ -11,7 +8,7 @@ This section will guide you through setting up the tools needed for this lesson:
 - To get started:  
   1. Go to [https://ide.kaitai.io/](https://ide.kaitai.io/)  
   2. Click "New" to create a new .ksy file  
-  3. Follow the instructions in [Section 4: Defining the Structure in Kaitai](03_kaitai_basics.md)
+  3. Follow the instructions in [Section 3: Defining the Structure in Kaitai](03_kaitai_basics.md)
 
 *Advanced users*: If you want to use Kaitai offline or generate parsers locally, see the [appendix](09_appendix.md) for installing `ksc` and `ksv`.
 

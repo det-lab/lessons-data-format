@@ -1,8 +1,3 @@
-### Objectives:
-* Describe our fabricated data in the Kaitai IDE.
-* Use the description to parse our custom file format.
-* Return the plots that were created in [the previous section](05_creating_example_data.md)
-
 # Describing the Data in Kaitai
 
 Now that you have created a custom binary file, let's describe its structure using Kaitai Struct. This will allow you to parse and analyze your data with generated code.

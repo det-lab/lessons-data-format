@@ -1,7 +1,3 @@
-### Objectives:
-* Understand how to begin working with Construct and its basic structure.
-* Explore the Construct description of the GIF file type to see it in action.
-
 # Defining the Structure in Construct
 
 Construct is a Python library for declaratively describing and parsing binary data formats. Its functionality is similar to Kaitai Struct, but it uses Python code and programmatic constructs. In Construct, you define `Structs` (structures) that describe how to interpret sections of a binary file. These `Structs` can be combined and nested to represent complex file formats, ultimately building up to a main `Struct` that captures the entire file's structure.
