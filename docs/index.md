@@ -8,5 +8,7 @@ This lack of interoperability creates a hurdle: before the data can be analyzed 
 
 We will guide you through installing these tools and then demonstrate how they enable you to translate custom binary data into readily usable formats for your analysis workflows.
 
+>If you are new to programming, it's recommended that you first take a few minutes to go over [this short lesson](https://det-lab.github.io/reading-documentation/) talking about how to read technical documentation.
+
 ---
 Continue to [Setup](01_setup.md) to get your environment ready.
