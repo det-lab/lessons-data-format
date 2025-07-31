@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../04_construct_basics/">
+        <link rel="prev" href="../06_creating_example_data/">
       
       
-        <link rel="next" href="../06_kaitai_next_steps/">
+        <link rel="next" href="../08_construct_next_steps/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Creating Example Data - Custom data format</title>
+        <title>Kaitai Next Steps - Custom data format</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-example-data" class="md-skip">
+        <a href="#describing-the-data-in-kaitai" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Creating Example Data
+              Kaitai Next Steps
             
           </span>
         </div>
@@ -247,7 +247,26 @@
   
   
     <li class="md-nav__item">
-      <a href="../03_kaitai_basics/" class="md-nav__link">
+      <a href="../03_representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_kaitai_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -266,11 +285,30 @@
   
   
     <li class="md-nav__item">
-      <a href="../04_construct_basics/" class="md-nav__link">
+      <a href="../05_construct_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Construct basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_creating_example_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Example Data
   </span>
   
 
@@ -298,7 +336,7 @@
           
   
   <span class="md-ellipsis">
-    Creating Example Data
+    Kaitai Next Steps
   </span>
   
 
@@ -309,7 +347,7 @@
         
   
   <span class="md-ellipsis">
-    Creating Example Data
+    Kaitai Next Steps
   </span>
   
 
@@ -331,29 +369,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#designing-the-data-structure" class="md-nav__link">
-    Designing the Data Structure
+  <a href="#writing-the-kaitai-description" class="md-nav__link">
+    Writing the Kaitai Description
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing the Kaitai Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-endianness" class="md-nav__link">
+    Setting Endianness
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describing-the-file-structure" class="md-nav__link">
+    Describing the File Structure
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsing-raw-data-with-a-ksy-file" class="md-nav__link">
+    Parsing Raw Data with a .ksy File
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#preparing-your-environment" class="md-nav__link">
-    Preparing Your Environment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-and-visualizing-the-data" class="md-nav__link">
-    Creating and Visualizing the Data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saving-data-as-binary" class="md-nav__link">
-    Saving Data as Binary
+  <a href="#loading-and-using-the-parser-in-python" class="md-nav__link">
+    Loading and Using the Parser in Python
   </a>
   
 </li>
@@ -372,26 +423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06_kaitai_next_steps/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kaitai Next Steps
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07_construct_next_steps/" class="md-nav__link">
+      <a href="../08_construct_next_steps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -410,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08_conclusion/" class="md-nav__link">
+      <a href="../09_conclusion/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -429,7 +461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09_appendix/" class="md-nav__link">
+      <a href="../10_appendix/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -469,29 +501,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#designing-the-data-structure" class="md-nav__link">
-    Designing the Data Structure
+  <a href="#writing-the-kaitai-description" class="md-nav__link">
+    Writing the Kaitai Description
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing the Kaitai Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-endianness" class="md-nav__link">
+    Setting Endianness
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describing-the-file-structure" class="md-nav__link">
+    Describing the File Structure
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsing-raw-data-with-a-ksy-file" class="md-nav__link">
+    Parsing Raw Data with a .ksy File
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#preparing-your-environment" class="md-nav__link">
-    Preparing Your Environment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-and-visualizing-the-data" class="md-nav__link">
-    Creating and Visualizing the Data
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saving-data-as-binary" class="md-nav__link">
-    Saving Data as Binary
+  <a href="#loading-and-using-the-parser-in-python" class="md-nav__link">
+    Loading and Using the Parser in Python
   </a>
   
 </li>
@@ -511,103 +556,119 @@
                   
 
 
-<h1 id="creating-example-data">Creating Example Data</h1>
-<p>Now that you understand the basics of file formats and parsing tools, let's put everything together by generating some example data, saving it in a binary file, and preparing to describe its structure with Kaitai and Construct. This hands-on section will help you see how real binary data is created and organized.</p>
-<p>Suppose we want to simulate a waveform and store it in a binary file. For demonstration, imagine we're measuring vibrations or current intensity. Since we're fabricating data, the context is flexible.</p>
-<p>We'll use Python for this example, as it's required for Construct. If you haven't set up your Python environment yet, <a href="../01_setup/">return to the setup section</a> for instructions.</p>
-<h2 id="designing-the-data-structure">Designing the Data Structure</h2>
-<p>Let's divide our data into three sections based on intensity:
-- <strong>Full data:</strong> The entire waveform.
-- <strong>Mid-range data:</strong> Only points where the signal is moderate.
-- <strong>Peak data:</strong> Only the most intense points.</p>
-<p>This could represent three sensors with different sensitivities.</p>
-<h2 id="preparing-your-environment">Preparing Your Environment</h2>
-<p>You'll need the following Python libraries:
-- <code>numpy</code> (for numerical arrays)
-- <code>struct</code> (for binary packing; different from Construct)
-- <code>matplotlib</code> (optional, for plotting)</p>
-<p>To check if these are installed, run:</p>
-<pre><code>pip list
+<h1 id="describing-the-data-in-kaitai">Describing the Data in Kaitai</h1>
+<p>Now that you have created a custom binary file, let's describe its structure using Kaitai Struct. This will allow you to parse and analyze your data with generated code.</p>
+<p>If you don't have the <a href="https://ide.kaitai.io/">Kaitai Web IDE</a> open, navigate there and create a new <code>.ksy</code> file (e.g., <code>wave_parser.ksy</code>). You can also reference the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/wave_parser.ksy">example file</a>.</p>
+<h2 id="writing-the-kaitai-description">Writing the Kaitai Description</h2>
+<h3 id="setting-endianness">Setting Endianness</h3>
+<p>By default, the binary data you created was written using your operating system's native endianness. If you want to ensure consistency, you can explicitly set the endianness when generating your arrays in Python:</p>
+<pre><code class="language-python"># For little-endian
+full_x_data = np.array(full_x, dtype='&lt;float32')  # or '&lt;f4'
+
+# For big-endian
+full_x_data = np.array(full_x, dtype='&gt;float32')  # or '&gt;f4'
 </code></pre>
-<p>If you don't see <code>numpy</code> or <code>matplotlib</code>, install them with:</p>
-<pre><code>pip install numpy
-pip install matplotlib
+<p>In your <code>.ksy</code> file, specify the endianness in the <code>meta</code> section:</p>
+<pre><code class="language-yaml">meta:
+  id: test
+  file-extension: test
+  endian: le  # or 'be' for big-endian
 </code></pre>
-<blockquote>
-<p><strong>Note:</strong> There is no package called <code>python_struct</code>; <code>struct</code> is part of the Python standard library.</p>
-</blockquote>
-<h2 id="creating-and-visualizing-the-data">Creating and Visualizing the Data</h2>
-<p>Create a new <code>.py</code> or <code>.ipynb</code> file (e.g., <code>example_data.py</code>). You can also reference the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_data.ipynb">example notebook</a>.</p>
-<p>Import the necessary modules:</p>
-<pre><code class="language-python">import numpy as np
-import struct
+<h3 id="describing-the-file-structure">Describing the File Structure</h3>
+<p>Recall that when saving your binary file, you wrote three unsigned 4-byte integers at the start, representing the lengths of each data section. In Kaitai, you can capture these using <code>u4</code> types:</p>
+<pre><code class="language-yaml">types:
+  full_mid_peak_lens:
+    seq:
+      - id: full_len
+        type: u4
+      - id: mid_len
+        type: u4
+      - id: peak_len
+        type: u4
+</code></pre>
+<p>In the main <code>seq</code> section, reference this type to read the lengths:</p>
+<pre><code class="language-yaml">seq:
+  - id: lengths
+    type: full_mid_peak_lens
+</code></pre>
+<p>Next, define the structure for each data section. Since each section contains two arrays (<code>x_data</code> and <code>y_data</code>) of <code>float32</code> values, and you know the length from the header, you can use <code>repeat-expr</code>:</p>
+<pre><code class="language-yaml">  full_data:
+    seq:
+      - id: x_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.full_len
+      - id: y_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.full_len
+
+  mid_data:
+    seq:
+      - id: x_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.mid_len
+      - id: y_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.mid_len
+
+  peak_data:
+    seq:
+      - id: x_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.peak_len
+      - id: y_data
+        type: f4
+        repeat: expr
+        repeat-expr: _root.lengths.peak_len
+</code></pre>
+<p>Finally, add these sections to the main <code>seq</code>:</p>
+<pre><code class="language-yaml">  - id: f_data
+    type: full_data
+  - id: m_data
+    type: mid_data
+  - id: p_data
+    type: peak_data
+</code></pre>
+<p>Your <code>.ksy</code> file should now fully describe the structure of your binary file.</p>
+<h2 id="parsing-raw-data-with-a-ksy-file">Parsing Raw Data with a .ksy File</h2>
+<p>To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (<code>ksc</code>). If you haven't installed it, see the <a href="../10_appendix/">appendix</a>.</p>
+<p>From your terminal, generate the parser (for Python):</p>
+<pre><code class="language-sh">ksc -t &lt;language&gt; --outdir &lt;new_foldername&gt; &lt;path/to/your/file.ksy&gt;
+</code></pre>
+<p>Replacing the parts in the brackets accordingly. For language, the options are: <code>cpp_stl</code>, <code>csharp</code>, <code>java</code>, <code>javascript</code>, <code>perl</code>, <code>php</code>, <code>python</code>, <code>ruby</code>, or <code>all</code>. For this example, we'll be running:</p>
+<pre><code class="language-sh">ksc -t python --outdir wave_test wave_parser.ksy
+</code></pre>
+<p>This will create a folder (<code>wave_test</code>) containing a Python file (<code>test.py</code>).</p>
+<h2 id="loading-and-using-the-parser-in-python">Loading and Using the Parser in Python</h2>
+<p>Make sure your generated parser and your binary data file are in the same directory or update your import paths accordingly.</p>
+<p>Example usage in Python:</p>
+<pre><code class="language-python">from pathlib import Path
+from wave_test.test import *  # Replace with the actual class name from your .ksy meta:id
 import matplotlib.pyplot as plt
-</code></pre>
-<p>Now, initialize arrays for each section:</p>
-<pre><code class="language-python">full_x, full_y = [], []
-mid_x, mid_y = [], []
-peak_x, peak_y = [], []
-</code></pre>
-<p>Populate these arrays with simulated data. For example, generate 100,000 points from <code>x = -5</code> to <code>x = 5</code> using the (totally arbitrary) equation <span class="arithmatex">\(y=cos(\frac{2 \pi x^2}{x^2 +x})sin(x)\)</span>:</p>
-<pre><code class="language-python">for x in np.arange(-5, 5, 0.0001):
-    y = (np.cos((2 * np.pi * x**2)/(x**2 + x))) * np.sin(x)
-    full_x.append(x)
-    full_y.append(y)
-    if y**2 &lt; 0.3:
-        mid_x.append(x)
-        mid_y.append(y)
-    if y**2 &gt; 0.65:
-        peak_x.append(x)
-        peak_y.append(y)
-</code></pre>
-<p>You can then visualize the data:</p>
-<pre><code class="language-python">plt.plot(full_x, full_y)
+
+raw_data = Path('wave_data.test')
+wave_data = Test.from_file(raw_data)
+
+# Access lengths
+f_length = wave_data.lengths.full_len
+m_length = wave_data.lengths.mid_len
+p_length = wave_data.lengths.peak_len
+print(f_length, m_length, p_length)
+
+# Access and plot full data
+full_x = wave_data.f_data.x_data
+full_y = wave_data.f_data.y_data
+plt.plot(full_x, full_y)
 plt.title(&quot;Full Data&quot;)
 plt.show()
-
-plt.plot(mid_x, mid_y)
-plt.title(&quot;Mid-range Data&quot;)
-plt.show()
-
-plt.scatter(peak_x, peak_y, s=1)
-plt.title(&quot;Peak Data&quot;)
-plt.show()
 </code></pre>
-<p>The resulting graphs should look like:</p>
-<p><img alt="full" src="../examples/full-graph.png" />
-<img alt="mid" src="../examples/mid-graph.png" />
-<img alt="peak" src="../examples/peak-graph.png" /></p>
-<h2 id="saving-data-as-binary">Saving Data as Binary</h2>
-<p>Convert your lists to numpy arrays with a specific data type (e.g., <code>float32</code> for 4 bytes per value):</p>
-<pre><code class="language-python">full_x_data = np.array(full_x, dtype=np.float32)
-full_y_data = np.array(full_y, dtype=np.float32)
-mid_x_data = np.array(mid_x, dtype=np.float32)
-mid_y_data = np.array(mid_y, dtype=np.float32)
-peak_x_data = np.array(peak_x, dtype=np.float32)
-peak_y_data = np.array(peak_y, dtype=np.float32)
-</code></pre>
-<blockquote>
-<p>You can experiment with other types like <code>float64</code>, <code>float16</code>, or even integer types if you wish.</p>
-</blockquote>
-<p>When saving binary data, it's helpful to include the length of each section at the start of the file or near the front of its respective section. This makes parsing easier later. </p>
-<pre><code class="language-python">with open('wave_data.test', 'wb') as f:
-    # Write array lengths as unsigned 4-byte integers
-    f.write(struct.pack('I', len(full_y_data)))
-    f.write(struct.pack('I', len(mid_y_data)))
-    f.write(struct.pack('I', len(peak_y_data)))
-    # Write all arrays in order
-    full_x_data.tofile(f)
-    full_y_data.tofile(f)
-
-    mid_x_data.tofile(f)
-    mid_y_data.tofile(f)
-
-    peak_x_data.tofile(f)
-    peak_y_data.tofile(f)
-</code></pre>
-<p>You now have a binary file called <code>wave_data.test</code> in your working directory. The file extension is arbitrary; modern systems do not require three-letter extensions.</p>
+<p>Repeat for <code>m_data</code> and <code>p_data</code> as needed.</p>
 <hr />
-<p>Continue to <a href="../06_kaitai_next_steps/">Kaitai Next Steps</a> to describe and parse your custom data with Kaitai Struct.</p>
+<p>You have now described and parsed your custom binary file using Kaitai Struct!  Continue to <a href="../08_construct_next_steps/">Construct Next Steps</a> to parse your custom data with the Construct library.</p>
 
 
 

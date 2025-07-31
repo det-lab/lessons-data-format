@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../02_filetype/">
+        <link rel="prev" href="../03_representation/">
       
       
-        <link rel="next" href="../04_construct_basics/">
+        <link rel="next" href="../05_construct_basics/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -245,6 +245,25 @@
       
   
   
+  
+    <li class="md-nav__item">
+      <a href="../03_representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -340,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04_construct_basics/" class="md-nav__link">
+      <a href="../05_construct_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -359,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05_creating_example_data/" class="md-nav__link">
+      <a href="../06_creating_example_data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -378,7 +397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../06_kaitai_next_steps/" class="md-nav__link">
+      <a href="../07_kaitai_next_steps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -397,7 +416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07_construct_next_steps/" class="md-nav__link">
+      <a href="../08_construct_next_steps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -416,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08_conclusion/" class="md-nav__link">
+      <a href="../09_conclusion/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -435,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09_appendix/" class="md-nav__link">
+      <a href="../10_appendix/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -534,7 +553,6 @@
 <p><img alt="IDE" src="../images/kaitai_ide.png" /></p>
 <p>The viewer on the far right side should look somewhat familiar: it's the same data as when the file was opened in Notepad, but with unreadable symbols replaced by <code>.</code>s, showing the typeable characters alongside their hexadecimal representations.</p>
 <p>If you highlight specific characters or sets of characters on either side of the <code>hex viewer</code>, the corresponding characters will be highlighted on the other side as well, allowing you to see both the hex code and UTF-8/ASCII representations for any selection. This is also true for the <code>object tree</code> section. By clicking on an item in the <code>object tree</code> (such as the <code>hdr</code> section), the bytes described by the section are automatically selected in the <code>hex viewer</code>.</p>
-<p>In the same window as the <code>hex viewer</code> are the <code>JS Code</code> and <code>JS Code (debug)</code> sections. These show how the <code>.ksy</code> file is being translated into JavaScript, alongside a debugger.</p>
 <p>The <code>converter</code> section on the bottom right provides multiple ways to convert selected characters, showing different methods of translating a hex code as an integer (e.g., <code>i8</code> for an 8-bit integer, <code>i16le</code> for a 16-bit integer in little-endian format, etc.).</p>
 <p>Finally, there is the <code>info panel</code>, which provides information about a selection of bytes, such as the length of the selection and where in the data stream the selection is.</p>
 <p>If you are interested in following along more precisely with the <code>gif.ksy</code> file, there is also extensive documentation provided to describe the file format. Having documentation about the file format is crucial for describing your file type. Without documentation to follow, this process looks less like declarative programming and more like cryptography, as you would have to decipher and assume/assert the purposes of much of the data unless it happens to be written in plain text already.</p>
@@ -611,7 +629,7 @@ types:
 <p>All of this section has been to explain, in broad strokes, some of the types as shown in the GIF file type. If you're interested in reading more about Kaitai Struct Language, the full documentation can be found <a href="http://doc.kaitai.io/user_guide.html#_kaitai_struct_language">here</a>.</p>
 <p>For now, let's continue this lesson and talk about how this same file type definition can be performed using the Construct library.</p>
 <hr />
-<p>Continue to <a href="../04_construct_basics/">Construct basics</a> to learn how to describe file formats programmatically in Python.</p>
+<p>Continue to <a href="../05_construct_basics/">Construct basics</a> to learn how to describe file formats programmatically in Python.</p>
 
 
 

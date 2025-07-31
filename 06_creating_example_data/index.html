@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../03_kaitai_basics/">
+        <link rel="prev" href="../05_construct_basics/">
       
       
-        <link rel="next" href="../05_creating_example_data/">
+        <link rel="next" href="../07_kaitai_next_steps/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Construct basics - Custom data format</title>
+        <title>Creating Example Data - Custom data format</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#defining-the-structure-in-construct" class="md-skip">
+        <a href="#creating-example-data" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Construct basics
+              Creating Example Data
             
           </span>
         </div>
@@ -247,11 +247,49 @@
   
   
     <li class="md-nav__item">
-      <a href="../03_kaitai_basics/" class="md-nav__link">
+      <a href="../03_representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_kaitai_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Kaitai basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_construct_basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Construct basics
   </span>
   
 
@@ -279,7 +317,7 @@
           
   
   <span class="md-ellipsis">
-    Construct basics
+    Creating Example Data
   </span>
   
 
@@ -290,7 +328,7 @@
         
   
   <span class="md-ellipsis">
-    Construct basics
+    Creating Example Data
   </span>
   
 
@@ -312,15 +350,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#struct-basics" class="md-nav__link">
-    Struct basics
+  <a href="#designing-the-data-structure" class="md-nav__link">
+    Designing the Data Structure
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#building-gifpy" class="md-nav__link">
-    Building gif.py
+  <a href="#preparing-your-environment" class="md-nav__link">
+    Preparing Your Environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-and-visualizing-the-data" class="md-nav__link">
+    Creating and Visualizing the Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-data-as-binary" class="md-nav__link">
+    Saving Data as Binary
   </a>
   
 </li>
@@ -339,26 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05_creating_example_data/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Creating Example Data
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06_kaitai_next_steps/" class="md-nav__link">
+      <a href="../07_kaitai_next_steps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -377,7 +410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07_construct_next_steps/" class="md-nav__link">
+      <a href="../08_construct_next_steps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -396,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08_conclusion/" class="md-nav__link">
+      <a href="../09_conclusion/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -415,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09_appendix/" class="md-nav__link">
+      <a href="../10_appendix/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -455,15 +488,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#struct-basics" class="md-nav__link">
-    Struct basics
+  <a href="#designing-the-data-structure" class="md-nav__link">
+    Designing the Data Structure
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#building-gifpy" class="md-nav__link">
-    Building gif.py
+  <a href="#preparing-your-environment" class="md-nav__link">
+    Preparing Your Environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-and-visualizing-the-data" class="md-nav__link">
+    Creating and Visualizing the Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-data-as-binary" class="md-nav__link">
+    Saving Data as Binary
   </a>
   
 </li>
@@ -483,86 +530,103 @@
                   
 
 
-<h1 id="defining-the-structure-in-construct">Defining the Structure in Construct</h1>
-<p>Construct is a Python library for declaratively describing and parsing binary data formats. Its functionality is similar to Kaitai Struct, but it uses Python code and programmatic constructs. In Construct, you define <code>Structs</code> (structures) that describe how to interpret sections of a binary file. These <code>Structs</code> can be combined and nested to represent complex file formats, ultimately building up to a main <code>Struct</code> that captures the entire file's structure.</p>
-<h2 id="struct-basics">Struct basics</h2>
-<p>A <code>Struct</code> in Construct is a collection of ordered fields, each with a name and a type. Fields are parsed or built in the order they are defined. When parsing, Construct returns a dictionary-like object with keys matching the field names. Unlike Kaitai, field names are optional in Construct, but naming fields makes the resulting data much easier to work with.</p>
-<p>Let's recreate the dimensions example from the Kaitai section. Here is how you would define a <code>width_and_height</code> <code>Struct</code> in Construct:</p>
-<pre><code class="language-python">width_and_height = Struct(
-    &quot;width&quot; / Int16ul,
-    &quot;height&quot; / Int16ul
-)
+<h1 id="creating-example-data">Creating Example Data</h1>
+<p>Now that you understand the basics of file formats and parsing tools, let's put everything together by generating some example data, saving it in a binary file, and preparing to describe its structure with Kaitai and Construct. This hands-on section will help you see how real binary data is created and organized.</p>
+<p>Suppose we want to simulate a waveform and store it in a binary file. For demonstration, imagine we're measuring vibrations or current intensity. Since we're fabricating data, the context is flexible.</p>
+<p>We'll use Python for this example, as it's required for Construct. If you haven't set up your Python environment yet, <a href="../01_setup/">return to the setup section</a> for instructions.</p>
+<h2 id="designing-the-data-structure">Designing the Data Structure</h2>
+<p>Let's divide our data into three sections based on intensity:
+- <strong>Full data:</strong> The entire waveform.
+- <strong>Mid-range data:</strong> Only points where the signal is moderate.
+- <strong>Peak data:</strong> Only the most intense points.</p>
+<p>This could represent three sensors with different sensitivities.</p>
+<h2 id="preparing-your-environment">Preparing Your Environment</h2>
+<p>You'll need the following Python libraries:
+- <code>numpy</code> (for numerical arrays)
+- <code>struct</code> (for binary packing; different from Construct)
+- <code>matplotlib</code> (optional, for plotting)</p>
+<p>To check if these are installed, run:</p>
+<pre><code>pip list
 </code></pre>
-<p>Here, <code>Int16ul</code> means an <strong>Int</strong>eger of <strong>16</strong> <strong>u</strong>nsigned bits in <strong>l</strong>ittle-endian format. You can then reuse this <code>width_and_height</code> struct in other structures:</p>
-<pre><code class="language-python">dimensions = Struct(
-    &quot;w_and_h&quot; / width_and_height
-)
+<p>If you don't see <code>numpy</code> or <code>matplotlib</code>, install them with:</p>
+<pre><code>pip install numpy
+pip install matplotlib
 </code></pre>
-<p>This modular approach allows you to build up complex file formats from smaller, reusable pieces.</p>
-<h2 id="building-gifpy">Building gif.py</h2>
-<p>Let's look at how Construct can be used to describe the GIF file format, using the <a href="https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py">gif.py</a> example from Construct's GitHub repository.</p>
-<p>Unlike Kaitai, where types can be declared in any order, Python requires that each <code>Struct</code> be defined before it is referenced. This means you typically define the smallest components first and then combine them into larger structures. This means that when examining the structure of <code>Structs</code>, it often makes sense to start from the final defined <code>Struct</code> to see what building blocks it uses.</p>
-<p>Here is the top-level <code>gif_file</code> struct, which represents the entire GIF file:</p>
-<pre><code class="language-python">gif_file = Struct(
-    &quot;signature&quot; / Const(b&quot;GIF&quot;),
-    &quot;version&quot; / Const(b&quot;89a&quot;),
-    &quot;logical_screen&quot; / gif_logical_screen,
-    &quot;data&quot; / GreedyRange(gif_data),
-    # &quot;trailer&quot; / Const(0x3B, Int8ul)  # Optional: GIF file terminator
-)
+<blockquote>
+<p><strong>Note:</strong> There is no package called <code>python_struct</code>; <code>struct</code> is part of the Python standard library.</p>
+</blockquote>
+<h2 id="creating-and-visualizing-the-data">Creating and Visualizing the Data</h2>
+<p>Create a new <code>.py</code> or <code>.ipynb</code> file (e.g., <code>example_data.py</code>). You can also reference the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_data.ipynb">example notebook</a>.</p>
+<p>Import the necessary modules:</p>
+<pre><code class="language-python">import numpy as np
+import struct
+import matplotlib.pyplot as plt
 </code></pre>
-<ul>
-<li><code>Const(b"GIF")</code> and <code>Const(b"89a")</code> ensure the file starts with the correct signature and version, similar to the <code>magic</code> keyword in Kaitai. However, this also means it will fail to parse if the version number is anything other than <code>89a</code>.</li>
-<li><code>logical_screen</code> and <code>data</code> are parsed using other structs defined above <code>gif_file</code>.</li>
-<li><code>GreedyRange(gif_data)</code> repeats the <code>gif_data</code> struct until the end of the file.</li>
-</ul>
-<p>Now, let's look at the <code>gif_logical_screen</code> struct:</p>
-<pre><code class="language-python">gif_logical_screen = Struct(
-    &quot;width&quot; / Int16ul,
-    &quot;height&quot; / Int16ul,
-    &quot;flags&quot; / BitStruct(
-        &quot;global_color_table&quot; / Bit,
-        &quot;color_resolution&quot; / BitsInteger(3),
-        &quot;sort_flag&quot; / Bit,
-        &quot;global_color_table_bpp&quot; / BitsInteger(3),
-    ),
-    &quot;bgcolor_index&quot; / Int8ul,
-    &quot;pixel_aspect_ratio&quot; / Int8ul,
-    &quot;palette&quot; / If(this.flags.global_color_table,
-        Array(lambda this: 2**(this.flags.global_color_table_bpp + 1),
-            Struct(
-                &quot;R&quot; / Int8ul,
-                &quot;G&quot; / Int8ul,
-                &quot;B&quot; / Int8ul,
-            )
-        )
-    ),
-)
+<p>Now, initialize arrays for each section:</p>
+<pre><code class="language-python">full_x, full_y = [], []
+mid_x, mid_y = [], []
+peak_x, peak_y = [], []
 </code></pre>
-<ul>
-<li><code>BitStruct</code> allows you to parse individual bits within a byte, which is useful for fields like <code>flags</code> that pack multiple values into a single byte.</li>
-<li>The <code>palette</code> field is only present if <code>global_color_table</code> is <code>True</code>. Its length is determined by the value of <code>global_color_table_bpp</code>.</li>
-</ul>
-<p>The <code>data</code> section of the GIF file is parsed using a combination of <code>Struct</code>, <code>Switch</code>, and <code>GreedyRange</code>:</p>
-<pre><code class="language-python">gif_data = Struct(
-    &quot;introducer&quot; / Int8ul,
-    &quot;data&quot; / Switch(this.introducer, {
-        0x21: extension,
-        0x2C: image_descriptor,
-    })
-)
+<p>Populate these arrays with simulated data. For example, generate 100,000 points from <code>x = -5</code> to <code>x = 5</code> using the (totally arbitrary) equation <span class="arithmatex">\(y=cos(\frac{2 \pi x^2}{x^2 +x})sin(x)\)</span>:</p>
+<pre><code class="language-python">for x in np.arange(-5, 5, 0.0001):
+    y = (np.cos((2 * np.pi * x**2)/(x**2 + x))) * np.sin(x)
+    full_x.append(x)
+    full_y.append(y)
+    if y**2 &lt; 0.3:
+        mid_x.append(x)
+        mid_y.append(y)
+    if y**2 &gt; 0.65:
+        peak_x.append(x)
+        peak_y.append(y)
 </code></pre>
-<ul>
-<li>The <code>introducer</code> byte determines whether the next section is an extension or an image descriptor.</li>
-<li><code>Switch</code> selects the appropriate struct based on the value of <code>introducer</code>.</li>
-<li>Each of these sub-structs (<code>extension</code>, <code>image_descriptor</code>) is defined elsewhere in the file.</li>
-</ul>
-<p>As mentioned earlier, having <code>GreedyRange(gif_data)</code> in the top-level struct repeats this process for each data block in the file, allowing Construct to parse the entire sequence of GIF blocks.</p>
-<p>This modular, programmatic approach makes Construct powerful for describing binary formats in Python. While Kaitai uses a declarative YAML-based syntax, Construct leverages Python's syntax and logic, which can be more flexible for complex parsing tasks.</p>
+<p>You can then visualize the data:</p>
+<pre><code class="language-python">plt.plot(full_x, full_y)
+plt.title(&quot;Full Data&quot;)
+plt.show()
+
+plt.plot(mid_x, mid_y)
+plt.title(&quot;Mid-range Data&quot;)
+plt.show()
+
+plt.scatter(peak_x, peak_y, s=1)
+plt.title(&quot;Peak Data&quot;)
+plt.show()
+</code></pre>
+<p>The resulting graphs should look like:</p>
+<p><img alt="full" src="../examples/full-graph.png" />
+<img alt="mid" src="../examples/mid-graph.png" />
+<img alt="peak" src="../examples/peak-graph.png" /></p>
+<h2 id="saving-data-as-binary">Saving Data as Binary</h2>
+<p>Convert your lists to numpy arrays with a specific data type (e.g., <code>float32</code> for 4 bytes per value):</p>
+<pre><code class="language-python">full_x_data = np.array(full_x, dtype=np.float32)
+full_y_data = np.array(full_y, dtype=np.float32)
+mid_x_data = np.array(mid_x, dtype=np.float32)
+mid_y_data = np.array(mid_y, dtype=np.float32)
+peak_x_data = np.array(peak_x, dtype=np.float32)
+peak_y_data = np.array(peak_y, dtype=np.float32)
+</code></pre>
+<blockquote>
+<p>You can experiment with other types like <code>float64</code>, <code>float16</code>, or even integer types if you wish.</p>
+</blockquote>
+<p>When saving binary data, it's helpful to include the length of each section at the start of the file or near the front of its respective section. This makes parsing easier later. </p>
+<pre><code class="language-python">with open('wave_data.test', 'wb') as f:
+    # Write array lengths as unsigned 4-byte integers
+    f.write(struct.pack('I', len(full_y_data)))
+    f.write(struct.pack('I', len(mid_y_data)))
+    f.write(struct.pack('I', len(peak_y_data)))
+    # Write all arrays in order
+    full_x_data.tofile(f)
+    full_y_data.tofile(f)
+
+    mid_x_data.tofile(f)
+    mid_y_data.tofile(f)
+
+    peak_x_data.tofile(f)
+    peak_y_data.tofile(f)
+</code></pre>
+<p>You now have a binary file called <code>wave_data.test</code> in your working directory. The file extension is arbitrary; modern systems do not require three-letter extensions.</p>
 <hr />
-<p>Now that you have seen how to describe file formats in both Kaitai and Construct, the next step is to create your own custom data format and try parsing it using these tools. Continue to the next section to learn how to generate and work with example data.</p>
-<hr />
-<p>Continue to <a href="../05_creating_example_data/">Creating Example Data</a> to generate and save your own binary data.</p>
+<p>Continue to <a href="../07_kaitai_next_steps/">Kaitai Next Steps</a> to describe and parse your custom data with Kaitai Struct.</p>
 
 
 

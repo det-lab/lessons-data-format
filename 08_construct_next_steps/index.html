@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../07_construct_next_steps/">
+        <link rel="prev" href="../07_kaitai_next_steps/">
       
       
-        <link rel="next" href="../09_appendix/">
+        <link rel="next" href="../09_conclusion/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Conclusion - Custom data format</title>
+        <title>Construct Next Steps - Custom data format</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#conclusion" class="md-skip">
+        <a href="#describing-the-data-in-construct" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Conclusion
+              Construct Next Steps
             
           </span>
         </div>
@@ -247,7 +247,26 @@
   
   
     <li class="md-nav__item">
-      <a href="../03_kaitai_basics/" class="md-nav__link">
+      <a href="../03_representation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Computer Representation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_kaitai_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -266,7 +285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04_construct_basics/" class="md-nav__link">
+      <a href="../05_construct_basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -285,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05_creating_example_data/" class="md-nav__link">
+      <a href="../06_creating_example_data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -304,30 +323,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../06_kaitai_next_steps/" class="md-nav__link">
+      <a href="../07_kaitai_next_steps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Kaitai Next Steps
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07_construct_next_steps/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Construct Next Steps
   </span>
   
 
@@ -351,15 +351,59 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Construct Next Steps
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Conclusion
+    Construct Next Steps
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-and-defining-structs" class="md-nav__link">
+    Setting Up and Defining Structs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsing-and-visualizing-the-data" class="md-nav__link">
+    Parsing and Visualizing the Data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -371,7 +415,26 @@
   
   
     <li class="md-nav__item">
-      <a href="../09_appendix/" class="md-nav__link">
+      <a href="../09_conclusion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conclusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_appendix/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -404,6 +467,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-and-defining-structs" class="md-nav__link">
+    Setting Up and Defining Structs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parsing-and-visualizing-the-data" class="md-nav__link">
+    Parsing and Visualizing the Data
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -417,31 +502,80 @@
                   
 
 
-<h1 id="conclusion">Conclusion</h1>
-<p>Congratulations on completing this lesson on custom binary data formats! You have learned how to:</p>
-<ul>
-<li>Understand the difference between file types and file formats.</li>
-<li>Examine raw binary data and its representation in text editors.</li>
-<li>Use Kaitai Struct to describe and parse binary file formats in a declarative way.</li>
-<li>Use the Construct library in Python to programmatically parse and build binary data.</li>
-<li>Create, save, and visualize your own example binary data.</li>
-</ul>
-<p>These skills are foundational for working with scientific, engineering, or custom data formats that are not supported by standard tools. Kaitai and Construct are both powerful and flexible, and can be applied to a wide range of real-world problems.</p>
-<p>Remember, this lesson only scratches the surface of what you can do with these tools. Both Kaitai and Construct have extensive documentation and active communities:</p>
-<ul>
-<li><strong>Kaitai Struct:</strong>  </li>
-<li><a href="https://kaitai.io/docs/">Official documentation</a></li>
-<li><a href="https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im">Gitter community chat</a></li>
-<li><strong>Construct:</strong>  </li>
-<li><a href="https://construct.readthedocs.io/">Official documentation</a></li>
-<li><a href="https://github.com/construct/construct">GitHub repository</a></li>
-</ul>
-<p>If you are working with volumetric or astronomical data, consider joining the yt project's mailing lists for users or developers of the yt Python package:
-- <a href="https://mail.python.org/mailman3/lists/yt-dev.python.org/">yt-dev mailing list</a>
-- <a href="https://mail.python.org/mailman3/lists/yt-users.python.org/">yt-users mailing list</a></p>
-<p>For further assistance, you can also contact Professor Amy Roberts at the University of Colorado Denver for software and analysis help: amy.roberts@ucdenver.edu</p>
-<p>For installation help and advanced options, see the <a href="../09_appendix/">Appendix</a>.</p>
-<p>If you get stuck, remember to consult the official documentation and reach out to the community. Good luck, and happy coding!</p>
+<h1 id="describing-the-data-in-construct">Describing the Data in Construct</h1>
+<p>Now that you've described your custom binary file in Kaitai, let's do the same using the <a href="https://construct.readthedocs.io/">Construct</a> library in Python. This section will guide you through building Structs to match your file layout, parsing the data, and visualizing the results.</p>
+<p>If you want to compare with a working example, see the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_struct.ipynb">example_struct.ipynb</a> notebook.</p>
+<h2 id="setting-up-and-defining-structs">Setting Up and Defining Structs</h2>
+<p>Start by importing the required libraries:</p>
+<pre><code class="language-python">from construct import *
+import matplotlib.pyplot as plt
+import numpy as np
+</code></pre>
+<p>Recall that your binary file starts with three 4-byte unsigned integers, giving the lengths of the full, mid, and peak data arrays. We'll define a Struct to capture these:</p>
+<pre><code class="language-python">lengths_struct = Struct(
+    &quot;full_data_len&quot; / Int32ul,
+    &quot;mid_data_len&quot; / Int32ul,
+    &quot;peak_data_len&quot; / Int32ul
+)
+</code></pre>
+<p>Next, define a Struct for the data arrays. Each section contains two arrays (<code>x</code> and <code>y</code>), each of length specified in the header:</p>
+<pre><code class="language-python">data_sections = Struct(
+    &quot;full_x_data&quot; / Array(this._root.lengths.full_data_len, Float32l),
+    &quot;full_y_data&quot; / Array(this._root.lengths.full_data_len, Float32l),
+
+    &quot;mid_x_data&quot; / Array(this._root.lengths.mid_data_len, Float32l),
+    &quot;mid_y_data&quot; / Array(this._root.lengths.mid_data_len, Float32l),
+
+    &quot;peak_x_data&quot; / Array(this._root.lengths.peak_data_len, Float32l),
+    &quot;peak_y_data&quot; / Array(this._root.lengths.peak_data_len, Float32l),
+)
+</code></pre>
+<p>Finally, combine these into the top-level Struct:</p>
+<pre><code class="language-python">test_struct = Struct(
+    &quot;lengths&quot; / lengths_struct,
+    &quot;data_sects&quot; / data_sections
+)
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> You can name your sub-Structs however you like, but be consistent. The quoted names (e.g., <code>"data_sects"</code>) are the keys you'll use to access the parsed data.</p>
+</blockquote>
+<h2 id="parsing-and-visualizing-the-data">Parsing and Visualizing the Data</h2>
+<p>Parsing with Construct is straightforward. You can do everything in the same script or notebook:</p>
+<pre><code class="language-python">def parse_file(input_path):
+    with open(input_path, 'rb') as input_f:
+        raw_data = input_f.read()
+        parsed_data = test_struct.parse(raw_data)
+
+    # Extract arrays
+    full_x = parsed_data.data_sects.full_x_data
+    full_y = parsed_data.data_sects.full_y_data
+    mid_x = parsed_data.data_sects.mid_x_data
+    mid_y = parsed_data.data_sects.mid_y_data
+    peak_x = parsed_data.data_sects.peak_x_data
+    peak_y = parsed_data.data_sects.peak_y_data
+
+    # Plot full data
+    plt.plot(full_x, full_y)
+    plt.title(&quot;Full Data&quot;)
+    plt.show()
+
+    # Plot mid-range data
+    plt.plot(mid_x, mid_y)
+    plt.title(&quot;Mid-range Data&quot;)
+    plt.show()
+
+    # Plot peak data
+    plt.scatter(peak_x, peak_y, s=1)
+    plt.title(&quot;Peak Data&quot;)
+    plt.show()
+</code></pre>
+<p>Call your function with the path to your binary file:</p>
+<pre><code class="language-python">parse_file(&quot;wave_data.test&quot;)
+</code></pre>
+<p>You should see the same plots as when you generated the data, confirming that your Structs correctly describe the file format.</p>
+<hr />
+<p>You have now parsed your custom binary file using Construct! This approach mirrors the Kaitai description from the previous section, and you can adapt it for more complex formats as needed.</p>
+<p>Continue to the <a href="../09_conclusion/">conclusion</a> for final thoughts and resources.</p>
 
 
 
