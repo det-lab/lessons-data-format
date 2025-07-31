@@ -55,4 +55,4 @@ pip install construct
 If you encounter installation issues, refer to the [Appendix](10_appendix.md) or consult the official documentation for [Construct](https://construct.readthedocs.io/).
 
 ---
-Continue to [File types and formats](02_filetype.md) to learn how computers interpret and store different file types.
+Continue to [File types and formats](02_files.md) to learn how computers interpret and store different file types.

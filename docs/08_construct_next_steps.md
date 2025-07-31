@@ -2,7 +2,11 @@
 
 Now that you've described your custom binary file in Kaitai, let's do the same using the [Construct](https://construct.readthedocs.io/) library in Python. This section will guide you through building Structs to match your file layout, parsing the data, and visualizing the results.
 
-If you want to compare with a working example, see the [example_struct.ipynb](https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_struct.ipynb) notebook.
+We're about to create the `.ipynb` file used to parse our example format, you are encouraged to follow along and try to create the file yourself. 
+<details>
+  <summary>You can download the example file to compare your work to by clicking here</summary>
+   [example_struct.ipynb](examples/example_struct.ipynb)
+</details>
 
 ## Setting Up and Defining Structs
 

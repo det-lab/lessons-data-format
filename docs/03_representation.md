@@ -1,16 +1,14 @@
 # Representing Files on a Computer
 
-In order for your computer, smartphone, or tablet to represent raw data in any form, it has to use certain **software**, such as apps, executables, or programs. Software contains a set of instructions that a computer can use to open, edit, and/or save files. File formats then are like a promise to have information in a specific order in storage that the software can work with. In this section, we're going to go over how computers store data in **binary**, and how that binary data can be translated into other forms such as **hexadecimals** or represented graphically using **ASCII** or **UTF-8**. But first, let's quickly go over what we're talking about when we we're talking about storing data on the **"drive"**.
+In order for your computer, smartphone, or tablet to represent raw data in any form, it has to use certain **software**. Software contains a set of instructions that a computer can use to open, edit, and/or save files. File formats then are like a promise to have information in a specific order in storage that the software can work with. In this section, we're going to go over how computers store data in **binary**, and how that binary data can be translated into other forms such as **hexadecimals** or represented graphically using **ASCII** or **UTF-8**. But first, let's quickly go over what we're talking about when we we're talking about storing data.
 
-## The "drive"
-
-
+## Storage
 
 ## Computer language and number systems
 
 <DESCRIPTION OF DISK TODO>
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=DFgRNY6fpOc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DFgRNY6fpOc?si=_pd5BEg0bAoqIick" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 At the lowest level, all data on a computer is stored as a sequence of `1`s and `0`s: **binary** digits, or **bits**. But how are these bits generated and used?
 

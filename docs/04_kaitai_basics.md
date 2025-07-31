@@ -3,7 +3,7 @@
 Let's try loading the GIF file in the Kaitai Web IDE to understand this better. Start by navigating to the [Kaitai Web IDE](https://ide.kaitai.io/) if you don't already have it open.
 
 ## Anatomy of the Web IDE
-
+<TODO diagram of IDE>
 On the left side of the webpage, you'll see a list of folders, each containing pre-built `.ksy` files you can use to test functionality. For this example, navigate to `formats/image/gif.ksy` and double-click `gif.ksy` to load it into the IDE. The buttons on the bottom left of the webpage are for creating new `.ksy` files, uploading `.ksy` or data files, and saving `.ksy` files:
 
 ![buttons](images/kaitai-icons.png)
@@ -28,7 +28,7 @@ If you are interested in following along more precisely with the `gif.ksy` file,
 We won't fully describe everything being done in the example `.ksy` file here. Instead, we'll look at a broad overview to give an idea of Kaitai's functionality. Now that we know what we're looking at in the IDE, we can take a look at how the file type is being described.
 
 ## `meta` and `seq`
-
+<TODO Q&A for sections>
 Your `.ksy` files should always start with a `meta` section, defining meta-information about your file type such as the file extension (like `.gif` or `.tiff`), title, license, endianness, cross-references, documentation, version, types, encodings, etc.
 
 The `seq` section is where the declarative work really starts. In `seq`, you describe how to handle the raw data. Each entry in `seq` must declare an `id` (the name shown in the object tree for that attribute). You can also specify a `type` (how to interpret the data), a `size` (number of bytes to capture), `contents` (for magic signatures), `encoding`, and more.
@@ -50,8 +50,13 @@ seq:
   - id: height
     type: u2
 ```
+<details>
+  <summary>Click to expand</summary>
+  Text
+  </details>
 
-In this example, `u2` could be replaced with `s1`, `s2`, `s4`, `u1`, `u2`, `u4`, etc., where `s` or `u` stands for signed or unsigned bytes, and the number tells the IDE how many bytes to read of that type. However, if you know you'll need to grab a different width and height for some reason, you could instead write this as:
+
+In this example, `u2` could be replaced with `s1`, `s2`, `s4`, `u1`, `u2`, `u4`, etc., where `s` or `u` stands for signed or unsigned bytes, and the number tells the IDE how many bytes to read of that type. <TODO signed vs unsigned meaning>. However, if you know you'll need to grab a different width and height for some reason, you could instead write this as:
 
 ```yaml
 seq:

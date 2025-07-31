@@ -1,9 +1,9 @@
 # Defining the Structure in Construct
 
-Construct is a Python library for declaratively describing and parsing binary data formats. Its functionality is similar to Kaitai Struct, but it uses Python code and programmatic constructs. In Construct, you define `Structs` (structures) that describe how to interpret sections of a binary file. These `Structs` can be combined and nested to represent complex file formats, ultimately building up to a main `Struct` that captures the entire file's structure.
+Construct is a Python library for declaratively describing and parsing binary data formats. Its functionality is similar to Kaitai Struct, but it uses Python code. In Construct, you define `Structs` (structures) that describe how to interpret sections of a binary file. These `Structs` can be combined and nested to represent complex file formats, ultimately building up to a main `Struct` that captures the entire file's structure.
 
 ## Struct basics
-
+<TODO Q&A testing>
 A `Struct` in Construct is a collection of ordered fields, each with a name and a type. Fields are parsed or built in the order they are defined. When parsing, Construct returns a dictionary-like object with keys matching the field names. Unlike Kaitai, field names are optional in Construct, but naming fields makes the resulting data much easier to work with.
 
 Let's recreate the dimensions example from the Kaitai section. Here is how you would define a `width_and_height` `Struct` in Construct:
