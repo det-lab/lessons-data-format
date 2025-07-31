@@ -3,13 +3,14 @@ nav:
   - Introduction: index.md
   - Setup: 01_setup.md
   - File types: 02_filetype.md
-  - Kaitai basics: 03_kaitai_basics.md
-  - Construct basics: 04_construct_basics.md
-  - Creating Example Data: 05_creating_example_data.md
-  - Kaitai Next Steps: 06_kaitai_next_steps.md
-  - Construct Next Steps: 07_construct_next_steps.md
-  - Conclusion: 08_conclusion.md
-  - Appendix: 09_appendix.md
+  - Computer Representation: 03_representation.md
+  - Kaitai basics: 04_kaitai_basics.md
+  - Construct basics: 05_construct_basics.md
+  - Creating Example Data: 06_creating_example_data.md
+  - Kaitai Next Steps: 07_kaitai_next_steps.md
+  - Construct Next Steps: 08_construct_next_steps.md
+  - Conclusion: 09_conclusion.md
+  - Appendix: 10_appendix.md
 theme: 
   name: material
 

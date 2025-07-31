@@ -6,9 +6,10 @@ This lack of interoperability creates a hurdle: before the data can be analyzed 
 1.  **Kaitai Struct:** A YAML based declarative language for describing binary data structures, which can generate parser code in various languages (Python, C#, Java, JavaScript, Perl, PHP, Ruby).
 2.  **Construct:** A Python library for parsing and building binary data structures.
 
-We will guide you through installing these tools and then demonstrate how they enable you to translate custom binary data into readily usable formats for your analysis workflows.
+We will guide you through installing these tools and then show you how to use them in your analysis workflow.
 
 >If you are new to programming, it's recommended that you first take a few minutes to go over [this short lesson](https://det-lab.github.io/reading-documentation/) talking about how to read technical documentation.
 
 ---
+
 Continue to [Setup](01_setup.md) to get your environment ready.

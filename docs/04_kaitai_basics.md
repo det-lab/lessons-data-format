@@ -19,8 +19,6 @@ The viewer on the far right side should look somewhat familiar: it's the same da
 
 If you highlight specific characters or sets of characters on either side of the `hex viewer`, the corresponding characters will be highlighted on the other side as well, allowing you to see both the hex code and UTF-8/ASCII representations for any selection. This is also true for the `object tree` section. By clicking on an item in the `object tree` (such as the `hdr` section), the bytes described by the section are automatically selected in the `hex viewer`.
 
-In the same window as the `hex viewer` are the `JS Code` and `JS Code (debug)` sections. These show how the `.ksy` file is being translated into JavaScript, alongside a debugger.
-
 The `converter` section on the bottom right provides multiple ways to convert selected characters, showing different methods of translating a hex code as an integer (e.g., `i8` for an 8-bit integer, `i16le` for a 16-bit integer in little-endian format, etc.).
 
 Finally, there is the `info panel`, which provides information about a selection of bytes, such as the length of the selection and where in the data stream the selection is.
@@ -133,4 +131,4 @@ All of this section has been to explain, in broad strokes, some of the types as 
 For now, let's continue this lesson and talk about how this same file type definition can be performed using the Construct library.
 
 ---
-Continue to [Construct basics](04_construct_basics.md) to learn how to describe file formats programmatically in Python.
+Continue to [Construct basics](05_construct_basics.md) to learn how to describe file formats programmatically in Python.

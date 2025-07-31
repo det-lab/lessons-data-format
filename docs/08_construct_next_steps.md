@@ -96,4 +96,4 @@ You should see the same plots as when you generated the data, confirming that yo
 
 You have now parsed your custom binary file using Construct! This approach mirrors the Kaitai description from the previous section, and you can adapt it for more complex formats as needed.
 
-Continue to the [conclusion](08_conclusion.md) for final thoughts and resources.
+Continue to the [conclusion](09_conclusion.md) for final thoughts and resources.

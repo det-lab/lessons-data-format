@@ -8,7 +8,7 @@ This section will guide you through setting up the tools needed for this lesson:
 - To get started:  
   1. Go to [https://ide.kaitai.io/](https://ide.kaitai.io/)  
   2. Click "New" to create a new .ksy file  
-  3. Follow the instructions in [Section 3: Defining the Structure in Kaitai](03_kaitai_basics.md)
+  3. Follow the instructions in [Section 3: Defining the Structure in Kaitai](04_kaitai_basics.md)
 
 *Advanced users*: If you want to use Kaitai offline or generate parsers locally, see the [appendix](09_appendix.md) for installing `ksc` and `ksv`.
 
@@ -52,7 +52,7 @@ With your virtual environment activated, install Construct:
 ```bash
 pip install construct
 ```
-If you encounter installation issues, refer to the [Appendix](09_appendix.md) or consult the official documentation for Kaitai and Construct.
+If you encounter installation issues, refer to the [Appendix](10_appendix.md) or consult the official documentation for [Construct](https://construct.readthedocs.io/).
 
 ---
 Continue to [File types and formats](02_filetype.md) to learn how computers interpret and store different file types.

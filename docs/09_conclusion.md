@@ -25,6 +25,6 @@ If you are working with volumetric or astronomical data, consider joining the yt
 
 For further assistance, you can also contact Professor Amy Roberts at the University of Colorado Denver for software and analysis help: amy.roberts@ucdenver.edu
 
-For installation help and advanced options, see the [Appendix](09_appendix.md).
+For installation help and advanced options, see the [Appendix](10_appendix.md).
 
 If you get stuck, remember to consult the official documentation and reach out to the community. Good luck, and happy coding!
