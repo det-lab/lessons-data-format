@@ -10,7 +10,7 @@ This section will guide you through setting up the tools needed for this lesson:
   2. Click "New" to create a new .ksy file  
   3. Follow the instructions in [Section 3: Defining the Structure in Kaitai](04_kaitai_basics.md)
 
-*Advanced users*: If you want to use Kaitai offline or generate parsers locally, see the [appendix](09_appendix.md) for installing `ksc` and `ksv`.
+*Advanced users*: If you want to use Kaitai offline or generate parsers locally, see the [appendix](10_appendix.md) for installing `ksc` and `ksv`.
 
 ## Python and IDE Setup
 

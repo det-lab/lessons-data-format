@@ -29,4 +29,4 @@ For more details, refer to the [Construct documentation](https://construct.readt
 
 ---
 
-If you encounter installation issues, check the official documentation or community forums linked in the [conclusion](08_conclusion.md).
+If you encounter installation issues, check the official documentation or community forums linked in the [conclusion](09_conclusion.md).
