@@ -228,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_filetype/" class="md-nav__link">
+      <a href="../02_files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -545,7 +545,8 @@
 <h1 id="defining-the-structure-in-kaitai">Defining the Structure in Kaitai</h1>
 <p>Let's try loading the GIF file in the Kaitai Web IDE to understand this better. Start by navigating to the <a href="https://ide.kaitai.io/">Kaitai Web IDE</a> if you don't already have it open.</p>
 <h2 id="anatomy-of-the-web-ide">Anatomy of the Web IDE</h2>
-<p>On the left side of the webpage, you'll see a list of folders, each containing pre-built <code>.ksy</code> files you can use to test functionality. For this example, navigate to <code>formats/image/gif.ksy</code> and double-click <code>gif.ksy</code> to load it into the IDE. The buttons on the bottom left of the webpage are for creating new <code>.ksy</code> files, uploading <code>.ksy</code> or data files, and saving <code>.ksy</code> files:</p>
+<p><TODO diagram of IDE>
+On the left side of the webpage, you'll see a list of folders, each containing pre-built <code>.ksy</code> files you can use to test functionality. For this example, navigate to <code>formats/image/gif.ksy</code> and double-click <code>gif.ksy</code> to load it into the IDE. The buttons on the bottom left of the webpage are for creating new <code>.ksy</code> files, uploading <code>.ksy</code> or data files, and saving <code>.ksy</code> files:</p>
 <p><img alt="buttons" src="../images/kaitai-icons.png" /></p>
 <pre><code>New, Upload, Save
 </code></pre>
@@ -558,7 +559,8 @@
 <p>If you are interested in following along more precisely with the <code>gif.ksy</code> file, there is also extensive documentation provided to describe the file format. Having documentation about the file format is crucial for describing your file type. Without documentation to follow, this process looks less like declarative programming and more like cryptography, as you would have to decipher and assume/assert the purposes of much of the data unless it happens to be written in plain text already.</p>
 <p>We won't fully describe everything being done in the example <code>.ksy</code> file here. Instead, we'll look at a broad overview to give an idea of Kaitai's functionality. Now that we know what we're looking at in the IDE, we can take a look at how the file type is being described.</p>
 <h2 id="meta-and-seq"><code>meta</code> and <code>seq</code></h2>
-<p>Your <code>.ksy</code> files should always start with a <code>meta</code> section, defining meta-information about your file type such as the file extension (like <code>.gif</code> or <code>.tiff</code>), title, license, endianness, cross-references, documentation, version, types, encodings, etc.</p>
+<p><TODO Q&A for sections>
+Your <code>.ksy</code> files should always start with a <code>meta</code> section, defining meta-information about your file type such as the file extension (like <code>.gif</code> or <code>.tiff</code>), title, license, endianness, cross-references, documentation, version, types, encodings, etc.</p>
 <p>The <code>seq</code> section is where the declarative work really starts. In <code>seq</code>, you describe how to handle the raw data. Each entry in <code>seq</code> must declare an <code>id</code> (the name shown in the object tree for that attribute). You can also specify a <code>type</code> (how to interpret the data), a <code>size</code> (number of bytes to capture), <code>contents</code> (for magic signatures), <code>encoding</code>, and more.</p>
 <p>When reading the raw data of our GIF, Kaitai will apply the <code>header</code> type until its conditions are fulfilled, then the <code>logical_screen_descriptor_struct</code> type, then <code>color_table</code> type, and finally the <code>blocks</code> type. If any type conditions are not fulfilled, the IDE will interrupt parsing and display an error message underneath the object tree.</p>
 <p>Instead of investigating all four different <code>types</code> in the file's <code>seq</code>, let's look only at the first two: <code>header</code> and <code>logical_screen_descriptor</code>, to learn the basics of using Kaitai.</p>
@@ -571,7 +573,12 @@
   - id: height
     type: u2
 </code></pre>
-<p>In this example, <code>u2</code> could be replaced with <code>s1</code>, <code>s2</code>, <code>s4</code>, <code>u1</code>, <code>u2</code>, <code>u4</code>, etc., where <code>s</code> or <code>u</code> stands for signed or unsigned bytes, and the number tells the IDE how many bytes to read of that type. However, if you know you'll need to grab a different width and height for some reason, you could instead write this as:</p>
+<details>
+  <summary>Click to expand</summary>
+  Text
+  </details>
+
+<p>In this example, <code>u2</code> could be replaced with <code>s1</code>, <code>s2</code>, <code>s4</code>, <code>u1</code>, <code>u2</code>, <code>u4</code>, etc., where <code>s</code> or <code>u</code> stands for signed or unsigned bytes, and the number tells the IDE how many bytes to read of that type. <TODO signed vs unsigned meaning>. However, if you know you'll need to grab a different width and height for some reason, you could instead write this as:</p>
 <pre><code class="language-yaml">seq:
   - id: dimensions
     type: width_and_height

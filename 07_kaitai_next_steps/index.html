@@ -228,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_filetype/" class="md-nav__link">
+      <a href="../02_files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -560,6 +560,12 @@
 <p>Now that you have created a custom binary file, let's describe its structure using Kaitai Struct. This will allow you to parse and analyze your data with generated code.</p>
 <p>If you don't have the <a href="https://ide.kaitai.io/">Kaitai Web IDE</a> open, navigate there and create a new <code>.ksy</code> file (e.g., <code>wave_parser.ksy</code>). You can also reference the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/wave_parser.ksy">example file</a>.</p>
 <h2 id="writing-the-kaitai-description">Writing the Kaitai Description</h2>
+<p>We're about to create the <code>.ksy</code> files used to parse our example format, you are encouraged to follow along and try to create the file yourself. </p>
+<details>
+  <summary>You can download the example file to compare your work to by clicking here</summary>
+   [wave_parser.ksy](examples/wave_parser.ksy)
+</details>
+
 <h3 id="setting-endianness">Setting Endianness</h3>
 <p>By default, the binary data you created was written using your operating system's native endianness. If you want to ensure consistency, you can explicitly set the endianness when generating your arrays in Python:</p>
 <pre><code class="language-python"># For little-endian

@@ -228,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_filetype/" class="md-nav__link">
+      <a href="../02_files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -504,7 +504,12 @@
 
 <h1 id="describing-the-data-in-construct">Describing the Data in Construct</h1>
 <p>Now that you've described your custom binary file in Kaitai, let's do the same using the <a href="https://construct.readthedocs.io/">Construct</a> library in Python. This section will guide you through building Structs to match your file layout, parsing the data, and visualizing the results.</p>
-<p>If you want to compare with a working example, see the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_struct.ipynb">example_struct.ipynb</a> notebook.</p>
+<p>We're about to create the <code>.ipynb</code> file used to parse our example format, you are encouraged to follow along and try to create the file yourself. </p>
+<details>
+  <summary>You can download the example file to compare your work to by clicking here</summary>
+   [example_struct.ipynb](examples/example_struct.ipynb)
+</details>
+
 <h2 id="setting-up-and-defining-structs">Setting Up and Defining Structs</h2>
 <p>Start by importing the required libraries:</p>
 <pre><code class="language-python">from construct import *
