@@ -9,7 +9,7 @@ If you don't have the [Kaitai Web IDE](https://ide.kaitai.io/) open, navigate th
 We're about to create the `.ksy` files used to parse our example format, you are encouraged to follow along and try to create the file yourself. 
 <details>
   <summary>You can download the example file to compare your work to by clicking here</summary>
-  <p><a href="examples/wave_parser.ksy" download>Download wave_parser.ksy</a></p>
+  <p><a href="../examples/wave_parser.ksy" download>Download wave_parser.ksy</a></p>
 </details>
 
 ### Setting Endianness
