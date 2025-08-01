@@ -3,7 +3,7 @@
 Construct is a Python library for declaratively describing and parsing binary data formats. Its functionality is similar to Kaitai Struct, but it uses Python code. In Construct, you define `Structs` (structures) that describe how to interpret sections of a binary file. These `Structs` can be combined and nested to represent complex file formats, ultimately building up to a main `Struct` that captures the entire file's structure.
 
 ## Struct basics
-<TODO Q&A testing>
+
 A `Struct` in Construct is a collection of ordered fields, each with a name and a type. Fields are parsed or built in the order they are defined. When parsing, Construct returns a dictionary-like object with keys matching the field names. Unlike Kaitai, field names are optional in Construct, but naming fields makes the resulting data much easier to work with.
 
 Let's recreate the dimensions example from the Kaitai section. Here is how you would define a `width_and_height` `Struct` in Construct:
@@ -27,9 +27,9 @@ This modular approach allows you to build up complex file formats from smaller, 
 
 ## Building gif.py
 
-Let's look at how Construct can be used to describe the GIF file format, using the [gif.py](https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py) example from Construct's GitHub repository.
+Let's look at how Construct can be used to describe the GIF file format, using the gif.py example from [Construct's GitHub repository](https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py).
 
-Unlike Kaitai, where types can be declared in any order, Python requires that each `Struct` be defined before it is referenced. This means you typically define the smallest components first and then combine them into larger structures. This means that when examining the structure of `Structs`, it often makes sense to start from the final defined `Struct` to see what building blocks it uses.
+Unlike Kaitai, where types can be declared in any order, Python requires that each `Struct` be defined before it can be referenced. This means you typically define the smallest components first and then combine them into larger structures. When examining the structure of `Structs` then, it often makes sense to start from the final defined `Struct` and work backwards to see how everything is built to work together.
 
 Here is the top-level `gif_file` struct, which represents the entire GIF file:
 

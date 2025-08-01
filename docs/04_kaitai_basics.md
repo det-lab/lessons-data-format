@@ -3,35 +3,37 @@
 Let's try loading the GIF file in the Kaitai Web IDE to understand this better. Start by navigating to the [Kaitai Web IDE](https://ide.kaitai.io/) if you don't already have it open.
 
 ## Anatomy of the Web IDE
-<TODO diagram of IDE>
-On the left side of the webpage, you'll see a list of folders, each containing pre-built `.ksy` files you can use to test functionality. For this example, navigate to `formats/image/gif.ksy` and double-click `gif.ksy` to load it into the IDE. The buttons on the bottom left of the webpage are for creating new `.ksy` files, uploading `.ksy` or data files, and saving `.ksy` files:
+![IDE diagram](images/kaitai_labelled_ide.png)
+
+This image shows the IDE with the loaded `gif.ksy` and the example `Rotating_earth_(large).gif` files. Let's use them to quickly go over each section of the Kaitai IDE.
+
+On the left side of the webpage (**1**), you'll see a list of folders and files. The IDE contains several pre-built `.ksy` files which you can use to test functionality or explore to learn more about Kaitai and its uses. To load the same example file, navigate to `formats/image` and double-click `gif.ksy` to load it into the IDE. The buttons on the bottom left of the webpage (underneath section **1**) are for creating new `.ksy` files, uploading `.ksy` or data files, and saving `.ksy` files:
 
 ![buttons](images/kaitai-icons.png)
 ```
-New, Upload, Save
+New | Upload | Save
 ```
 
-Click the upload button to select a `.gif` file from your computer and load it here. You should now see a webpage that looks like:
+Click the upload button to select a `.gif` file from your computer and load it here. Your webpage should now look like the one in the labelled image. The `gif.ksy` file's contents are loaded in section **2**.
 
-![IDE](images/kaitai_ide.png)
+Selecting characters in the object tree (**3**), or either of the two right sections of the hex viewer (**5** or **6**) will highlight the corresponding characters in all three, allowing you to see the hex code, UTF-8/ASCII representations, and the declared `type` for any selection.
 
-The viewer on the far right side should look somewhat familiar: it's the same data as when the file was opened in Notepad, but with unreadable symbols replaced by `.`s, showing the typeable characters alongside their hexadecimal representations.
+The viewer on the far right side (**6**) should look somewhat familiar: it's the same data as when the file was opened in a text editor, but with the unreadable symbols replaced with `.`s, showing the typeable characters alongside their hexadecimal representations to the left (**5**).
 
-If you highlight specific characters or sets of characters on either side of the `hex viewer`, the corresponding characters will be highlighted on the other side as well, allowing you to see both the hex code and UTF-8/ASCII representations for any selection. This is also true for the `object tree` section. By clicking on an item in the `object tree` (such as the `hdr` section), the bytes described by the section are automatically selected in the `hex viewer`.
+The byte addresses are shown in section **4**, the **offset column**, which shows the addresses of the first byte in each row of the file. These offsets can help you locate where each group of 16 bytes begins in the overall file. The row labeled `00000010` corresponds to bytes `0x10` to `0x1F`. These offsets are useful for navigating large files and for matching parsed structures to their exact position in the binary data.
 
-The `converter` section on the bottom right provides multiple ways to convert selected characters, showing different methods of translating a hex code as an integer (e.g., `i8` for an 8-bit integer, `i16le` for a 16-bit integer in little-endian format, etc.).
+The `converter` section (**8**) provides multiple ways to interpret selected characters, showing different methods of translating a hex code (e.g., `i8` for an 8-bit integer, `i16le` for a 16-bit integer in little-endian format, etc.).
 
-Finally, there is the `info panel`, which provides information about a selection of bytes, such as the length of the selection and where in the data stream the selection is.
+Finally, there is the `info panel` (**7**), which provides information about a selection of bytes, such as the length of the selection and where in the data stream the selection is.
 
 If you are interested in following along more precisely with the `gif.ksy` file, there is also extensive documentation provided to describe the file format. Having documentation about the file format is crucial for describing your file type. Without documentation to follow, this process looks less like declarative programming and more like cryptography, as you would have to decipher and assume/assert the purposes of much of the data unless it happens to be written in plain text already.
 
 We won't fully describe everything being done in the example `.ksy` file here. Instead, we'll look at a broad overview to give an idea of Kaitai's functionality. Now that we know what we're looking at in the IDE, we can take a look at how the file type is being described.
 
 ## `meta` and `seq`
-<TODO Q&A for sections>
-Your `.ksy` files should always start with a `meta` section, defining meta-information about your file type such as the file extension (like `.gif` or `.tiff`), title, license, endianness, cross-references, documentation, version, types, encodings, etc.
+`.ksy` files should always start with a `meta` section, defining meta-information about your file type such as the file extension (like `.gif` or `.tiff`), title, license, endianness, cross-references, documentation, version, types, and encodings.
 
-The `seq` section is where the declarative work really starts. In `seq`, you describe how to handle the raw data. Each entry in `seq` must declare an `id` (the name shown in the object tree for that attribute). You can also specify a `type` (how to interpret the data), a `size` (number of bytes to capture), `contents` (for magic signatures), `encoding`, and more.
+The `seq` section is where the declarative work really starts. In `seq`, you describe how to handle the raw data. Each entry in `seq` must declare an `id` (the name shown in the object tree for that attribute). You can also specify a `type` (giving more instructions on how to interpret the data), a `size` (number of bytes to capture), `contents` (for **magic signatures**), `encoding`, and more.
 
 When reading the raw data of our GIF, Kaitai will apply the `header` type until its conditions are fulfilled, then the `logical_screen_descriptor_struct` type, then `color_table` type, and finally the `blocks` type. If any type conditions are not fulfilled, the IDE will interrupt parsing and display an error message underneath the object tree.
 
@@ -41,7 +43,7 @@ Instead of investigating all four different `types` in the file's `seq`, let's l
 
 The `types` section is where it becomes vital to reference documentation about the file type you're trying to parse. For example, the `gif.ksy` file links to the [GIF89a Specification](https://www.w3.org/Graphics/GIF/spec-gif89a.txt).
 
-While it takes around 150 lines of code to fully describe the types in `gif.ksy`, longer descriptions aren't always necessary depending on your project's scope. For instance, if you expect the first 4 bytes to identify an object's width and height, your type could be settled quickly in the main `seq` section without even having to create a type description:
+While it takes around 150 lines of code to fully describe the types in `gif.ksy`, longer descriptions aren't always necessary depending on your project's scope. For instance, if you expect the first 4 bytes to identify an object's width and height, your type could be settled quickly in the main `seq` section without having to create a type description:
 
 ```yaml
 seq:
@@ -50,17 +52,22 @@ seq:
   - id: height
     type: u2
 ```
-<details>
-  <summary>Click to expand</summary>
-  Text
-  </details>
 
+In this example, `u2` could be replaced with `s1`, `s2`, `s4`, `u1`, `u2`, `u4`, etc., where `s` or `u` stands for **signed** or **unsigned** bytes, and the number tells the IDE how many bytes to read of that type.
 
-In this example, `u2` could be replaced with `s1`, `s2`, `s4`, `u1`, `u2`, `u4`, etc., where `s` or `u` stands for signed or unsigned bytes, and the number tells the IDE how many bytes to read of that type. <TODO signed vs unsigned meaning>. However, if you know you'll need to grab a different width and height for some reason, you could instead write this as:
+>**Signed vs. Unsigned Bytes:**
+>
+>A **signed** number can be positive *or* negative, while an **unsigned** number can only be positive. This matters when interpreting binary data: for example, a 1-byte unsigned value (`u1`) can represent values from `0` to `255`, while a signed 1-byte value (`s1`) represents values from `-128` to `127`. The total number of values is the same—what changes is the range and how the binary pattern is interpreted.
+
+However, if you know you'll need to grab a different width and height multiple times for some reason, you could instead write this as:
 
 ```yaml
 seq:
   - id: dimensions
+    type: width_and_height
+  - id: other_data
+  [...]
+  - id: second_dimensions
     type: width_and_height
 
 types:
@@ -115,15 +122,17 @@ logical_screen_descriptor_struct:
       value: '2 << (flags & 7)'
 ```
 
-As you can see, it simply grabs the width and the height of the screen on which the GIF will be drawn as 2 unsigned bytes, followed by three unsigned bytes that describe the `flags`, `bg_color_index`, and `pixel_aspect_ratio`. Where it starts to get less straightforward here is in the `instances` section, which are next up to be explained.
+As you can see, it simply grabs the width and the height of the screen on which the GIF will be drawn as 2 unsigned bytes, followed by three unsigned bytes that describe the `flags`, `bg_color_index`, and `pixel_aspect_ratio`. 
+
+Where it starts to get less straightforward to understand (at least in this example) is the `instances` section.
 
 ### Instances
 
 After the `id`s are set in the type `seq`, we then see the `instances` section. This section sets new variables by manipulating the previously found `flags` object using Kaitai's expression language.
 
-For example, `value: '(flags & 0b10000000) != 0'` is doing something called "bit masking": taking the bits from the `flags` byte and showing only the first one. The beginning `0b` means to read the `flags` object as pure bytes, then the `1` means the first bit is allowed through while the rest are masked with `0`. The value is set as `True` or `False` depending on if the first bit is **NOT** (`!=`) equal to 0. This expression serves as a boolean operation. Either the GIF does or does not have a color table, and this status is encoded in the first bit of the `flags` byte.
+For example, `value: '(flags & 0b10000000) != 0'` is doing something called "bit masking": taking the bits from the `flags` byte and showing only the first one. The beginning, `0b`, means to read the `flags` object as pure bytes, then the `1` means the first bit is allowed through while the rest are masked with `0`. The value is set as `True` or `False` depending on if the first bit is **NOT** (`!=`) equal to 0. This expression serves as a boolean operation. Either the GIF does or does not have a color table, and this status is encoded in the first bit of the `flags` byte.
 
-It's worth noting that `bytes` are not some fundamental unit of computation. The choice to have 8 bits in one byte was a decision made by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC) in 1993, but 6- and 9-bit bytes were common through the 1960s. Bit masking allows you to use every individual bit or combination of bits in a selection to correspond to a different value, surpassing some of the artificially imposed limits on computation. This could come in especially useful if you are attempting to deal with archival data, or if your project would otherwise benefit from non-standard byte-sizing. 
+>It's worth noting that `bytes` are not some fundamental unit of computation. The choice to have 8 bits in one byte was a decision made by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC) in 1993, but 6- and 9-bit bytes were common through the 1960s. Bit masking allows you to use every individual bit or combination of bits in a selection to correspond to a different value, surpassing some of the artificially imposed limits on computation. This could come in especially useful if you are attempting to deal with archival data, or if your project would otherwise benefit from non-standard byte-sizing. 
 
 `color_table_size` is doing a similar operation but with different syntax. `7` in binary is `00000111`, so `(flags & 7)` selects the final 3 bits. `2` in binary is `00000010` and `<<` is the command to "shift" bits to the left, so this command shifts "2" to the left by `(flags & 7)` places. This is equivalent to raising 2 to the power of `1 + (flags mod 8)` and then assigning that new value to a character.
 
