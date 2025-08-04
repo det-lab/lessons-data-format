@@ -5,7 +5,7 @@ Now that you've described your custom binary file in Kaitai, let's do the same u
 We're about to create the `.ipynb` file used to parse our example format, you are encouraged to follow along and try to create the file yourself. 
 <details>
   <summary>You can download the example file to compare your work to by clicking here</summary>
-   [example_struct.ipynb](examples/example_struct.ipynb)
+  <p><a href="../examples/example_struct.ipynb" download>Download example_struct.ipynb</a></p>
 </details>
 
 ## Setting Up and Defining Structs
@@ -18,7 +18,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 ```
 
-Recall that your binary file starts with three 4-byte unsigned integers, giving the lengths of the full, mid, and peak data arrays. We'll define a Struct to capture these:
+Recall that your binary file starts with three 4-byte unsigned integers, giving the lengths of one axis for each of the full, mid, and peak data arrays. Try creating the first Struct to capture axis lengths for full, mid, and peak data.
+
+<details>
+    <summary>Show solution</summary>
+    <p>
 
 ```python
 lengths_struct = Struct(
@@ -27,8 +31,15 @@ lengths_struct = Struct(
     "peak_data_len" / Int32ul
 )
 ```
+</p>
 
-Next, define a Struct for the data arrays. Each section contains two arrays (`x` and `y`), each of length specified in the header:
+</details>
+
+Next, define a Struct for the data arrays. Construct is able to capture them directly as arrays using `Array(count, subcon)` syntax, where `count` is the number of elements and `subcon` defines the format of each element. `count` can be described similar to the `repeat-expr` in Kaitai, although proceeded by `this`, so it should look like `this._root.lengths.full_data_len`.
+
+<details>
+    <summary>Show solution</summary>
+    <p>
 
 ```python
 data_sections = Struct(
@@ -43,7 +54,14 @@ data_sections = Struct(
 )
 ```
 
-Finally, combine these into the top-level Struct:
+</p>
+</details>
+
+Finally, you can combine these into the top-level Struct.
+
+<details>
+    <summary>Show solution</summary>
+    </p>
 
 ```python
 test_struct = Struct(
@@ -52,11 +70,14 @@ test_struct = Struct(
 )
 ```
 
+</p>
+</details>
+
 > **Tip:** You can name your sub-Structs however you like, but be consistent. The quoted names (e.g., `"data_sects"`) are the keys you'll use to access the parsed data.
 
 ## Parsing and Visualizing the Data
 
-Parsing with Construct is straightforward. You can do everything in the same script or notebook:
+Parsing with Construct is straightforward. You can do everything in the same script or notebook. The following function opens the binary file, parses it using your defined Struct, extracts the x and y arrays for each data range, and then plots them using Matplotlib:
 
 ```python
 def parse_file(input_path):

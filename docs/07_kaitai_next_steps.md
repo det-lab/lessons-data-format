@@ -6,38 +6,44 @@ If you don't have the [Kaitai Web IDE](https://ide.kaitai.io/) open, navigate th
 
 ## Writing the Kaitai Description
 
-We're about to create the `.ksy` files used to parse our example format, you are encouraged to follow along and try to create the file yourself. 
+We're about to create the `.ksy` files used to parse our example format, you are encouraged to try and create the file using what you've learned so far, but solutions will be provided for each section as well.
+
 <details>
-  <summary>You can download the example file to compare your work to by clicking here</summary>
+  <summary>You can also download the example ksy file to compare your work to by clicking here.</summary>
   <p><a href="../examples/wave_parser.ksy" download>Download wave_parser.ksy</a></p>
 </details>
 
-### Setting Endianness
+### Meta Section
 
-By default, the binary data you created was written using your operating system's native endianness. If you want to ensure consistency, you can explicitly set the endianness when generating your arrays in Python:
+The first step for creating our `.ksy` file will be to fill out the `meta` section. The `id` and file extension are often identical, and should be the same as what you entered as the file extension when writing the file. Then you will assert if the file is either in little-endian, `le`, or big-endian, `be`.
 
-```python
-# For little-endian
-full_x_data = np.array(full_x, dtype='<float32')  # or '<f4'
-
-# For big-endian
-full_x_data = np.array(full_x, dtype='>float32')  # or '>f4'
-```
-
-In your `.ksy` file, specify the endianness in the `meta` section:
+<details>
+  <summary>Show solution</summary>
+  <p>
 
 ```yaml
 meta:
   id: test
   file-extension: test
-  endian: le  # or 'be' for big-endian
+  endian: le
 ```
+
+  </p>
+</details>
 
 ### Describing the File Structure
 
-Recall that when saving your binary file, you wrote three unsigned 4-byte integers at the start, representing the lengths of each data section. In Kaitai, you can capture these using `u4` types:
+Recall that when saving your binary file, we wrote three unsigned 4-byte integers at the start, representing the lengths of each data section. We can start off by describing these numbers in a `type` before using that `type` definition in `seq`. While it may feel unnatural to write non-linearly, it is very common for working with Kaitai.
+
+<details>
+  <summary>Show solution</summary>
+  <p>
 
 ```yaml
+seq:
+  - id: lengths
+    type: full_mid_peak_lens
+
 types:
   full_mid_peak_lens:
     seq:
@@ -48,16 +54,17 @@ types:
       - id: peak_len
         type: u4
 ```
+  </p>
+</details>
 
-In the main `seq` section, reference this type to read the lengths:
-
+Next, define the structure for each section of the data (full/mid/peak). Recall that when writing the data, we only used the length of one axis, but we need to capture both the x- and y-data. This capture will require us to use a `repeat-expr` which repeats the `f4` type as many times as the length of the axis. As an example, the syntax for a `repeat-expr` for `full_data` could be written as:
 ```yaml
-seq:
-  - id: lengths
-    type: full_mid_peak_lens
+repeat: expr
+repeat-expr: _root.length.full_len
 ```
-
-Next, define the structure for each data section. Since each section contains two arrays (`x_data` and `y_data`) of `float32` values, and you know the length from the header, you can use `repeat-expr`:
+<details>
+  <summary>Show solution</summary>
+  <p>
 
 ```yaml
   full_data:
@@ -94,7 +101,14 @@ Next, define the structure for each data section. Since each section contains tw
         repeat-expr: _root.lengths.peak_len
 ```
 
-Finally, add these sections to the main `seq`:
+  </p>
+</details>
+
+Finally, add all of these sections to the main `seq`.
+
+<details>
+  <summary>Show solution</summary>
+  <p>
 
 ```yaml
   - id: f_data
@@ -104,12 +118,13 @@ Finally, add these sections to the main `seq`:
   - id: p_data
     type: peak_data
 ```
+</p>
+</details>
 
 Your `.ksy` file should now fully describe the structure of your binary file.
 
 ## Parsing Raw Data with a .ksy File
 
-To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (`ksc`). If you haven't installed it, see the [appendix](10_appendix.md).
 
 From your terminal, generate the parser (for Python):
 

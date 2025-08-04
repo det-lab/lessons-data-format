@@ -31,7 +31,7 @@ If you don't see `numpy` or `matplotlib`, install them with:
 pip install numpy
 pip install matplotlib
 ```
-> **Note:** There is no package called `python_struct`; `struct` is part of the Python standard library.
+>**Note:** `struct` is part of the Python standard library and doesn't require installation.
 
 ## Creating and Visualizing the Data
 
@@ -51,7 +51,7 @@ mid_x, mid_y = [], []
 peak_x, peak_y = [], []
 ```
 
-Populate these arrays with simulated data. For example, generate 100,000 points from `x = -5` to `x = 5` using the (totally arbitrary) equation $y=cos(\frac{2 \pi x^2}{x^2 +x})sin(x)$:
+Populate these arrays with simulated data. For this example, we'll generate 100,000 points from `x = -5` to `x = 5` using the (totally arbitrary) equation $y=cos(\frac{2 \pi x^2}{x^2 +x})sin(x)$:
 ```python
 for x in np.arange(-5, 5, 0.0001):
     y = (np.cos((2 * np.pi * x**2)/(x**2 + x))) * np.sin(x)
@@ -97,13 +97,22 @@ mid_y_data = np.array(mid_y, dtype=np.float32)
 peak_x_data = np.array(peak_x, dtype=np.float32)
 peak_y_data = np.array(peak_y, dtype=np.float32)
 ```
-> You can experiment with other types like `float64`, `float16`, or even integer types if you wish.
+
+By default, the binary data is written using your operating system's native endianness. If you want to ensure consistency, you can explicitly set the endianness here:
+
+```python
+# For little-endian
+full_x_data = np.array(full_x, dtype='<float32')  # or '<f4'
+
+# For big-endian
+full_x_data = np.array(full_x, dtype='>float32')  # or '>f4'
+```
 
 When saving binary data, it's helpful to include the length of each section at the start of the file or near the front of its respective section. This makes parsing easier later. 
 
 ```python
 with open('wave_data.test', 'wb') as f:
-    # Write array lengths as unsigned 4-byte integers
+    # Write single array lengths as unsigned 4-byte integers
     f.write(struct.pack('I', len(full_y_data)))
     f.write(struct.pack('I', len(mid_y_data)))
     f.write(struct.pack('I', len(peak_y_data)))

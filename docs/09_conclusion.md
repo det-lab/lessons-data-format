@@ -1,12 +1,12 @@
 # Conclusion
 
-Congratulations on completing this lesson on custom binary data formats! You have learned how to:
+Congratulations on completing this lesson on custom binary data formats! If you've followed along careful, you should have learned:
 
-- Understand that files have formats and that software is designed to read their data.
-- Examine raw binary data in Kaitai using the Kaitai web IDE.
-- Use Kaitai Struct to describe and parse binary file formats in a declarative way.
-- Use the Construct library in Python to programmatically parse and build binary data.
-- Create, save, and visualize your own example binary data.
+- That files have defined formats, and that software is designed to be able read their data.
+- How to examine raw binary data in Kaitai using the Kaitai web IDE.
+- How to use Kaitai Struct to describe and parse binary file formats in a declarative way.
+- How to use the Construct library in Python to programmatically parse and build binary data.
+- How to create, save, and visualize your own example binary data.
 
 These skills are foundational for working with scientific, engineering, or custom data formats that are not supported by standard software. Kaitai and Construct are both powerful and flexible, and can be applied to a wide range of real-world binary data.
 
