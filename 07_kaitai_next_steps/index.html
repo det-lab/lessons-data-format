@@ -377,8 +377,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setting-endianness" class="md-nav__link">
-    Setting Endianness
+  <a href="#meta-section" class="md-nav__link">
+    Meta Section
   </a>
   
 </li>
@@ -509,8 +509,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#setting-endianness" class="md-nav__link">
-    Setting Endianness
+  <a href="#meta-section" class="md-nav__link">
+    Meta Section
   </a>
   
 </li>
@@ -560,29 +560,41 @@
 <p>Now that you have created a custom binary file, let's describe its structure using Kaitai Struct. This will allow you to parse and analyze your data with generated code.</p>
 <p>If you don't have the <a href="https://ide.kaitai.io/">Kaitai Web IDE</a> open, navigate there and create a new <code>.ksy</code> file (e.g., <code>wave_parser.ksy</code>). You can also reference the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/wave_parser.ksy">example file</a>.</p>
 <h2 id="writing-the-kaitai-description">Writing the Kaitai Description</h2>
-<p>We're about to create the <code>.ksy</code> files used to parse our example format, you are encouraged to follow along and try to create the file yourself. </p>
+<p>We're about to create the <code>.ksy</code> files used to parse our example format, you are encouraged to try and create the file using what you've learned so far, but solutions will be provided for each section as well.</p>
 <details>
-  <summary>You can download the example file to compare your work to by clicking here</summary>
+  <summary>You can also download the example ksy file to compare your work to by clicking here.</summary>
   <p><a href="../examples/wave_parser.ksy" download>Download wave_parser.ksy</a></p>
 </details>
 
-<h3 id="setting-endianness">Setting Endianness</h3>
-<p>By default, the binary data you created was written using your operating system's native endianness. If you want to ensure consistency, you can explicitly set the endianness when generating your arrays in Python:</p>
-<pre><code class="language-python"># For little-endian
-full_x_data = np.array(full_x, dtype='&lt;float32')  # or '&lt;f4'
+<h3 id="meta-section">Meta Section</h3>
+<p>The first step for creating our <code>.ksy</code> file will be to fill out the <code>meta</code> section. The <code>id</code> and file extension are often identical, and should be the same as what you entered as the file extension when writing the file. Then you will assert if the file is either in little-endian, <code>le</code>, or big-endian, <code>be</code>.</p>
+<details>
+  <summary>Show solution</summary>
+  <p>
 
-# For big-endian
-full_x_data = np.array(full_x, dtype='&gt;float32')  # or '&gt;f4'
-</code></pre>
-<p>In your <code>.ksy</code> file, specify the endianness in the <code>meta</code> section:</p>
+
 <pre><code class="language-yaml">meta:
   id: test
   file-extension: test
-  endian: le  # or 'be' for big-endian
+  endian: le
 </code></pre>
+
+
+  </p>
+</details>
+
 <h3 id="describing-the-file-structure">Describing the File Structure</h3>
-<p>Recall that when saving your binary file, you wrote three unsigned 4-byte integers at the start, representing the lengths of each data section. In Kaitai, you can capture these using <code>u4</code> types:</p>
-<pre><code class="language-yaml">types:
+<p>Recall that when saving your binary file, we wrote three unsigned 4-byte integers at the start, representing the lengths of each data section. We can start off by describing these numbers in a <code>type</code> before using that <code>type</code> definition in <code>seq</code>. While it may feel unnatural to write non-linearly, it is very common for working with Kaitai.</p>
+<details>
+  <summary>Show solution</summary>
+  <p>
+
+
+<pre><code class="language-yaml">seq:
+  - id: lengths
+    type: full_mid_peak_lens
+
+types:
   full_mid_peak_lens:
     seq:
       - id: full_len
@@ -592,12 +604,19 @@ full_x_data = np.array(full_x, dtype='&gt;float32')  # or '&gt;f4'
       - id: peak_len
         type: u4
 </code></pre>
-<p>In the main <code>seq</code> section, reference this type to read the lengths:</p>
-<pre><code class="language-yaml">seq:
-  - id: lengths
-    type: full_mid_peak_lens
+
+  </p>
+</details>
+
+<p>Next, define the structure for each section of the data (full/mid/peak). Recall that when writing the data, we only used the length of one axis, but we need to capture both the x- and y-data. This capture will require us to use a <code>repeat-expr</code> which repeats the <code>f4</code> type as many times as the length of the axis. As an example, the syntax for a <code>repeat-expr</code> for <code>full_data</code> could be written as:</p>
+<pre><code class="language-yaml">repeat: expr
+repeat-expr: _root.length.full_len
 </code></pre>
-<p>Next, define the structure for each data section. Since each section contains two arrays (<code>x_data</code> and <code>y_data</code>) of <code>float32</code> values, and you know the length from the header, you can use <code>repeat-expr</code>:</p>
+<details>
+  <summary>Show solution</summary>
+  <p>
+
+
 <pre><code class="language-yaml">  full_data:
     seq:
       - id: x_data
@@ -631,7 +650,17 @@ full_x_data = np.array(full_x, dtype='&gt;float32')  # or '&gt;f4'
         repeat: expr
         repeat-expr: _root.lengths.peak_len
 </code></pre>
-<p>Finally, add these sections to the main <code>seq</code>:</p>
+
+
+  </p>
+</details>
+
+<p>Finally, add all of these sections to the main <code>seq</code>.</p>
+<details>
+  <summary>Show solution</summary>
+  <p>
+
+
 <pre><code class="language-yaml">  - id: f_data
     type: full_data
   - id: m_data
@@ -639,9 +668,12 @@ full_x_data = np.array(full_x, dtype='&gt;float32')  # or '&gt;f4'
   - id: p_data
     type: peak_data
 </code></pre>
+
+</p>
+</details>
+
 <p>Your <code>.ksy</code> file should now fully describe the structure of your binary file.</p>
 <h2 id="parsing-raw-data-with-a-ksy-file">Parsing Raw Data with a .ksy File</h2>
-<p>To parse your data outside the Web IDE, you need to generate code using the Kaitai Struct Compiler (<code>ksc</code>). If you haven't installed it, see the <a href="../10_appendix/">appendix</a>.</p>
 <p>From your terminal, generate the parser (for Python):</p>
 <pre><code class="language-sh">ksc -t &lt;language&gt; --outdir &lt;new_foldername&gt; &lt;path/to/your/file.ksy&gt;
 </code></pre>

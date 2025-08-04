@@ -507,7 +507,7 @@
 <p>We're about to create the <code>.ipynb</code> file used to parse our example format, you are encouraged to follow along and try to create the file yourself. </p>
 <details>
   <summary>You can download the example file to compare your work to by clicking here</summary>
-   [example_struct.ipynb](examples/example_struct.ipynb)
+  <p><a href="../examples/example_struct.ipynb" download>Download example_struct.ipynb</a></p>
 </details>
 
 <h2 id="setting-up-and-defining-structs">Setting Up and Defining Structs</h2>
@@ -516,14 +516,29 @@
 import matplotlib.pyplot as plt
 import numpy as np
 </code></pre>
-<p>Recall that your binary file starts with three 4-byte unsigned integers, giving the lengths of the full, mid, and peak data arrays. We'll define a Struct to capture these:</p>
+<p>Recall that your binary file starts with three 4-byte unsigned integers, giving the lengths of one axis for each of the full, mid, and peak data arrays. Try creating the first Struct to capture axis lengths for full, mid, and peak data.</p>
+<details>
+    <summary>Show solution</summary>
+    <p>
+
+
 <pre><code class="language-python">lengths_struct = Struct(
     &quot;full_data_len&quot; / Int32ul,
     &quot;mid_data_len&quot; / Int32ul,
     &quot;peak_data_len&quot; / Int32ul
 )
 </code></pre>
-<p>Next, define a Struct for the data arrays. Each section contains two arrays (<code>x</code> and <code>y</code>), each of length specified in the header:</p>
+
+</p>
+
+</details>
+
+<p>Next, define a Struct for the data arrays. Construct is able to capture them directly as arrays using <code>Array(count, subcon)</code> syntax, where <code>count</code> is the number of elements and <code>subcon</code> defines the format of each element. <code>count</code> can be described similar to the <code>repeat-expr</code> in Kaitai, although proceeded by <code>this</code>, so it should look like <code>this._root.lengths.full_data_len</code>.</p>
+<details>
+    <summary>Show solution</summary>
+    <p>
+
+
 <pre><code class="language-python">data_sections = Struct(
     &quot;full_x_data&quot; / Array(this._root.lengths.full_data_len, Float32l),
     &quot;full_y_data&quot; / Array(this._root.lengths.full_data_len, Float32l),
@@ -535,17 +550,32 @@ import numpy as np
     &quot;peak_y_data&quot; / Array(this._root.lengths.peak_data_len, Float32l),
 )
 </code></pre>
-<p>Finally, combine these into the top-level Struct:</p>
+
+
+</p>
+</details>
+
+<p>Finally, you can combine these into the top-level Struct.</p>
+<details>
+    <summary>Show solution</summary>
+    </p>
+
+
 <pre><code class="language-python">test_struct = Struct(
     &quot;lengths&quot; / lengths_struct,
     &quot;data_sects&quot; / data_sections
 )
 </code></pre>
+
+
+</p>
+</details>
+
 <blockquote>
 <p><strong>Tip:</strong> You can name your sub-Structs however you like, but be consistent. The quoted names (e.g., <code>"data_sects"</code>) are the keys you'll use to access the parsed data.</p>
 </blockquote>
 <h2 id="parsing-and-visualizing-the-data">Parsing and Visualizing the Data</h2>
-<p>Parsing with Construct is straightforward. You can do everything in the same script or notebook:</p>
+<p>Parsing with Construct is straightforward. You can do everything in the same script or notebook. The following function opens the binary file, parses it using your defined Struct, extracts the x and y arrays for each data range, and then plots them using Matplotlib:</p>
 <pre><code class="language-python">def parse_file(input_path):
     with open(input_path, 'rb') as input_f:
         raw_data = input_f.read()

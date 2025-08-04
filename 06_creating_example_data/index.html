@@ -553,7 +553,7 @@
 pip install matplotlib
 </code></pre>
 <blockquote>
-<p><strong>Note:</strong> There is no package called <code>python_struct</code>; <code>struct</code> is part of the Python standard library.</p>
+<p><strong>Note:</strong> <code>struct</code> is part of the Python standard library and doesn't require installation.</p>
 </blockquote>
 <h2 id="creating-and-visualizing-the-data">Creating and Visualizing the Data</h2>
 <p>Create a new <code>.py</code> or <code>.ipynb</code> file (e.g., <code>example_data.py</code>). You can also reference the <a href="https://github.com/det-lab/lessons-data-format/blob/gh-pages/examples/example_data.ipynb">example notebook</a>.</p>
@@ -567,7 +567,7 @@ import matplotlib.pyplot as plt
 mid_x, mid_y = [], []
 peak_x, peak_y = [], []
 </code></pre>
-<p>Populate these arrays with simulated data. For example, generate 100,000 points from <code>x = -5</code> to <code>x = 5</code> using the (totally arbitrary) equation <span class="arithmatex">\(y=cos(\frac{2 \pi x^2}{x^2 +x})sin(x)\)</span>:</p>
+<p>Populate these arrays with simulated data. For this example, we'll generate 100,000 points from <code>x = -5</code> to <code>x = 5</code> using the (totally arbitrary) equation <span class="arithmatex">\(y=cos(\frac{2 \pi x^2}{x^2 +x})sin(x)\)</span>:</p>
 <pre><code class="language-python">for x in np.arange(-5, 5, 0.0001):
     y = (np.cos((2 * np.pi * x**2)/(x**2 + x))) * np.sin(x)
     full_x.append(x)
@@ -605,12 +605,16 @@ mid_y_data = np.array(mid_y, dtype=np.float32)
 peak_x_data = np.array(peak_x, dtype=np.float32)
 peak_y_data = np.array(peak_y, dtype=np.float32)
 </code></pre>
-<blockquote>
-<p>You can experiment with other types like <code>float64</code>, <code>float16</code>, or even integer types if you wish.</p>
-</blockquote>
+<p>By default, the binary data is written using your operating system's native endianness. If you want to ensure consistency, you can explicitly set the endianness here:</p>
+<pre><code class="language-python"># For little-endian
+full_x_data = np.array(full_x, dtype='&lt;float32')  # or '&lt;f4'
+
+# For big-endian
+full_x_data = np.array(full_x, dtype='&gt;float32')  # or '&gt;f4'
+</code></pre>
 <p>When saving binary data, it's helpful to include the length of each section at the start of the file or near the front of its respective section. This makes parsing easier later. </p>
 <pre><code class="language-python">with open('wave_data.test', 'wb') as f:
-    # Write array lengths as unsigned 4-byte integers
+    # Write single array lengths as unsigned 4-byte integers
     f.write(struct.pack('I', len(full_y_data)))
     f.write(struct.pack('I', len(mid_y_data)))
     f.write(struct.pack('I', len(peak_y_data)))

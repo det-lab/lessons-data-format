@@ -503,15 +503,27 @@
 
 
 <h1 id="defining-the-structure-in-construct">Defining the Structure in Construct</h1>
-<p>Construct is a Python library for declaratively describing and parsing binary data formats. Its functionality is similar to Kaitai Struct, but it uses Python code. In Construct, you define <code>Structs</code> (structures) that describe how to interpret sections of a binary file. These <code>Structs</code> can be combined and nested to represent complex file formats, ultimately building up to a main <code>Struct</code> that captures the entire file's structure.</p>
+<p>Construct is a Python library for declaratively describing and parsing binary data formats. Its functionality is similar to Kaitai Struct, but it was designed to be used with the Python expression language. In Construct, you define <code>Structs</code> (structures) that describe how to interpret sections of a binary file, which are like Kaitai's <code>types</code>. These <code>Structs</code> can be combined and nested to represent complex file formats, ultimately building up to a main <code>Struct</code> that captures the entire file's structure, similar to Kaitai's <code>seq</code>.</p>
 <h2 id="struct-basics">Struct basics</h2>
 <p>A <code>Struct</code> in Construct is a collection of ordered fields, each with a name and a type. Fields are parsed or built in the order they are defined. When parsing, Construct returns a dictionary-like object with keys matching the field names. Unlike Kaitai, field names are optional in Construct, but naming fields makes the resulting data much easier to work with.</p>
-<p>Let's recreate the dimensions example from the Kaitai section. Here is how you would define a <code>width_and_height</code> <code>Struct</code> in Construct:</p>
+<p>Let's recreate the dimensions example from the Kaitai section. Here is how you would define an identical <code>width_and_height</code> <code>Struct</code> in Construct:</p>
 <pre><code class="language-python">width_and_height = Struct(
     &quot;width&quot; / Int16ul,
     &quot;height&quot; / Int16ul
 )
 </code></pre>
+<details>
+  <summary>Quick aside: Style</summary>
+  <p>
+
+  The indentation of this Struct isn't a requirement, but a stylistic choice to make it easier to read. Python would have no issues reading this instead as:
+
+  ```python
+  width_and_height = Struct("width"/Int16ul, "height"/Int16ul)
+  ```
+  </p>
+</details>
+
 <p>Here, <code>Int16ul</code> means an <strong>Int</strong>eger of <strong>16</strong> <strong>u</strong>nsigned bits in <strong>l</strong>ittle-endian format. You can then reuse this <code>width_and_height</code> struct in other structures:</p>
 <pre><code class="language-python">dimensions = Struct(
     &quot;w_and_h&quot; / width_and_height
@@ -520,7 +532,7 @@
 <p>This modular approach allows you to build up complex file formats from smaller, reusable pieces.</p>
 <h2 id="building-gifpy">Building gif.py</h2>
 <p>Let's look at how Construct can be used to describe the GIF file format, using the gif.py example from <a href="https://github.com/construct/construct/blob/master/deprecated_gallery/gif.py">Construct's GitHub repository</a>.</p>
-<p>Unlike Kaitai, where types can be declared in any order, Python requires that each <code>Struct</code> be defined before it can be referenced. This means you typically define the smallest components first and then combine them into larger structures. When examining the structure of <code>Structs</code> then, it often makes sense to start from the final defined <code>Struct</code> and work backwards to see how everything is built to work together.</p>
+<p>Unlike Kaitai, where types can be declared in any order, Python requires that each <code>Struct</code> be defined before it can be referenced. This means you typically define the smallest components first and then combine them into larger structures. When <strong>examining</strong> the structure of existing <code>Structs</code> then, it often makes sense to start from the final defined <code>Struct</code> and work backwards to see how everything is built to work together.</p>
 <p>Here is the top-level <code>gif_file</code> struct, which represents the entire GIF file:</p>
 <pre><code class="language-python">gif_file = Struct(
     &quot;signature&quot; / Const(b&quot;GIF&quot;),
@@ -533,7 +545,7 @@
 <ul>
 <li><code>Const(b"GIF")</code> and <code>Const(b"89a")</code> ensure the file starts with the correct signature and version, similar to the <code>magic</code> keyword in Kaitai. However, this also means it will fail to parse if the version number is anything other than <code>89a</code>.</li>
 <li><code>logical_screen</code> and <code>data</code> are parsed using other structs defined above <code>gif_file</code>.</li>
-<li><code>GreedyRange(gif_data)</code> repeats the <code>gif_data</code> struct until the end of the file.</li>
+<li>The <code>GreedyRange()</code> command repeats the given <code>gif_data</code> struct until the end of the file.</li>
 </ul>
 <p>Now, let's look at the <code>gif_logical_screen</code> struct:</p>
 <pre><code class="language-python">gif_logical_screen = Struct(
