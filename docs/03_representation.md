@@ -32,19 +32,17 @@ Thus forming an **AND** gate, where both Inputs 1 AND Input 2 must raise a black
     <p>Von Neumann pointed to the gigantic human circuit below the pyramid and began to explain, "Your Imperial Majesty, we have named the computer Qin I. Look, there in the center is the CPU, the core computing component, formed from your five best divisions. [...] Observe also the open passage that runs through the entire formation, and the light cavalry waiting for orders in that passage: That's the system bus, responsible for transmitting information between the components of the whole system.</p>
 </blockquote>
 
-(As some context for those who haven't seen the show or read the book, the characters Newton and Von Neumann are humans inside a virtual reality game created by an advanced alien civilization. When they first enter it, they are prompted to choose a new name, and they opt for the names of famous scientists.)
-
 While humans flipping signs definitely isn't the most efficient method of computation, it does demonstrate how the fundamentals of computing can be structured to deliver complex information.
 
 ### Counting in Binary
 
-As a side effect of finding ourselves with 10 fingers (usually), humans have developed a **base 10** (decimal) numerical system. In base 10, the number "3125.0" can be thought of as:
+As a side effect of finding ourselves with 10 fingers (usually), humans have developed a **base 10**, or **decimal**, numerical system. In base 10, the number "3125.0" can be thought of as:
 
 $$
 (3 \cdot 10^3) + (1 \cdot 10^2) + (2 \cdot 10^1) + (5 \cdot 10^0) + (0 \cdot 10^{-1})
 $$
 
-Each new digit to the left of the decimal point represents an additional $10^n$, where $n$ is the digit's index, starting from 0, while each digit to the right of the decimal point represents an additional $10^{-n}$. So 3125.0 has a 3 in the "thousand" or $10^3$ place, a 1 in the "hundred" or $10^2$ place, a 2 in the "ten" or $10^1$ place, a 5 in the "one" or $10^0$ place, and a 0 in the tenth or $10^{-1} place.
+Each new digit to the left of the decimal point represents an additional $10^n$, where $n$ is the digit's index, starting from 0, while each digit to the right of the decimal point represents an additional $10^{-n}$. So 3125.0 has a 3 in the "thousand" or $10^3$ place, a 1 in the "hundred" or $10^2$ place, a 2 in the "ten" or $10^1$ place, a 5 in the "one" or $10^0$ place, and a 0 in the tenth or $10^{-1}$ place.
 
 Binary works the same way, but with powers of 2 instead of 10. 
 

@@ -12,10 +12,10 @@ These skills are foundational for working with scientific, engineering, or custo
 
 Remember, this lesson only scratches the surface of what you can do with these tools. Both Kaitai and Construct have extensive documentation and active communities:
 
-- **Kaitai Struct:**  
+**Kaitai Struct:**  
   - [Official documentation](https://kaitai.io/docs/)
   - [Gitter community chat](https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im)
-- **Construct:**  
+**Construct:**  
   - [Official documentation](https://construct.readthedocs.io/)
   - [GitHub repository](https://github.com/construct/construct)
 
