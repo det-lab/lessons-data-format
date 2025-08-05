@@ -8,19 +8,21 @@ A brief overview of Kaitai Struct, Construct, and the problem that they exist to
 Instructions for configuring Python for Construct as well as showing how to access the Kaitai IDE
 ## File types (`02_filetype.md`)
 A discussion of file types, computer number systems, counting with binary and hexadecimals, and endianness.
-## Kaitai basics (`03_kaitai_basics.md`)
+## Computer Representation (`03_representation.md`)
+A discussion of how computers interpret binary data.
+## Kaitai basics (`04_kaitai_basics.md`)
 An overview of how to use Kaitai, along with descriptions of the IDE and the different sections of the Kaitai editor and important keywords using the .gif filetype as an example.
-## Construct basics (`04_construct_basics.md`)
+## Construct basics (`05_construct_basics.md`)
 An overview of how to use Construct, along with explanations of imporant keywords using the .gif filetype as an example.
-## Creating Example Data (`05_creating_example_data.md`)
+## Creating Example Data (`06_creating_example_data.md`)
 Showing the creation of example data and an example filetype that will be used in later sections. The example is created using Python to generate data in the form of an arbitrary function that is separated into different sections.
-## Kaitai Next Steps (`06_kaitai_next_steps.md`)
+## Kaitai Next Steps (`07_kaitai_next_steps.md`)
 Demonstrating how to use Kaitai to extract the data from the example file. Walks through the creation of a .ksy file, the generation of a Python parser from that file, and the use of the parser inside a Python environment to return the example data.
-## Construct Next Steps (`07_construct_next_steps.md`)
+## Construct Next Steps (`08_construct_next_steps.md`)
 Demonstrating how to use Construct to extract the data from the example file. Walks through the creation and combination of Structs to describe and load the file data before visualizing it in Python.
-## Conclusion (`08_conclusion.md`)
+## Conclusion (`09_conclusion.md`)
 Provides additional resources for Kaitai and Construct, such as documentation, forum communities, and mailing lists.
-## Appendix (`09_appendix.md`)
+## Appendix (`10_appendix.md`)
 Provides installation advice and advanced options for users of both Kaitai and Construct.
 # Goals
 By the end of this lesson, you should be able to:
