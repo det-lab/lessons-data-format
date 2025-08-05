@@ -15,6 +15,7 @@ Remember, this lesson only scratches the surface of what you can do with these t
 **Kaitai Struct:**  
   - [Official documentation](https://kaitai.io/docs/)
   - [Gitter community chat](https://app.gitter.im/#/room/#kaitai_struct_Lobby:gitter.im)
+  
 **Construct:**  
   - [Official documentation](https://construct.readthedocs.io/)
   - [GitHub repository](https://github.com/construct/construct)
